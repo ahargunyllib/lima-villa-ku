@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../../assets/hero.png";
+---
+<section id="hero" class="space-y-10 pt-12 mt-28 flex flex-col items-center justify-center">
+  <div class="space-y-20 w-1/2 flex flex-col items-center">
+    <div class="space-y-10">
+      <h1 class="font-semibold text-black text-6xl text-center">
+        Villa Nyaman untuk Setiap Momen
+      </h1>
+      <p class="text-center text-lg text-[#434343]">
+        Nikmati liburan santai di villa dengan suasana sejuk, privasi penuh, dan pemandangan indah Megamendung
+      </p>
+    </div>
+
+    <button class="bg-[#CE9664] text-white text-sm px-8 py-3.5 rounded-lg w-fit">
+      Pesan Sekarang
+    </button>
+  </div>
+
+  <Image
+    src={heroImage}
+    alt="Hero section image"
+  />
+</section>
