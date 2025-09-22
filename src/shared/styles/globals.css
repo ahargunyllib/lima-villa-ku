@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'PlusJakartaSans';
+  src: url('/fonts/PlusJakartaSans.ttf') format('truetype');
+}
+
+@theme {
+  --font-sans: 'PlusJakartaSans', 'sans-serif';
+}
