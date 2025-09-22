@@ -1,7 +1,7 @@
 ---
 
 import "../shared/styles/globals.css";
-
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -12,6 +12,7 @@ import "../shared/styles/globals.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Lima Villa Ku</title>
+    <ClientRouter />
 	</head>
 	<body class="bg-white">
 		<slot />
