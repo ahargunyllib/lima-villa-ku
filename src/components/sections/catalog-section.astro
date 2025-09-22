@@ -1,0 +1,165 @@
+<section id="catalog" class="p-25 flex flex-col items-center justify-center gap-y-20">
+  <h3 class="text-5xl font-semibold text-black w-1/2 text-center">
+    Pilih Villa yang Sesuai dengan Gaya Liburan Anda
+  </h3>
+
+  <div class="tab-nav">
+    <button class="tab-btn" data-tab="garuda">Garuda</button>
+    <button class="tab-btn" data-tab="kaluska">Kaluska</button>
+    <button class="tab-btn" data-tab="aliska">Aliska <div class="w-6 h-6 rounded-sm bg-[#434343]" /></button>
+    <button class="tab-btn" data-tab="lagogo">Lagogo <div class="w-6 h-6 rounded-sm bg-[#434343]" /></button>
+    <button class="tab-btn" data-tab="sari">Sari</button>
+
+    <div class="tab-indicator"/>
+    <div class="hover-tab-indicator"/>
+  </div>
+
+  <div class="w-full space-y-10">
+    <div class="w-full h-[40rem] rounded-3xl bg-gray-200" />
+    <div class="flex flex-row justify-between gap-4">
+      <div class="space-y-1">
+        <h4 class="text-4xl font-semibold text-black">
+          Pondok Garuda
+        </h4>
+        <div class="flex flex-row items-center gap-4">
+          <div class="flex flex-row items-center gap-4">
+            <div class="w-6 h-6 rounded-sm bg-[#434343]" />
+            <span class="text-xl text-[#434343]">
+              1 Bangunan
+            </span>
+          </div>
+          <div class="flex flex-row items-center gap-4">
+            <div class="w-6 h-6 rounded-sm bg-[#434343]" />
+            <span class="text-xl text-[#434343]">
+              11 Kamar (38 Orang)
+            </span>
+          </div>
+        </div>
+      </div>
+      <button class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-sm font-bold h-fit">
+        Lihat Detail Villa
+      </button>
+    </div>
+  </div>
+</section>
+<style>
+.tab-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: #F3F2F0;
+  padding: 8px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.tab-btn {
+  font-weight: 600;
+  font-size: 16px;
+  color: #111222;
+  border-radius: 8px;
+  padding: 14px 24px;
+  cursor: pointer;
+  background-color: transparent;
+  z-index: 2;
+  text-align: center;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-indicator {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #111222;
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+
+  height: calc(100% - 16px);
+  transform: translateX(0%);
+}
+
+.hover-tab-indicator {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(17, 18, 34, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+
+  height: calc(100% - 16px);
+  transform: translateX(0%);
+
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>
+<script>
+  const tabs = document.querySelectorAll<HTMLElement>('.tab-btn');
+  const indicator = document.querySelector<HTMLElement>('.tab-indicator');
+  const hoverIndicator = document.querySelector<HTMLElement>('.hover-tab-indicator');
+
+  let selectedTabIndex = 0; // Default to the first tab
+  let hoveredTabIndex = null;
+
+  // update active tab button color to white
+  tabs[selectedTabIndex].style.color = 'white';
+
+  // set inidicator width to match tab button width
+  if (indicator && tabs[0]) {
+    indicator.style.width = `${tabs[0].offsetWidth}px`;
+  }
+
+  const moveIndicator = (idx: number) => {
+    if (indicator) {
+      indicator.style.transform = `translateX(${idx * 100}%)`;
+    }
+
+    indicator!.style.width = `${tabs[idx].offsetWidth}px`;
+
+    // Reset all tab button colors
+    tabs.forEach(tab => (tab.style.color = '#111222'));
+
+    // Highlight the selected tab button
+    tabs[idx].style.color = 'white';
+  };
+
+  const moveHoverIndicator = (idx: number | null) => {
+    if (!hoverIndicator) return;
+
+    if (idx === null) {
+      hoverIndicator.style.opacity = '0';
+      return;
+    }
+
+    hoverIndicator.style.opacity = '1';
+    hoverIndicator.style.transform = `translateX(${idx * 100}%)`;
+    hoverIndicator.style.width = `${tabs[idx].offsetWidth}px`;
+  };
+
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', () => {
+      moveIndicator(i);
+      selectedTabIndex = i;
+    });
+
+    tabs[i].addEventListener('mouseover', () => {
+      if (i === selectedTabIndex) return;
+
+      hoveredTabIndex = i;
+      moveHoverIndicator(hoveredTabIndex);
+    });
+
+    tabs[i].addEventListener('mouseout', () => {
+      if (i === selectedTabIndex) return;
+
+      hoveredTabIndex = null;
+      moveHoverIndicator(hoveredTabIndex);
+    });
+  }
+</script>
