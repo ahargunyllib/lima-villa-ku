@@ -1,5 +1,5 @@
-<section id="catalog" class="p-25 flex flex-col items-center justify-center gap-y-20">
-  <h3 class="text-5xl font-semibold text-black w-1/2 text-center">
+<section id="catalog" class="p-6 lg:p-25 flex flex-col items-center justify-center gap-y-20">
+  <h3 class="text-2xl lg:text-5xl font-semibold text-black w-full lg:w-1/2 text-center">
     Pilih Villa yang Sesuai dengan Gaya Liburan Anda
   </h3>
 
@@ -15,42 +15,50 @@
   </div>
 
   <div class="w-full space-y-10">
-    <div class="w-full h-[40rem] rounded-3xl bg-gray-200" />
-    <div class="flex flex-row justify-between gap-4">
+    <div class="w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200" />
+    <div class="flex flex-col lg:flex-row justify-between gap-4">
       <div class="space-y-1">
-        <h4 class="text-4xl font-semibold text-black">
+        <h4 class="text-lg lg:text-4xl font-semibold text-black">
           Pondok Garuda
         </h4>
         <div class="flex flex-row items-center gap-4">
           <div class="flex flex-row items-center gap-4">
-            <div class="w-6 h-6 rounded-sm bg-[#434343]" />
-            <span class="text-xl text-[#434343]">
+            <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
+            <span class="text-sm lg:text-xl text-[#434343]">
               1 Bangunan
             </span>
           </div>
           <div class="flex flex-row items-center gap-4">
-            <div class="w-6 h-6 rounded-sm bg-[#434343]" />
-            <span class="text-xl text-[#434343]">
+            <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
+            <span class="text-sm lg:text-xl text-[#434343]">
               11 Kamar (38 Orang)
             </span>
           </div>
         </div>
       </div>
-      <button class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-sm font-bold h-fit">
+      <button class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-xs lg:text-sm font-bold h-fit">
         Lihat Detail Villa
       </button>
     </div>
   </div>
 </section>
 <style>
+
 .tab-nav {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  background-color: #F3F2F0;
-  padding: 8px;
-  border-radius: 8px;
-  position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: #F3F2F0;
+    padding: 8px;
+    border-radius: 8px;
+    position: relative;
+  }
+
+@media (max-width: 768px) {
+  .tab-nav {
+    display: none;
+  }
 }
+
 
 .tab-btn {
   font-weight: 600;
