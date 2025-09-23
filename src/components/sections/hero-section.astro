@@ -1,18 +1,42 @@
 ---
-import FirstHeroImage from "../../assets/images/hero/1.png";
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
+import Hero1Image from "../../assets/images/hero/1.png";
+import Hero2Image from "../../assets/images/hero/2.png";
+import Hero3Image from "../../assets/images/hero/3.png";
+import Hero4Image from "../../assets/images/hero/4.png";
+import Hero5Image from "../../assets/images/hero/5.png";
+import Hero6Image from "../../assets/images/hero/6.png";
+import Hero7Image from "../../assets/images/hero/7.png";
+import Hero8Image from "../../assets/images/hero/8.png";
+import Hero9Image from "../../assets/images/hero/9.png";
+
+const slides = [
+	Hero1Image,
+	Hero2Image,
+	Hero3Image,
+	Hero4Image,
+	Hero5Image,
+	Hero6Image,
+	Hero7Image,
+	Hero8Image,
+	Hero9Image,
+];
 ---
 
-<section id="hero" class="px-6 pt-6 pb-10 lg:p-25 flex flex-col items-start justify-end h-dvh">
-  <div class="absolute bottom-0 left-0 w-full h-full z-10">
-    <div class="absolute bottom-0 left-0 w-full h-full bg-black/60 z-10" />
-    <Image
-      src={FirstHeroImage}
-      alt="Hero Image"
-      loading="eager"
-      class="w-full h-dvh object-cover"
-    />
+<section id="hero" class="px-6 pt-6 pb-10 lg:p-25 relative overflow-hidden flex flex-col items-start justify-end h-dvh">
+  <div class="absolute inset-0 z-0">
+    {slides.map((src, i) => (
+      <Image
+        src={src}
+        alt={`Hero Image ${i + 1}`}
+        loading={i === 0 ? "eager" : "lazy"}
+        class={`slide absolute inset-0 w-full h-dvh object-cover ${i === 0 ? "active" : ""}`}
+        data-idx={i}
+      />
+    ))}
+    <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
   </div>
+
   <div class="space-y-10 w-full lg:w-1/2 flex flex-col items-start z-20">
     <div class="space-y-10">
       <h1 class="font-semibold text-white text-3xl lg:text-6xl">
@@ -28,3 +52,41 @@ import Image from "astro/components/Image.astro";
     </button>
   </div>
 </section>
+<style>
+  .slide { opacity: 0; transition: opacity 700ms ease; }
+  .slide.active { opacity: 1; }
+</style>
+
+<script>
+  const slides = Array.from(document.querySelectorAll<HTMLImageElement>('#hero .slide'));
+
+  let idx = 0;
+  const N = slides.length;
+  const AUTOPLAY_MS = 5000; // change timing as needed
+  let timer: number | null = null;
+
+  function show(i: number) {
+    slides[idx].classList.remove('active');
+
+    idx = (i + N) % N;
+
+    slides[idx].classList.add('active');
+  }
+
+  function next() { show(idx + 1); }
+  function prev() { show(idx - 1); }
+
+  function start() {
+    stop();
+    timer = window.setInterval(next, AUTOPLAY_MS);
+  }
+  function stop() {
+    if (timer !== null) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  // Kick off
+  start();
+</script>

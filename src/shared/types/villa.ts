@@ -1,8 +1,10 @@
+import type { ImageMetadata } from "astro";
+
 export type Villa = {
 	id: number;
 	slug: "garuda" | "kaluska" | "aliska" | "lagogo" | "sari";
 	name: string;
-	imageUrl: string;
+	imageUrl: ImageMetadata;
 	shortName: string;
 	isAvailable: boolean;
 	buildingCount: number;
@@ -11,14 +13,14 @@ export type Villa = {
 	description: string;
 	facilities: string[];
 
-  buildingImageUrls?: string[];
+	buildingImageUrls?: ImageMetadata[];
 
 	bedroomDetail: {
-		imageUrl: string;
+		imageUrl: ImageMetadata;
 		facilities: string[];
 	};
 
-  facilityImageUrls: string[];
+	facilityImageUrls: ImageMetadata[];
 
 	termsAndCondition: string;
 

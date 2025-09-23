@@ -1,11 +1,12 @@
 import type { Villa } from "../types";
+import { VillaImages } from "./villa-images";
 
 export const ListVilla: Villa[] = [
 	{
 		id: 1,
 		slug: "garuda",
 		name: "Pondok Garuda",
-		imageUrl: "/images/villas/garuda/cover.jpg",
+		imageUrl: VillaImages.garuda.cover,
 		shortName: "Garuda",
 		isAvailable: true,
 		buildingCount: 1,
@@ -31,14 +32,14 @@ export const ListVilla: Villa[] = [
 		],
 
 		bedroomDetail: {
-			imageUrl: "/images/villas/garuda/bedroom.jpg",
+			imageUrl: VillaImages.garuda.bedroom,
 			facilities: [
 				"Lantai 1  (kamar 1-5) 8 Double bed + 2 Single bed Kapasitas 18 Orang",
 				"Lantai 2  (kamar 6-11) 10 Double bed + 2 Single bed Kapasitas 20 Orang",
 			],
 		},
 
-		facilityImageUrls: ["", ""],
+		facilityImageUrls: VillaImages.garuda.facilities,
 
 		termsAndCondition: `
     1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
@@ -93,7 +94,7 @@ export const ListVilla: Villa[] = [
 		id: 2,
 		slug: "kaluska",
 		name: "Pondok Kaluska",
-		imageUrl: "/images/villas/kaluska/cover.jpg",
+		imageUrl: VillaImages.kaluska.cover,
 		shortName: "Kaluska",
 		isAvailable: true,
 		buildingCount: 4,
@@ -119,16 +120,16 @@ export const ListVilla: Villa[] = [
 		],
 
 		bedroomDetail: {
-			imageUrl: "/images/villas/kaluska/bedroom.jpg",
+			imageUrl: VillaImages.kaluska.bedroom,
 			facilities: [
 				"Lantai 1  (kamar 1-4) 8 Double bed Kapasitas 16 Orang",
 				"Lantai 2  (mezanin) 8 Single bed Kapasitas 8 Orang",
 			],
 		},
 
-		facilityImageUrls: ["", ""],
+		facilityImageUrls: VillaImages.kaluska.facilities,
 
-		buildingImageUrls: ["", ""],
+		buildingImageUrls: VillaImages.kaluska.buildings,
 
 		termsAndCondition: `
     1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
@@ -183,7 +184,7 @@ export const ListVilla: Villa[] = [
 		id: 3,
 		slug: "aliska",
 		name: "Pondok Aliska",
-		imageUrl: "/images/villas/aliska/cover.jpg",
+		imageUrl: VillaImages.aliska.cover,
 		shortName: "Aliska",
 		isAvailable: false,
 		buildingCount: 0,
@@ -193,7 +194,7 @@ export const ListVilla: Villa[] = [
 		facilities: [],
 
 		bedroomDetail: {
-			imageUrl: "/images/villas/aliska/bedroom.jpg",
+			imageUrl: VillaImages.aliska.bedroom,
 			facilities: [],
 		},
 
@@ -234,7 +235,7 @@ export const ListVilla: Villa[] = [
 		id: 4,
 		slug: "lagogo",
 		name: "Pondok Lagogo",
-		imageUrl: "/images/villas/lagogo/cover.jpg",
+		imageUrl: VillaImages.lagogo.cover,
 		shortName: "Lagogo",
 		isAvailable: false,
 		buildingCount: 0,
@@ -244,7 +245,7 @@ export const ListVilla: Villa[] = [
 		facilities: [],
 
 		bedroomDetail: {
-			imageUrl: "/images/villas/lagogo/bedroom.jpg",
+			imageUrl: VillaImages.lagogo.bedroom,
 			facilities: [],
 		},
 
@@ -285,7 +286,7 @@ export const ListVilla: Villa[] = [
 		id: 5,
 		slug: "sari",
 		name: "Pondok Sari",
-		imageUrl: "/images/villas/sari/cover.jpg",
+		imageUrl: VillaImages.sari.cover,
 		shortName: "Sari",
 		isAvailable: true,
 		buildingCount: 1,
@@ -311,14 +312,14 @@ export const ListVilla: Villa[] = [
 		],
 
 		bedroomDetail: {
-			imageUrl: "/images/villas/sari/bedroom.jpg",
+			imageUrl: VillaImages.sari.bedroom,
 			facilities: [
 				"Lantai 1  (kamar 1-7) 11 Double bed + 2 Single bed Kapasitas 24 Orang",
 				"Lantai 2  (kamar 8-15) 10 Double bed + 7 Single bed Kapasitas 28 Orang",
 			],
 		},
 
-		facilityImageUrls: ["", ""],
+		facilityImageUrls: VillaImages.sari.facilities,
 
 		termsAndCondition: `
     1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
