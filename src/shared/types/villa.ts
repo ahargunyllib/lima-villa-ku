@@ -11,12 +11,14 @@ export type Villa = {
 	description: string;
 	facilities: string[];
 
+  buildingImageUrls?: string[];
+
 	bedroomDetail: {
 		imageUrl: string;
 		facilities: string[];
 	};
 
-	buildingImageUrls: string[];
+  facilityImageUrls: string[];
 
 	termsAndCondition: string;
 

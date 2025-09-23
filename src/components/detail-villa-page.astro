@@ -19,7 +19,7 @@ const villa = VillaMap[props.villaSlug];
     <div class="w-full gap-y-6 flex flex-col items-center justify-center">
       <select class="w-full lg:hidden px-6 py-3 bg-[#111222] rounded-lg text-white font-bold">
         {ListVilla.map((villa) => (
-          <option value={villa.slug} selected={villa.slug === props.villaSlug}>{villa.shortName}</option>
+          <option value={villa.slug} selected={villa.slug === props.villaSlug} disabled={!villa.isAvailable}>{villa.shortName}</option>
         ))}
       </select>
 
@@ -103,7 +103,7 @@ const villa = VillaMap[props.villaSlug];
           Galeri Fasilitas
         </h2>
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
-          {villa.buildingImageUrls.map((url) => (
+          {villa.facilityImageUrls.map((url) => (
             <div class="w-full h-24 lg:h-48 rounded-lg bg-gray-200" style={{ backgroundImage: `url(${url})`, backgroundSize: 'cover' }} />
           ))}
         </div>
@@ -155,23 +155,6 @@ const villa = VillaMap[props.villaSlug];
             Informasi Kontak
           </h2>
 
-          <!-- {villa.contact.instagrams.map((instagram, index) => (
-            <p class="text-sm lg:text-xl text-[#434343]">
-              <span class={index === 0 ? 'opacity-100' : 'opacity-0'}>Instagram: </span>{instagram}
-            </p>
-          ))}
-
-          {villa.contact.villaManagers.map((manager, index) => (
-            <p class="text-sm lg:text-xl text-[#434343]">
-              <span class={index === 0 ? 'opacity-100' : 'opacity-0'}>Pengelola Villa: </span>{manager.phoneNumber} ({manager.name})
-            </p>
-          ))}
-
-          {villa.contact.villaGuardians.map((guardian, index) => (
-            <p class="text-sm lg:text-xl text-[#434343]">
-              <span class={index === 0 ? 'opacity-100' : 'opacity-0'}>Penjaga Villa: </span>{guardian.phoneNumber} ({guardian.name})
-            </p>
-          ))} -->
           <table>
             <tbody>
               {villa.contact.instagrams.map((instagram, index) => (
@@ -255,7 +238,6 @@ const villa = VillaMap[props.villaSlug];
     z-index: 1;
 
     height: calc(100% - 16px);
-    transform: translateX(0%);
   }
 
   .hover-tab-indicator {
@@ -279,11 +261,19 @@ const villa = VillaMap[props.villaSlug];
   const indicator = document.querySelector<HTMLElement>('.tab-indicator');
   const hoverIndicator = document.querySelector<HTMLElement>('.hover-tab-indicator');
 
-  let selectedTabIndex = 0; // Default to the first tab
+  const url = window.location.pathname;
+  const villaSlug = url.split('/').pop();
+
+  let selectedTabIndex = Array.from(tabs).findIndex(tab => tab.getAttribute('data-tab') === villaSlug);
   let hoveredTabIndex = null;
 
   // update active tab button color to white
   tabs[selectedTabIndex].style.color = 'white';
+
+  // move indicator to active tab button
+  if (indicator) {
+    indicator.style.transform = `translateX(${selectedTabIndex * 100}%)`;
+  }
 
   // set inidicator width to match tab button width
   if (indicator && tabs[0]) {
@@ -321,6 +311,18 @@ const villa = VillaMap[props.villaSlug];
     tabs[i].addEventListener('click', () => {
       moveIndicator(i);
       selectedTabIndex = i;
+
+      // wait a bit before navigating
+      setTimeout(() => {
+        const villaSlug = tabs[i].getAttribute('data-tab');
+        if (villaSlug) {
+          if (document.startViewTransition) {
+            document.startViewTransition(() => location.assign(`/villa/${villaSlug}`));
+          } else {
+            location.assign(`/villa/${villaSlug}`);
+          }
+        }
+      }, 100);
     });
 
     tabs[i].addEventListener('mouseover', () => {
@@ -337,4 +339,16 @@ const villa = VillaMap[props.villaSlug];
       moveHoverIndicator(hoveredTabIndex);
     });
   }
+
+  // Handle select dropdown change
+  const select = document.querySelector('select');
+  select?.addEventListener('change', (event) => {
+    const target = event.target as HTMLSelectElement;
+    const selectedVillaSlug = target.value;
+    if (document.startViewTransition) {
+      document.startViewTransition(() => location.assign(`/villa/${selectedVillaSlug}`));
+    } else {
+      location.assign(`/villa/${selectedVillaSlug}`);
+    }
+  });
 </script>
