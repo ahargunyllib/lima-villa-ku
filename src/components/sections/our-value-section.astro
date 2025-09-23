@@ -1,6 +1,6 @@
 ---
-import OurValueImage from "../../assets/images/our-value-image.png";
 import { Image } from "astro:assets";
+import OurValueImage from "../../assets/images/our-value-image.png";
 ---
 <section id="our-value" class="p-6 lg:p-25 flex flex-col items-center justify-center gap-18 min-h-dvh bg-[#F2F2F2]">
   <div class="space-y-8 w-full lg:w-3/5">
@@ -15,13 +15,13 @@ import { Image } from "astro:assets";
     </div>
   </div>
 
-  <div class="flex flex-row gap-10 items-start justify-center w-full lg:h-full">
-    <div class="h-full w-full aspect-square rounded-3xl bg-gray-200 hidden lg:block">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full lg:h-full">
+    <div class="relative hidden w-full lg:block rounded-3xl overflow-hidden bg-gray-200">
       <Image
         src={OurValueImage}
         alt="Our Value Image"
         loading="eager"
-        class="w-full"
+        class="absolute inset-0 w-full h-full object-cover"
       />
     </div>
 
