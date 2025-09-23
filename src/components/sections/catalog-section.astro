@@ -1,5 +1,5 @@
 ---
-import { ListVilla } from "../../shared/data/villas";
+import { ListVilla, VillaMap } from "../../shared/data/villas";
 ---
 
 <section id="catalog" class="p-6 lg:p-25 flex flex-col items-center justify-center gap-y-20">
@@ -18,37 +18,35 @@ import { ListVilla } from "../../shared/data/villas";
     <div class="hover-tab-indicator"/>
   </div>
 
-  <div class="flex flex-col items-center justify-center gap-y-20 w-full lg:hidden">
-    {ListVilla.map((villa) => (
-      <div class="w-full space-y-10">
-        <div class="w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200" />
-        <div class="flex flex-col lg:flex-row justify-between gap-4">
-          <div class="space-y-1">
-            <h4 class="text-lg lg:text-4xl font-semibold text-black">
-              {villa.name}
-            </h4>
+  {ListVilla.map((villa) => (
+    <div id="detail-villa-card" class="w-full space-y-10">
+      <div class="w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200" />
+      <div class="flex flex-col lg:flex-row justify-between gap-4">
+        <div class="space-y-1">
+          <h4 class="text-lg lg:text-4xl font-semibold text-black">
+            {villa.name}
+          </h4>
+          <div class="flex flex-row items-center gap-4">
             <div class="flex flex-row items-center gap-4">
-              <div class="flex flex-row items-center gap-4">
-                <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
-                <span class="text-sm lg:text-xl text-[#434343]">
-                  {villa.buildingCount} Bangunan
-                </span>
-              </div>
-              <div class="flex flex-row items-center gap-4">
-                <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
-                <span class="text-sm lg:text-xl text-[#434343]">
-                  {villa.roomCount} Kamar ({villa.personCapacity} Orang)
-                </span>
-              </div>
+              <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
+              <span class="text-sm lg:text-xl text-[#434343]">
+                {villa.buildingCount} Bangunan
+              </span>
+            </div>
+            <div class="flex flex-row items-center gap-4">
+              <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
+              <span class="text-sm lg:text-xl text-[#434343]">
+                {villa.roomCount} Kamar ({villa.personCapacity} Orang)
+              </span>
             </div>
           </div>
-          <button id="detail-villa-button" data-slug={villa.slug} disabled={!villa.isAvailable} class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-xs lg:text-sm font-bold h-fit">
-            Lihat Detail Villa
-          </button>
         </div>
+        <button id="detail-villa-button" data-slug={villa.slug} disabled={!villa.isAvailable} class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-xs lg:text-sm font-bold h-fit">
+          Lihat Detail Villa
+        </button>
       </div>
-    ))}
-  </div>
+    </div>
+  ))}
 </section>
 <style>
 
@@ -162,6 +160,8 @@ import { ListVilla } from "../../shared/data/villas";
     tabs[i].addEventListener('click', () => {
       moveIndicator(i);
       selectedTabIndex = i;
+
+      filterVillaCards();
     });
 
     tabs[i].addEventListener('mouseover', () => {
@@ -188,4 +188,24 @@ import { ListVilla } from "../../shared/data/villas";
       }
     });
   });
+
+  // show only one villa card based on selected tab if on desktop
+  const villaCards = document.querySelectorAll<HTMLElement>('#detail-villa-card');
+  const filterVillaCards = () => {
+    if (window.innerWidth > 768) {
+      villaCards.forEach((card, index) => {
+        if (index === selectedTabIndex) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    } else {
+      villaCards.forEach((card) => {
+        card.style.display = 'block';
+      });
+    }
+  };
+
+  filterVillaCards();
 </script>
