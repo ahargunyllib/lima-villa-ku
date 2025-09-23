@@ -91,19 +91,19 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
         <div class="space-y-8">
           <div class="space-y-4">
             <div class="space-y-1">
-              <h1 class="font-bold text-2xl lg:text-5xl text-black">
+              <h1 class="font-bold text-2xl lg:text-3xl text-black">
                 {villa.name}
               </h1>
               <div class="flex flex-row items-center gap-4">
                 <div class="flex flex-row items-center gap-4">
                   <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
-                  <span class="text-sm lg:text-xl text-[#434343]">
+                  <span class="text-sm lg:text-lg text-[#434343]">
                     {villa.buildingCount} Bangunan
                   </span>
                 </div>
                 <div class="flex flex-row items-center gap-4">
                   <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
-                  <span class="text-sm lg:text-xl text-[#434343]">
+                  <span class="text-sm lg:text-lg text-[#434343]">
                     {villa.roomCount} Kamar ({villa.personCapacity} Orang)
                   </span>
                 </div>
@@ -116,14 +116,14 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
           </div>
 
           <div class="space-y-4">
-            <h2 class="font-bold text-base lg:text-3xl text-black">
+            <h2 class="font-bold text-base lg:text-xl text-black">
               Fasilitas
             </h2>
             <div class="grid grid-cols-2 gap-4">
               {villa.facilities.map((facility) => (
                 <div class="flex flex-row items-center gap-4">
                   <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
-                  <span class="text-sm lg:text-xl text-[#434343]">
+                  <span class="text-sm lg:text-base text-[#434343]">
                     {facility}
                   </span>
                 </div>
@@ -141,14 +141,14 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
               />
             </div>
             <div class="space-y-6">
-              <h2 class="font-bold text-base lg:text-3xl text-black">
+              <h2 class="font-bold text-base lg:text-base text-black">
                 Detail Kamar
               </h2>
               <div class="space-y-4">
                 {villa.bedroomDetail.facilities.map((facility) => (
                   <div class="flex flex-row items-start gap-4">
                     <div class="size-5 lg:size-6 rounded-sm bg-[#434343] shrink-0" />
-                    <span class="text-sm lg:text-xl text-[#434343]">
+                    <span class="text-sm lg:text-base text-[#434343]">
                       {facility}
                     </span>
                   </div>
@@ -158,7 +158,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
           </div>
 
           <div class="space-y-4">
-            <h2 class="font-bold text-base lg:text-3xl text-black">
+            <h2 class="font-bold text-base lg:text-xl text-black">
               Galeri Fasilitas
             </h2>
             <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
@@ -176,10 +176,10 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
           </div>
 
           <div class="space-y-4">
-            <h2 class="font-bold text-base lg:text-3xl text-black">
+            <h2 class="font-bold text-base lg:text-xl text-black">
               Ketentuan Umum
             </h2>
-            <p class="text-sm lg:text-lg text-[#434343] whitespace-pre-line">
+            <p class="text-sm lg:text-base text-[#434343] whitespace-pre-line">
               {villa.termsAndCondition}
             </p>
           </div>
@@ -188,14 +188,14 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
         <div class="space-y-8 sticky top-36">
           <div class="px-6 py-10 space-y-6 rounded-lg bg-[#F2F2F2]">
             <div class="space-y-2">
-              <h2 class="font-bold text-base lg:text-3xl text-black">
+              <h2 class="font-bold text-base lg:text-xl text-black">
                 Harga Sewa (Sewaktu-waktu bisa berubah)
               </h2>
 
-              <p class="text-sm lg:text-xl text-[#434343]">
+              <p class="text-sm lg:text-base text-[#434343]">
                 Weekend: <strong>{villa.price.weekend.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</strong>
               </p>
-              <p class="text-sm lg:text-xl text-[#434343]">
+              <p class="text-sm lg:text-base text-[#434343]">
                 Weekdays: <strong>{villa.price.weekday.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</strong>
               </p>
 
@@ -206,10 +206,10 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
 
             {villa.price.downPayment && (
               <div class="space-y-2">
-                <h2 class="font-bold text-base lg:text-3xl text-black">
+                <h2 class="font-bold text-base lg:text-xl text-black">
                   DP/Down Payment
                 </h2>
-                <p class="text-sm lg:text-xl text-[#434343]">
+                <p class="text-sm lg:text-sm text-[#434343]">
                   {villa.price.downPayment.note}
                 </p>
               </div>
@@ -217,7 +217,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
           </div>
           <div class="px-6 py-10 space-y-6 rounded-lg bg-[#F2F2F2]">
             <div class="space-y-2">
-              <h2 class="font-bold text-base lg:text-3xl text-black">
+              <h2 class="font-bold text-base lg:text-xl text-black">
                 Informasi Kontak
               </h2>
 
@@ -225,20 +225,20 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
                 <tbody>
                   {villa.contact.instagrams.map((instagram, index) => (
                     <tr>
-                      <td class={index === 0 ? 'text-sm lg:text-xl text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Instagram:</td>
-                      <td class="text-sm lg:text-xl text-[#434343]">{instagram}</td>
+                      <td class={index === 0 ? 'text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Instagram:</td>
+                      <td class="text-sm lg:text-base text-[#434343]">{instagram}</td>
                     </tr>
                   ))}
                   {villa.contact.villaManagers.map((manager, index) => (
                     <tr>
-                      <td class={index === 0 ? 'text-sm lg:text-xl text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Pengelola Villa:</td>
-                      <td class="text-sm lg:text-xl text-[#434343]">{manager.phoneNumber} ({manager.name})</td>
+                      <td class={index === 0 ? 'text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Pengelola Villa:</td>
+                      <td class="text-sm lg:text-base text-[#434343]">{manager.phoneNumber} ({manager.name})</td>
                     </tr>
                   ))}
                   {villa.contact.villaGuardians.map((guardian, index) => (
                     <tr>
-                      <td class={index === 0 ? 'text-sm lg:text-xl text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Penjaga Villa:</td>
-                      <td class="text-sm lg:text-xl text-[#434343]">{guardian.phoneNumber} ({guardian.name})</td>
+                      <td class={index === 0 ? 'text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Penjaga Villa:</td>
+                      <td class="text-sm lg:text-base text-[#434343]">{guardian.phoneNumber} ({guardian.name})</td>
                     </tr>
                   ))}
                 </tbody>
