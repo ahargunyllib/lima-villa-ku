@@ -53,7 +53,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
         {ListVilla.map((v) => (
           <button class="tab-btn" data-tab={v.slug} disabled={!v.isAvailable}>
             {v.shortName} {!v.isAvailable && (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.99967 14.6666C11.6663 14.6666 14.6663 11.6666 14.6663 7.99998C14.6663 4.33331 11.6663 1.33331 7.99967 1.33331C4.33301 1.33331 1.33301 4.33331 1.33301 7.99998C1.33301 11.6666 4.33301 14.6666 7.99967 14.6666Z" stroke="#E82529" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8 5.33331V8.66665" stroke="#E82529" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M7.99609 10.6667H8.00208" stroke="#E82529" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -103,7 +103,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
               </h1>
               <div class="flex flex-row items-center gap-4">
                 <div class="flex flex-row items-center gap-4">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.02 2.84004L3.63 7.04004C2.73 7.74004 2 9.23004 2 10.36V17.77C2 20.09 3.89 21.99 6.21 21.99H17.79C20.11 21.99 22 20.09 22 17.78V10.5C22 9.29004 21.19 7.74004 20.2 7.05004L14.02 2.72004C12.62 1.74004 10.37 1.79004 9.02 2.84004Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 17.99V14.99" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
@@ -112,7 +112,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
                   </span>
                 </div>
                 <div class="flex flex-row items-center gap-4">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.15957 10.87C9.05957 10.86 8.93957 10.86 8.82957 10.87C6.44957 10.79 4.55957 8.84 4.55957 6.44C4.55957 3.99 6.53957 2 8.99957 2C11.4496 2 13.4396 3.99 13.4396 6.44C13.4296 8.84 11.5396 10.79 9.15957 10.87Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16.4103 4C18.3503 4 19.9103 5.57 19.9103 7.5C19.9103 9.39 18.4103 10.93 16.5403 11C16.4603 10.99 16.3703 10.99 16.2803 11" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M4.15973 14.56C1.73973 16.18 1.73973 18.82 4.15973 20.43C6.90973 22.27 11.4197 22.27 14.1697 20.43C16.5897 18.81 16.5897 16.17 14.1697 14.56C11.4297 12.73 6.91973 12.73 4.15973 14.56Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -137,7 +137,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
             <div class="grid grid-cols-2 gap-4">
               {villa.facilities.map((facility) => (
                 <div class="flex flex-row items-center gap-4">
-                  <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="shrink-0" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.288615 5.9494L3.83093 9.69483C4.21575 10.1017 4.84725 10.1017 5.2222 9.69483L12.7114 1.77621C13.0962 1.36933 13.0962 0.71205 12.7114 0.305164C12.3266 -0.101721 11.7049 -0.101721 11.3201 0.305164L4.5315 7.48305L1.67989 4.47835C1.29507 4.07147 0.673434 4.07147 0.288615 4.47835C-0.0962049 4.88524 -0.0962049 5.54251 0.288615 5.9494Z" fill="#12B76A"/>
                   </svg>
                   <span class="text-sm lg:text-base text-[#434343]">
@@ -148,32 +148,94 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-10">
-            <div class="w-full h-full rounded-xl bg-gray-200" >
-              <Image
-                src={villa.bedroomDetail.imageUrl}
-                alt={`${villa.name} Cover Image`}
-                loading="eager"
-                class="w-full h-full object-cover rounded-xl"
-              />
-            </div>
-            <div class="space-y-6">
-              <h2 class="font-bold text-base lg:text-base text-black">
-                Detail Kamar
-              </h2>
+          <div class="space-y-6">
+            {villa.buildings.length > 1 && (
               <div class="space-y-4">
-                {villa.bedroomDetail.facilities.map((facility) => (
-                  <div class="flex flex-row items-start gap-4">
-                    <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0.288615 5.9494L3.83093 9.69483C4.21575 10.1017 4.84725 10.1017 5.2222 9.69483L12.7114 1.77621C13.0962 1.36933 13.0962 0.71205 12.7114 0.305164C12.3266 -0.101721 11.7049 -0.101721 11.3201 0.305164L4.5315 7.48305L1.67989 4.47835C1.29507 4.07147 0.673434 4.07147 0.288615 4.47835C-0.0962049 4.88524 -0.0962049 5.54251 0.288615 5.9494Z" fill="#12B76A"/>
-                    </svg>
-                    <span class="text-sm lg:text-base text-[#434343]">
-                      {facility}
-                    </span>
+                <h2 class="font-bold text-base lg:text-xl text-black">
+                  Bangunan
+                </h2>
+                <div class="relative">
+                  <div class="overflow-hidden rounded-xl">
+                    <div id="buildings-track" class="flex transition-transform duration-500 ease-out will-change-transform">
+                      {villa.buildings.map((building, index) => (
+                        <div class="min-w-full shrink">
+                          <div class="w-full h-[20rem] lg:h-[40rem] rounded-xl bg-gray-200 overflow-hidden">
+                            <Image
+                              src={building.bedroomDetail.imageUrl}
+                              alt={`${villa.name} – Building ${index + 1}`}
+                              loading={index === 0 ? "eager" : "lazy"}
+                              class="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
+
+                  <button
+                    id="buildings-prev"
+                    class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-[#F5F5F5] p-3 rotate-180"
+                    aria-label="Previous slide"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.28957 6.70999C8.89957 7.09999 8.89957 7.72999 9.28957 8.11999L13.1696 12L9.28957 15.88C8.89957 16.27 8.89957 16.9 9.28957 17.29C9.67957 17.68 10.3096 17.68 10.6996 17.29L15.2896 12.7C15.6796 12.31 15.6796 11.68 15.2896 11.29L10.6996 6.69999C10.3196 6.31999 9.67957 6.31999 9.28957 6.70999Z" fill="#475467"/>
+                    </svg>
+                  </button>
+                  <button
+                    id="buildings-next"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-[#F5F5F5] p-3"
+                    aria-label="Next slide"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.28957 6.70999C8.89957 7.09999 8.89957 7.72999 9.28957 8.11999L13.1696 12L9.28957 15.88C8.89957 16.27 8.89957 16.9 9.28957 17.29C9.67957 17.68 10.3096 17.68 10.6996 17.29L15.2896 12.7C15.6796 12.31 15.6796 11.68 15.2896 11.29L10.6996 6.69999C10.3196 6.31999 9.67957 6.31999 9.28957 6.70999Z" fill="#475467"/>
+                    </svg>
+                  </button>
+
+                  <div class="mt-3 flex items-center justify-center gap-2">
+                    {villa.buildings.map((_, i) => (
+                      <button
+                        class="buildings-dot h-2 w-2 rounded-full bg-black/20 aria-[current=true]:bg-black"
+                        aria-label={`Go to slide ${i + 1}`}
+                        aria-current={i === 0 ? "true" : "false"}
+                        data-index={i}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
+            {villa.buildings.map((building) => (
+              <div
+                id={`detail-villa-building-${villa.slug}`}
+                class="grid grid-cols-2 gap-4 lg:gap-6"
+              >
+                <div class="w-full h-full rounded-xl bg-gray-200" >
+                  <Image
+                    src={building.bedroomDetail.imageUrl}
+                    alt={`${villa.name} Cover Image`}
+                    loading="eager"
+                    class="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+                <div class="space-y-6">
+                  <h2 class="font-bold text-base lg:text-base text-black">
+                    Detail Kamar {building.name && `(${building.name})`}
+                  </h2>
+                  <div class="space-y-4">
+                    {building.bedroomDetail.facilities.map((facility) => (
+                      <div class="flex flex-row items-start gap-4">
+                        <svg class="shrink-0" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0.288615 5.9494L3.83093 9.69483C4.21575 10.1017 4.84725 10.1017 5.2222 9.69483L12.7114 1.77621C13.0962 1.36933 13.0962 0.71205 12.7114 0.305164C12.3266 -0.101721 11.7049 -0.101721 11.3201 0.305164L4.5315 7.48305L1.67989 4.47835C1.29507 4.07147 0.673434 4.07147 0.288615 4.47835C-0.0962049 4.88524 -0.0962049 5.54251 0.288615 5.9494Z" fill="#12B76A"/>
+                        </svg>
+                        <span class="text-sm lg:text-base text-[#434343]">
+                          {facility}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div class="space-y-4">
@@ -204,7 +266,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
           </div>
         </div>
 
-        <div class="space-y-8 sticky top-36">
+        <div class="space-y-8 sticky top-36 shrink-0 lg:w-1/3">
           <div class="px-6 py-10 space-y-6 rounded-lg bg-[#F2F2F2]">
             <div class="space-y-2">
               <h2 class="font-bold text-base lg:text-xl text-black">
@@ -456,4 +518,92 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
     const idx = slugs.indexOf(slug ?? null);
     if (idx !== -1) activate(idx, {push: false});
   });
+
+  const track = document.getElementById('buildings-track');
+  if (track) {
+    const slides = Array.from(track.children);
+    const total = slides.length;
+    const prevBtn = document.getElementById('buildings-prev');
+    const nextBtn = document.getElementById('buildings-next');
+    const dots = Array.from(document.querySelectorAll<HTMLElement>('.buildings-dot'));
+    let index = 0;
+
+    // show only one villa building card based on index
+    const villaCards = document.querySelectorAll<HTMLElement>(`#detail-villa-building-${currentSlug}`);
+    console.log('villaCards', villaCards.length);
+    const filterVillaCards = () => {
+      console.log('filterVillaCards', villaCards.length);
+      villaCards.forEach((card, idx) => {
+        console.log('card', idx, index);
+        if (idx === index) {
+          card.style.display = 'grid';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    const update = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      // show building panel
+      filterVillaCards();
+
+      // dots
+      dots.forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
+
+      // disable when wanted (optional)
+      prevBtn?.toggleAttribute('disabled', false);
+      nextBtn?.toggleAttribute('disabled', false);
+    };
+
+    const go = (i: number) => {
+      index = (i + total) % total; // wrap
+      update();
+    };
+
+    prevBtn?.addEventListener('click', () => go(index - 1));
+    nextBtn?.addEventListener('click', () => go(index + 1));
+    dots.forEach((d) => d.addEventListener('click', () => go(Number(d.dataset.index))));
+
+    // Keyboard arrows
+    track.setAttribute('tabindex', '0');
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') go(index - 1);
+      if (e.key === 'ArrowRight') go(index + 1);
+    });
+
+    // Drag/swipe support (basic)
+    let startX = 0, currentX = 0, dragging = false;
+    const onDown = (x: number) => { dragging = true; startX = x; track.style.transitionDuration = '0ms'; };
+
+    const onMove = (x: number) => {
+      if (!dragging) return;
+      currentX = x;
+      const delta = currentX - startX;
+      track.style.transform = `translateX(calc(-${index * 100}% + ${delta}px))`;
+    };
+
+    const onUp = () => {
+      if (!dragging) return;
+      track.style.transitionDuration = ''; // restore
+      const delta = currentX - startX;
+      if (Math.abs(delta) > 60) {
+        go(index + (delta < 0 ? 1 : -1));
+      } else {
+        update();
+      }
+      dragging = false;
+      startX = currentX = 0;
+    };
+
+    track.addEventListener('pointerdown', (e) => { track.setPointerCapture(e.pointerId); onDown(e.clientX); });
+    track.addEventListener('pointermove', (e) => onMove(e.clientX));
+    track.addEventListener('pointerup', onUp);
+    track.addEventListener('pointercancel', onUp);
+    track.addEventListener('pointerleave', onUp);
+
+    // Init
+    update();
+  }
 </script>

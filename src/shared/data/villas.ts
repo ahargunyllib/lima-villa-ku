@@ -31,13 +31,17 @@ export const ListVilla: Villa[] = [
 			"Alat Panggang/Bakar",
 		],
 
-		bedroomDetail: {
-			imageUrl: VillaImages.garuda.bedroom,
-			facilities: [
-				"Lantai 1  (kamar 1-5) 8 Double bed + 2 Single bed Kapasitas 18 Orang",
-				"Lantai 2  (kamar 6-11) 10 Double bed + 2 Single bed Kapasitas 20 Orang",
-			],
-		},
+		buildings: [
+			{
+				bedroomDetail: {
+					imageUrl: VillaImages.garuda.buildings[0].bedroom,
+					facilities: [
+						"Lantai 1  (kamar 1-5) 8 Double bed + 2 Single bed Kapasitas 18 Orang",
+						"Lantai 2  (kamar 6-11) 10 Double bed + 2 Single bed Kapasitas 20 Orang",
+					],
+				},
+			},
+		],
 
 		facilityImageUrls: VillaImages.garuda.facilities,
 
@@ -119,17 +123,54 @@ export const ListVilla: Villa[] = [
 			"Alat Panggang/Bakar",
 		],
 
-		bedroomDetail: {
-			imageUrl: VillaImages.kaluska.bedroom,
-			facilities: [
-				"Lantai 1  (kamar 1-4) 8 Double bed Kapasitas 16 Orang",
-				"Lantai 2  (mezanin) 8 Single bed Kapasitas 8 Orang",
-			],
-		},
+		buildings: [
+			{
+				name: "hijau",
+				buildingImageUrl: VillaImages.kaluska.buildings[0].building,
+				bedroomDetail: {
+					imageUrl: VillaImages.kaluska.buildings[0].bedroom,
+					facilities: [
+						"Lantai 1  (kamar 1-4) 8 Double bed Kapasitas 16 Orang",
+						"Lantai 2  (mezanin) 8 Single bed Kapasitas 8 Orang",
+					],
+				},
+			},
+			{
+				name: "kuning",
+				buildingImageUrl: VillaImages.kaluska.buildings[1].building,
+				bedroomDetail: {
+					imageUrl: VillaImages.kaluska.buildings[1].bedroom,
+					facilities: [
+						"Lantai 1  (kamar 6-8) 4 Double bed Kapasitas 8 Orang",
+						"Lantai 2  (kamar 9-11) 4 Double bed Kapasitas 8 Orang",
+					],
+				},
+			},
+			{
+				name: "biru",
+				buildingImageUrl: VillaImages.kaluska.buildings[2].building,
+				bedroomDetail: {
+					imageUrl: VillaImages.kaluska.buildings[2].bedroom,
+					facilities: [
+						"Lantai 1  (kamar 12&13) 4 Double bed Kapasitas 8 Orang",
+						"Lantai 2  (kamar 14&15) 2 Double bed + 2 Single bed Kapasitas 6 Orang",
+					],
+				},
+			},
+			{
+				name: "putih",
+				buildingImageUrl: VillaImages.kaluska.buildings[3].building,
+				bedroomDetail: {
+					imageUrl: VillaImages.kaluska.buildings[3].bedroom,
+					facilities: [
+						"Lantai 1  (kamar 16&17) 2 Double bed + 2 Kasur bawah Kapasitas 8 Orang",
+						"Lantai 2  (kamar 18&19) 4 Double bed Kapasitas 8 Orang",
+					],
+				},
+			},
+		],
 
 		facilityImageUrls: VillaImages.kaluska.facilities,
-
-		buildingImageUrls: VillaImages.kaluska.buildings,
 
 		termsAndCondition: `
     1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
@@ -193,10 +234,14 @@ export const ListVilla: Villa[] = [
 		description: "",
 		facilities: [],
 
-		bedroomDetail: {
-			imageUrl: VillaImages.aliska.bedroom,
-			facilities: [],
-		},
+		buildings: [
+			{
+				bedroomDetail: {
+					imageUrl: VillaImages.aliska.bedroom,
+					facilities: [],
+				},
+			},
+		],
 
 		facilityImageUrls: [],
 
@@ -244,10 +289,14 @@ export const ListVilla: Villa[] = [
 		description: "",
 		facilities: [],
 
-		bedroomDetail: {
-			imageUrl: VillaImages.lagogo.bedroom,
-			facilities: [],
-		},
+		buildings: [
+			{
+				bedroomDetail: {
+					imageUrl: VillaImages.lagogo.bedroom,
+					facilities: [],
+				},
+			},
+		],
 
 		facilityImageUrls: [],
 
@@ -311,13 +360,17 @@ export const ListVilla: Villa[] = [
 			"Aula/Ruang Meeting",
 		],
 
-		bedroomDetail: {
-			imageUrl: VillaImages.sari.bedroom,
-			facilities: [
-				"Lantai 1  (kamar 1-7) 11 Double bed + 2 Single bed Kapasitas 24 Orang",
-				"Lantai 2  (kamar 8-15) 10 Double bed + 7 Single bed Kapasitas 28 Orang",
-			],
-		},
+		buildings: [
+			{
+				bedroomDetail: {
+					imageUrl: VillaImages.sari.buildings[0].bedroom,
+					facilities: [
+						"Lantai 1  (kamar 1-7) 11 Double bed + 2 Single bed Kapasitas 24 Orang",
+						"Lantai 2  (kamar 8-15) 10 Double bed + 7 Single bed Kapasitas 28 Orang",
+					],
+				},
+			},
+		],
 
 		facilityImageUrls: VillaImages.sari.facilities,
 

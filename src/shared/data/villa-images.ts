@@ -1,5 +1,5 @@
 import GarudaCoverImage from "../../assets/images/hero/8.png";
-import GarudaBedroomImage from "../../assets/images/villas/garuda/bedroom.png";
+import GarudaBedroom1Image from "../../assets/images/villas/garuda/bedrooms/1.png";
 import GarudaFacility1Image from "../../assets/images/villas/garuda/facilities/1.png";
 import GarudaFacility2Image from "../../assets/images/villas/garuda/facilities/2.png";
 import GarudaFacility3Image from "../../assets/images/villas/garuda/facilities/3.png";
@@ -10,11 +10,18 @@ import GarudaFacility7Image from "../../assets/images/villas/garuda/facilities/7
 import GarudaFacility8Image from "../../assets/images/villas/garuda/facilities/8.png";
 import GarudaFacility9Image from "../../assets/images/villas/garuda/facilities/9.png";
 
-import AliskaCoverImage from "../../assets/images/villas/garuda/bedroom.png"; // TODO
-import AliskaBedroomImage from "../../assets/images/villas/garuda/bedroom.png"; // TODO
+import AliskaCoverImage from "../../assets/images/hero/2.png"; // TODO
+import AliskaBedroomImage from "../../assets/images/hero/3.png"; // TODO
 
 import KaluskaCoverImage from "../../assets/images/hero/1.png";
-import KaluskaBedroomImage from "../../assets/images/villas/kaluska/bedroom.png";
+import KaluskaBedroom1Image from "../../assets/images/villas/kaluska/bedrooms/1.png";
+import KaluskaBedroom2Image from "../../assets/images/villas/kaluska/bedrooms/2.png";
+import KaluskaBedroom3Image from "../../assets/images/villas/kaluska/bedrooms/3.png";
+import KaluskaBedroom4Image from "../../assets/images/villas/kaluska/bedrooms/4.png";
+import KaluskaBuildings1Image from "../../assets/images/villas/kaluska/buildings/1.png";
+import KaluskaBuildings2Image from "../../assets/images/villas/kaluska/buildings/2.png";
+import KaluskaBuildings3Image from "../../assets/images/villas/kaluska/buildings/3.png";
+import KaluskaBuildings4Image from "../../assets/images/villas/kaluska/buildings/4.png";
 import KaluskaFacility1Image from "../../assets/images/villas/kaluska/facilities/1.png";
 import KaluskaFacility2Image from "../../assets/images/villas/kaluska/facilities/2.png";
 import KaluskaFacility3Image from "../../assets/images/villas/kaluska/facilities/3.png";
@@ -25,11 +32,11 @@ import KaluskaFacility7Image from "../../assets/images/villas/kaluska/facilities
 import KaluskaFacility8Image from "../../assets/images/villas/kaluska/facilities/8.png";
 import KaluskaFacility9Image from "../../assets/images/villas/kaluska/facilities/9.png";
 
-import LagogoCoverImage from "../../assets/images/villas/garuda/bedroom.png"; // TODO
-import LagogoBedroomImage from "../../assets/images/villas/garuda/bedroom.png"; // TODO
+import LagogoCoverImage from "../../assets/images/hero/4.png"; // TODO
+import LagogoBedroomImage from "../../assets/images/hero/5.png"; // TODO
 
 import SariCoverImage from "../../assets/images/hero/7.png";
-import SariBedroomImage from "../../assets/images/villas/sari/bedroom.png";
+import SariBedroom1Image from "../../assets/images/villas/sari/bedrooms/1.png";
 import SariFacility1Image from "../../assets/images/villas/sari/facilities/1.png";
 import SariFacility2Image from "../../assets/images/villas/sari/facilities/2.png";
 import SariFacility3Image from "../../assets/images/villas/sari/facilities/3.png";
@@ -43,22 +50,43 @@ import SariFacility9Image from "../../assets/images/villas/sari/facilities/9.png
 export const VillaImages = {
 	garuda: {
 		cover: GarudaCoverImage,
-		bedroom: GarudaBedroomImage,
-      facilities: [
-        GarudaFacility1Image,
-        GarudaFacility2Image,
-        GarudaFacility3Image,
-        GarudaFacility4Image,
-        GarudaFacility5Image,
-        GarudaFacility6Image,
-        GarudaFacility7Image,
-        GarudaFacility8Image,
-        GarudaFacility9Image,
-      ],
+		buildings: [
+      {
+        bedroom: GarudaBedroom1Image,
+      }
+    ],
+		facilities: [
+			GarudaFacility1Image,
+			GarudaFacility2Image,
+			GarudaFacility3Image,
+			GarudaFacility4Image,
+			GarudaFacility5Image,
+			GarudaFacility6Image,
+			GarudaFacility7Image,
+			GarudaFacility8Image,
+			GarudaFacility9Image,
+		],
 	},
 	kaluska: {
 		cover: KaluskaCoverImage,
-		bedroom: KaluskaBedroomImage,
+		buildings: [
+      {
+        building: KaluskaBuildings1Image,
+        bedroom: KaluskaBedroom1Image,
+      },
+      {
+        building: KaluskaBuildings2Image,
+        bedroom: KaluskaBedroom2Image,
+      },
+      {
+        building: KaluskaBuildings3Image,
+        bedroom: KaluskaBedroom3Image,
+      },
+      {
+        building: KaluskaBuildings4Image,
+        bedroom: KaluskaBedroom4Image,
+      }
+    ],
 		facilities: [
 			KaluskaFacility1Image,
 			KaluskaFacility2Image,
@@ -70,7 +98,6 @@ export const VillaImages = {
 			KaluskaFacility8Image,
 			KaluskaFacility9Image,
 		],
-		buildings: [],
 	},
 	aliska: {
 		cover: AliskaCoverImage,
@@ -84,7 +111,11 @@ export const VillaImages = {
 	},
 	sari: {
 		cover: SariCoverImage,
-		bedroom: SariBedroomImage,
+		buildings: [
+      {
+        bedroom: SariBedroom1Image,
+      }
+    ],
 		facilities: [
 			SariFacility1Image,
 			SariFacility2Image,

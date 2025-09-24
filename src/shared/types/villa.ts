@@ -13,12 +13,14 @@ export type Villa = {
 	description: string;
 	facilities: string[];
 
-	buildingImageUrls?: ImageMetadata[];
-
-	bedroomDetail: {
-		imageUrl: ImageMetadata;
-		facilities: string[];
-	};
+	buildings: {
+		name?: string;
+		buildingImageUrl?: ImageMetadata;
+		bedroomDetail: {
+			imageUrl: ImageMetadata;
+			facilities: string[];
+		};
+	}[];
 
 	facilityImageUrls: ImageMetadata[];
 
