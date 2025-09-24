@@ -9,11 +9,17 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
   </h3>
 
   <div class="tab-nav">
-    <button class="tab-btn" data-tab="garuda">Garuda</button>
-    <button class="tab-btn" data-tab="kaluska">Kaluska</button>
-    <button class="tab-btn" data-tab="aliska">Aliska <div class="w-6 h-6 rounded-sm bg-[#434343]" /></button>
-    <button class="tab-btn" data-tab="lagogo">Lagogo <div class="w-6 h-6 rounded-sm bg-[#434343]" /></button>
-    <button class="tab-btn" data-tab="sari">Sari</button>
+    {ListVilla.map((v) => (
+      <button class="tab-btn" data-tab={v.slug} disabled={!v.isAvailable}>
+        {v.shortName} {!v.isAvailable && (
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.99967 14.6666C11.6663 14.6666 14.6663 11.6666 14.6663 7.99998C14.6663 4.33331 11.6663 1.33331 7.99967 1.33331C4.33301 1.33331 1.33301 4.33331 1.33301 7.99998C1.33301 11.6666 4.33301 14.6666 7.99967 14.6666Z" stroke="#E82529" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 5.33331V8.66665" stroke="#E82529" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.99609 10.6667H8.00208" stroke="#E82529" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        )}
+      </button>
+    ))}
 
     <div class="tab-indicator"/>
     <div class="hover-tab-indicator"/>
@@ -36,13 +42,21 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
           </h4>
           <div class="flex flex-row items-center gap-4">
             <div class="flex flex-row items-center gap-4">
-              <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.02 2.84004L3.63 7.04004C2.73 7.74004 2 9.23004 2 10.36V17.77C2 20.09 3.89 21.99 6.21 21.99H17.79C20.11 21.99 22 20.09 22 17.78V10.5C22 9.29004 21.19 7.74004 20.2 7.05004L14.02 2.72004C12.62 1.74004 10.37 1.79004 9.02 2.84004Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 17.99V14.99" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
               <span class="text-sm lg:text-xl text-[#434343]">
                 {villa.buildingCount} Bangunan
               </span>
             </div>
             <div class="flex flex-row items-center gap-4">
-              <div class="size-5 lg:size-6 rounded-sm bg-[#434343]" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.15957 10.87C9.05957 10.86 8.93957 10.86 8.82957 10.87C6.44957 10.79 4.55957 8.84 4.55957 6.44C4.55957 3.99 6.53957 2 8.99957 2C11.4496 2 13.4396 3.99 13.4396 6.44C13.4296 8.84 11.5396 10.79 9.15957 10.87Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.4103 4C18.3503 4 19.9103 5.57 19.9103 7.5C19.9103 9.39 18.4103 10.93 16.5403 11C16.4603 10.99 16.3703 10.99 16.2803 11" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.15973 14.56C1.73973 16.18 1.73973 18.82 4.15973 20.43C6.90973 22.27 11.4197 22.27 14.1697 20.43C16.5897 18.81 16.5897 16.17 14.1697 14.56C11.4297 12.73 6.91973 12.73 4.15973 14.56Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18.3398 20C19.0598 19.85 19.7398 19.56 20.2998 19.13C21.8598 17.96 21.8598 16.03 20.2998 14.86C19.7498 14.44 19.0798 14.16 18.3698 14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
               <span class="text-sm lg:text-xl text-[#434343]">
                 {villa.roomCount} Kamar ({villa.personCapacity} Orang)
               </span>
