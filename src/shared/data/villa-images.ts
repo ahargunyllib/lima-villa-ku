@@ -10,8 +10,8 @@ import GarudaFacility7Image from "../../assets/images/villas/garuda/facilities/7
 import GarudaFacility8Image from "../../assets/images/villas/garuda/facilities/8.png";
 import GarudaFacility9Image from "../../assets/images/villas/garuda/facilities/9.png";
 
-import AliskaCoverImage from "../../assets/images/hero/2.png"; // TODO
-import AliskaBedroomImage from "../../assets/images/hero/3.png"; // TODO
+import AlikaCoverImage from "../../assets/images/hero/2.png"; // TODO
+import AlikaBedroomImage from "../../assets/images/hero/3.png"; // TODO
 
 import KaluskaCoverImage from "../../assets/images/hero/1.png";
 import KaluskaBedroom1Image from "../../assets/images/villas/kaluska/bedrooms/1.png";
@@ -99,9 +99,9 @@ export const VillaImages = {
 			KaluskaFacility9Image,
 		],
 	},
-	aliska: {
-		cover: AliskaCoverImage,
-		bedroom: AliskaBedroomImage,
+	alika: {
+		cover: AlikaCoverImage,
+		bedroom: AlikaBedroomImage,
 		facilities: [],
 	},
 	lagogo: {

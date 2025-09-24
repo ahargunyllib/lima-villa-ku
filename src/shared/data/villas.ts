@@ -223,10 +223,10 @@ export const ListVilla: Villa[] = [
 	},
 	{
 		id: 3,
-		slug: "aliska",
-		name: "Pondok Aliska",
-		imageUrl: VillaImages.aliska.cover,
-		shortName: "Aliska",
+		slug: "alika",
+		name: "Pondok Alika",
+		imageUrl: VillaImages.alika.cover,
+		shortName: "Alika",
 		isAvailable: false,
 		buildingCount: 0,
 		roomCount: 0,
@@ -237,7 +237,7 @@ export const ListVilla: Villa[] = [
 		buildings: [
 			{
 				bedroomDetail: {
-					imageUrl: VillaImages.aliska.bedroom,
+					imageUrl: VillaImages.alika.bedroom,
 					facilities: [],
 				},
 			},
@@ -428,7 +428,7 @@ export const ListVilla: Villa[] = [
 export const VillaMap: Record<Villa["slug"], Villa> = {
 	garuda: ListVilla[0],
 	kaluska: ListVilla[1],
-	aliska: ListVilla[2],
+	alika: ListVilla[2],
 	lagogo: ListVilla[3],
 	sari: ListVilla[4],
 };

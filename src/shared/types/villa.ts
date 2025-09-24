@@ -2,7 +2,7 @@ import type { ImageMetadata } from "astro";
 
 export type Villa = {
 	id: number;
-	slug: "garuda" | "kaluska" | "aliska" | "lagogo" | "sari";
+	slug: "garuda" | "kaluska" | "alika" | "lagogo" | "sari";
 	name: string;
 	imageUrl: ImageMetadata;
 	shortName: string;
