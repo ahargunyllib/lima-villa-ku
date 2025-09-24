@@ -25,7 +25,7 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
     <div class="hover-tab-indicator"/>
   </div>
 
-  {ListVilla.map((villa) => (
+  {ListVilla.map((villa) => villa.isAvailable && (
     <div id="detail-villa-card" class="w-full space-y-10">
       <div class="w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200" >
         <Image
