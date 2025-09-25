@@ -245,6 +245,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
             >
               {villa.facilityImageUrls.map((imageMetadata) => (
                 <button
+                  id={`facility-image-${villa.slug}`}
                   class="w-full h-24 lg:h-48 rounded-lg bg-gray-200 overflow-clip focus:outline-none focus:ring-2 focus:ring-black"
                   data-preview-src={imageMetadata.src}
                   type="button"
@@ -645,12 +646,12 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
   }
 
    // Event delegation: open lightbox on any gallery item click
-  const gallery = document.querySelector<HTMLElement>('[data-facility-gallery]');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const closeBtn = document.getElementById('lightbox-close');
   const backdrop = lightbox?.querySelector<HTMLElement>('[data-backdrop]');
   const lightboxContent = document.getElementById('lightbox-content');
+
   function openLightbox(src?: string | null) {
     if (!src) return;
     const img = lightboxImg as HTMLImageElement;
@@ -675,24 +676,20 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
     document.body.style.paddingRight = '';
   }
 
-  gallery?.addEventListener('click', (e) => {
-    const target = e.target && (e.target as HTMLElement).closest('[data-preview-src]');
-    if (!target) return;
-    const src = target.getAttribute('data-preview-src');
-    openLightbox(src);
-  });
+  document.addEventListener('click', (e) => {
+  const trigger = (e.target as HTMLElement).closest('[data-preview-src]');
+  if (!trigger) return;
+  const src = trigger.getAttribute('data-preview-src');
+  openLightbox(src);
+});
 
-  // Keyboard open support (Enter/Space) from the button
-  gallery?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      const btn = (e.target as HTMLElement).closest('[data-preview-src]');
-      if (btn) {
-        e.preventDefault();
-        const src = btn.getAttribute('data-preview-src');
-        openLightbox(src);
-      }
-    }
-  });
+document.addEventListener('keydown', (e) => {
+  if ((e.key === 'Enter' || e.key === ' ') && (e.target as HTMLElement)?.closest('[data-preview-src]')) {
+    e.preventDefault();
+    const btn = (e.target as HTMLElement).closest('[data-preview-src]');
+    openLightbox(btn?.getAttribute('data-preview-src'));
+  }
+});
 
   // Close interactions
   closeBtn?.addEventListener('click', closeLightbox);
