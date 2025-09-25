@@ -28,14 +28,40 @@ const slides = [
 
 <RootLayout>
   <Navbar/>
-  <section class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] grid grid-cols-1 lg:grid-cols-2 lg:gap-20 min-h-dvh">
-    <div class="space-y-10">
-      <h2 class="font-bold text-3xl lg:text-4xl">
-        Kami siap membantu Anda merencanakan liburan terbaik di Puncak
-      </h2>
-      <p class="text-base lg:text-lg text-[#434343]">
-        Hubungi kami untuk detail villa, fasilitas, dan reservasi. Semua informasi resmi tersedia agar perjalanan Anda semakin mudah dan nyaman
-      </p>
+  <section class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] space-y-10 lg:grid lg:grid-cols-2 lg:gap-20 min-h-dvh">
+    <div class="flex flex-col items-start justify-between gap-4">
+      <div class="space-y-5">
+        <h2 class="font-bold text-3xl lg:text-4xl">
+          Kami siap membantu Anda merencanakan liburan terbaik di Puncak
+        </h2>
+        <p class="text-sm lg:text-base text-[#434343]">
+          Hubungi kami untuk detail villa, fasilitas, dan reservasi. Semua informasi resmi tersedia agar perjalanan Anda semakin mudah dan nyaman
+        </p>
+      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td class='text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top'>Instagram:</td>
+            <td class="text-sm lg:text-base text-[#434343]">@villapondokgaruda</td>
+          </tr>
+          <tr>
+            <td class='opacity-0 pr-2 align-top'>Instagram:</td>
+            <td class="text-sm lg:text-base text-[#434343]">@villapondokkaluska</td>
+          </tr>
+          <tr>
+            <td class='opacity-0 pr-2 align-top'>Instagram:</td>
+            <td class="text-sm lg:text-base text-[#434343]">@villa.pondoksari</td>
+          </tr>
+          <tr>
+            <td class='text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top'>Pengelola Villa:</td>
+            <td class="text-sm lg:text-base text-[#434343]">081310502766 (TEGUH)</td>
+          </tr>
+          <tr>
+            <td class='opacity-0 pr-2 align-top'>Pengelola Villa: </td>
+            <td class="text-sm lg:text-base text-[#434343]">08111866989 (MARTINUS)</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="relative w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200 overflow-hidden">
       {slides.map((src, i) => (
