@@ -350,7 +350,8 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
           id="lightbox-img"
           src=""
           alt="Preview"
-          class="max-h-full w-full lg:w-1/2 rounded-lg shadow-2xl"
+          class="w-auto h-auto max-w-[95vw] max-h-[85vh] object-contain rounded-lg shadow-2xl"
+          decoding="async"
           draggable="false"
         />
 
@@ -650,10 +651,12 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
   const closeBtn = document.getElementById('lightbox-close');
   const backdrop = lightbox?.querySelector<HTMLElement>('[data-backdrop]');
   const lightboxContent = document.getElementById('lightbox-content');
-
   function openLightbox(src?: string | null) {
     if (!src) return;
-    (lightboxImg as HTMLImageElement).src = src;
+    const img = lightboxImg as HTMLImageElement;
+    img.style.opacity = '0';
+    img.onload = () => { img.style.opacity = '1'; };
+    img.src = src;
     lightbox?.classList.remove('hidden');
     lightbox?.setAttribute('aria-hidden', 'false');
 
@@ -676,11 +679,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
     const target = e.target && (e.target as HTMLElement).closest('[data-preview-src]');
     if (!target) return;
     const src = target.getAttribute('data-preview-src');
-    console.log('src', src)
-    // remove query params
-    const cleanSrc = src?.split('?')[0];
-    console.log('cleanSrc', cleanSrc)
-    openLightbox(cleanSrc);
+    openLightbox(src);
   });
 
   // Keyboard open support (Enter/Space) from the button
@@ -689,7 +688,8 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
       const btn = (e.target as HTMLElement).closest('[data-preview-src]');
       if (btn) {
         e.preventDefault();
-        openLightbox(btn.getAttribute('data-preview-src'));
+        const src = btn.getAttribute('data-preview-src');
+        openLightbox(src);
       }
     }
   });
