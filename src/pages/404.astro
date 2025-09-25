@@ -1,0 +1,38 @@
+---
+import Footer from "../components/footer.astro";
+import Navbar from "../components/navbar.astro";
+import RootLayout from "../layouts/root-layout.astro";
+import { Image } from "astro:assets";
+import NotFoundImage from "../assets/images/404-image.png";
+---
+
+<RootLayout>
+  <Navbar/>
+  <section id="not-found-section" class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] relative flex flex-col items-center justify-start min-h-dvh">
+    <div class="flex flex-col gap-y-12 items-center justify-center">
+      <div class="flex flex-col gap-y-6 items-center justify-center">
+        <h3 class="text-2xl lg:text-4xl font-bold text-center">
+          Halaman tidak ditemukan
+        </h3>
+        <p class="text-sm lg:text-lg text-[#434343] text-center w-full lg:w-2/3">
+          Tapi tenang, liburanmu masih bisa berlanjut. Ayo kembali dan temukan pengalaman menginap yang lebih baik
+        </p>
+      </div>
+      <a href="/villa/garuda" class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-xs lg:text-sm font-bold h-fit uppercase flex flex-row gap-2 items-center justify-center cursor-pointer">
+        Lihat Villa Kami
+        <svg class="shrink-0" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.5 1.5L1.5 11.5" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11.5 8.83571V1.5L4.16429 1.5" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <Image
+      src={NotFoundImage}
+      alt="404 Not Found"
+      loading="eager"
+      class="absolute bottom-0 -z-10 object-cover h-[40rem] lg:h-[40rem] w-full"
+    />
+  </section>
+  <Footer/>
+</RootLayout>
