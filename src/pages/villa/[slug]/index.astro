@@ -237,19 +237,26 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
           </div>
 
           <div class="space-y-4">
-            <h2 class="font-bold text-base lg:text-xl text-black">
-              Galeri Fasilitas
-            </h2>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
-              {villa.facilityImageUrls.map((url) => (
-                <div class="w-full h-24 lg:h-48 rounded-lg bg-gray-200" >
+            <h2 class="font-bold text-base lg:text-xl text-black">Galeri Fasilitas</h2>
+
+            <div
+              class="grid grid-cols-2 lg:grid-cols-3 gap-4"
+              data-facility-gallery
+            >
+              {villa.facilityImageUrls.map((imageMetadata) => (
+                <button
+                  class="w-full h-24 lg:h-48 rounded-lg bg-gray-200 overflow-clip focus:outline-none focus:ring-2 focus:ring-black"
+                  data-preview-src={imageMetadata.src}
+                  type="button"
+                  aria-label="Preview image"
+                >
                   <Image
-                    src={url}
+                    src={imageMetadata}
                     alt={`${villa.name} Facility Image`}
-                    loading="eager"
-                    class="w-full h-full object-cover rounded-lg"
+                    loading="lazy"
+                    class="w-full h-full object-cover"
                   />
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -327,6 +334,40 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
         </div>
       </article>
     ))}
+
+    <!-- Lightbox Modal -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-[100] hidden"
+      aria-hidden="true"
+    >
+      <!-- Backdrop -->
+      <div class="absolute inset-0 bg-black/80" data-backdrop></div>
+
+      <!-- Content -->
+      <div id="lightbox-content" class="relative h-full w-full flex items-center justify-center p-4">
+        <img
+          id="lightbox-img"
+          src=""
+          alt="Preview"
+          class="max-h-full w-full lg:w-1/2 rounded-lg shadow-2xl"
+          draggable="false"
+        />
+
+        <!-- Close button -->
+        <button
+          id="lightbox-close"
+          type="button"
+          class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-white"
+          aria-label="Close preview"
+        >
+          <!-- simple X icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <path stroke="#111" stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
   </section>
 
   <Footer />
@@ -528,11 +569,8 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
 
     // show only one villa building card based on index
     const villaCards = document.querySelectorAll<HTMLElement>(`#detail-villa-building-${currentSlug}`);
-    console.log('villaCards', villaCards.length);
     const filterVillaCards = () => {
-      console.log('filterVillaCards', villaCards.length);
       villaCards.forEach((card, idx) => {
-        console.log('card', idx, index);
         if (idx === index) {
           card.style.display = 'grid';
         } else {
@@ -604,4 +642,63 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
     // Init
     update();
   }
+
+   // Event delegation: open lightbox on any gallery item click
+  const gallery = document.querySelector<HTMLElement>('[data-facility-gallery]');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const backdrop = lightbox?.querySelector<HTMLElement>('[data-backdrop]');
+  const lightboxContent = document.getElementById('lightbox-content');
+
+  function openLightbox(src?: string | null) {
+    if (!src) return;
+    (lightboxImg as HTMLImageElement).src = src;
+    lightbox?.classList.remove('hidden');
+    lightbox?.setAttribute('aria-hidden', 'false');
+
+    // prevent background scroll
+    const scrollBarComp = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = scrollBarComp ? scrollBarComp + 'px' : '';
+    closeBtn && closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox?.classList.add('hidden');
+    lightbox?.setAttribute('aria-hidden', 'true');
+    (lightboxImg as HTMLImageElement).src = '';
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+  }
+
+  gallery?.addEventListener('click', (e) => {
+    const target = e.target && (e.target as HTMLElement).closest('[data-preview-src]');
+    if (!target) return;
+    const src = target.getAttribute('data-preview-src');
+    console.log('src', src)
+    // remove query params
+    const cleanSrc = src?.split('?')[0];
+    console.log('cleanSrc', cleanSrc)
+    openLightbox(cleanSrc);
+  });
+
+  // Keyboard open support (Enter/Space) from the button
+  gallery?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const btn = (e.target as HTMLElement).closest('[data-preview-src]');
+      if (btn) {
+        e.preventDefault();
+        openLightbox(btn.getAttribute('data-preview-src'));
+      }
+    }
+  });
+
+  // Close interactions
+  closeBtn?.addEventListener('click', closeLightbox);
+  backdrop?.addEventListener('click', closeLightbox);
+  lightboxContent?.addEventListener('click', closeLightbox);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !lightbox?.classList.contains('hidden')) closeLightbox();
+  });
 </script>
