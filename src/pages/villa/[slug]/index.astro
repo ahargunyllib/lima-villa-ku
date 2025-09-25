@@ -29,7 +29,10 @@ const defaultSlug = ListVilla.find((v) => v.isAvailable)?.slug ?? slugs[0];
 const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
 ---
 
-<RootLayout>
+<RootLayout
+  title={VillaMap[activeSlug].name + " - Lima Villa Ku"}
+  description={VillaMap[activeSlug].description}
+>
   <Navbar />
 
   <section class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] flex flex-col items-center justify-start gap-y-20">
