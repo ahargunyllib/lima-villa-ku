@@ -251,7 +251,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
               {villa.facilityImageUrls.map((imageMetadata) => (
                 <button
                   id={`facility-image-${villa.slug}`}
-                  class="w-full h-24 lg:h-48 rounded-lg bg-gray-200 overflow-clip focus:outline-none focus:ring-2 focus:ring-black"
+                  class="w-full h-24 lg:h-48 rounded-lg bg-gray-200 overflow-clip focus:outline-none focus:ring-2 focus:ring-black cursor-pointer"
                   data-preview-src={imageMetadata.src}
                   type="button"
                   aria-label="Preview image"
