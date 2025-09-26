@@ -161,12 +161,14 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
                       {villa.buildings.map((building, index) => (
                         <div class="min-w-full shrink">
                           <div class="w-full h-[20rem] lg:h-[40rem] rounded-xl bg-gray-200 overflow-hidden">
-                            <Image
-                              src={building.bedroomDetail.imageUrl}
-                              alt={`${villa.name} – Building ${index + 1}`}
-                              loading={index === 0 ? "eager" : "lazy"}
-                              class="w-full h-full object-cover"
-                            />
+                            {building.buildingImageUrl && (
+                              <Image
+                                src={building.buildingImageUrl}
+                                alt={`${villa.name} – Building ${index + 1}`}
+                                loading={index === 0 ? "eager" : "lazy"}
+                                class="w-full h-full object-cover"
+                              />
+                            )}
                           </div>
                         </div>
                       ))}
