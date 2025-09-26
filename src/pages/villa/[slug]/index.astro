@@ -469,16 +469,62 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
 </style>
 
 <script>
-  // ---- Client: tab switching, animations, and URL updates (no reload) ----
+  const currentSlug = location.pathname.split('/').pop();
+
   const tabs = Array.from(document.querySelectorAll<HTMLElement>('[data-tab-nav] .tab-btn'));
   const panels = Array.from(document.querySelectorAll<HTMLElement>('.villa-panel'));
   const indicator = document.querySelector<HTMLElement>('[data-tab-indicator]');
   const hoverIndicator = document.querySelector<HTMLElement>('[data-hover-indicator]');
   const select = document.querySelector<HTMLSelectElement>('[data-tab-select]');
-
   const slugs = tabs.map(btn => btn.getAttribute('data-tab'));
-  const currentSlug = location.pathname.split('/').pop();
-  let activeIndex = Math.max(0, slugs.indexOf(currentSlug ?? null));
+  const buildingCarouselTrack = document.getElementById('buildings-track');
+  const buildingCarouselVillaCards = document.querySelectorAll<HTMLElement>(`#detail-villa-building-${currentSlug}`);
+  const buildingCarouselPrevBtn = document.getElementById('buildings-prev');
+  const buildingCarouselNextBtn = document.getElementById('buildings-next');
+  const buildingsCarouselDots = Array.from(document.querySelectorAll<HTMLElement>('.buildings-dot'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const LightboxCloseBtn = document.getElementById('lightbox-close');
+  const lightBoxBackdrop = lightbox?.querySelector<HTMLElement>('[data-backdrop]');
+  const lightboxContent = document.getElementById('lightbox-content');
+
+
+  const buildingTrackSlides = buildingCarouselTrack ? Array.from(buildingCarouselTrack.children) : [];
+  const buildingTracksTotal = buildingTrackSlides.length;
+
+  let activeTabIndex = Math.max(0, slugs.indexOf(currentSlug ?? null));
+  let activeBuildingTrackIndex = 0;
+
+  const filterDetailBuilding = () => {
+    buildingCarouselVillaCards.forEach((card, idx) => {
+      if (idx === activeBuildingTrackIndex) {
+        card.style.display = 'grid';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  };
+
+  const updateBuildingCarousel = () => {
+    if (buildingCarouselTrack) {
+      buildingCarouselTrack.style.transform = `translateX(-${activeBuildingTrackIndex * 100}%)`;
+    }
+
+    // show building panel
+    filterDetailBuilding();
+
+    // dots
+    buildingsCarouselDots.forEach((d, i) => d.setAttribute('aria-current', String(i === activeBuildingTrackIndex)));
+
+    // disable when wanted (optional)
+    buildingCarouselPrevBtn?.toggleAttribute('disabled', false);
+    buildingCarouselNextBtn?.toggleAttribute('disabled', false);
+  };
+
+  const goToBuildingCarouselIndex = (i: number) => {
+    activeBuildingTrackIndex = (i + buildingTracksTotal) % buildingTracksTotal; // wrap
+    updateBuildingCarousel();
+  };
 
   function moveIndicator(idx: number) {
     if (!indicator) return;
@@ -510,9 +556,9 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
     hoverIndicator.style.width = `${colWidth}px`;
   }
 
-  function activate(idx: number, { push = true } = {}) {
+  function setActiveTabIndex(idx: number, { push = true } = {}) {
     if (idx < 0 || idx >= tabs.length) return;
-    activeIndex = idx;
+    activeTabIndex = idx;
 
     panels.forEach(p => {
       const on = p.getAttribute('data-panel') === slugs[idx];
@@ -522,6 +568,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
 
     moveIndicator(idx);
     moveHoverIndicator(null);
+    filterDetailBuilding();
 
     if (select) select.value = slugs[idx] as string;
 
@@ -534,126 +581,6 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
       }
     }
   }
-
-  // Init once layout is ready
-  window.addEventListener('load', () => {
-    if (activeIndex === -1) activeIndex = 0;
-    activate(activeIndex, {push: false});
-  });
-  window.addEventListener('resize', () => moveIndicator(activeIndex));
-
-  // Tab click handlers
-  tabs.forEach((btn, i) => {
-    btn.addEventListener('click', () => activate(i));
-    btn.addEventListener('mouseover', () => { if (i !== activeIndex) moveHoverIndicator(i); });
-    btn.addEventListener('mouseout', () => moveHoverIndicator(null));
-  });
-
-  // Mobile select change
-  select?.addEventListener('change', (e) => {
-    const slug = (e.target as HTMLSelectElement)?.value;
-    const idx = slugs.indexOf(slug);
-    if (idx !== -1) activate(idx);
-  });
-
-  // Handle back/forward buttons
-  window.addEventListener('popstate', () => {
-    const slug = location.pathname.split('/').pop();
-    const idx = slugs.indexOf(slug ?? null);
-    if (idx !== -1) activate(idx, {push: false});
-  });
-
-  const track = document.getElementById('buildings-track');
-  if (track) {
-    const slides = Array.from(track.children);
-    const total = slides.length;
-    const prevBtn = document.getElementById('buildings-prev');
-    const nextBtn = document.getElementById('buildings-next');
-    const dots = Array.from(document.querySelectorAll<HTMLElement>('.buildings-dot'));
-    let index = 0;
-
-    // show only one villa building card based on index
-    const villaCards = document.querySelectorAll<HTMLElement>(`#detail-villa-building-${currentSlug}`);
-    const filterVillaCards = () => {
-      villaCards.forEach((card, idx) => {
-        if (idx === index) {
-          card.style.display = 'grid';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    };
-
-    const update = () => {
-      track.style.transform = `translateX(-${index * 100}%)`;
-
-      // show building panel
-      filterVillaCards();
-
-      // dots
-      dots.forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
-
-      // disable when wanted (optional)
-      prevBtn?.toggleAttribute('disabled', false);
-      nextBtn?.toggleAttribute('disabled', false);
-    };
-
-    const go = (i: number) => {
-      index = (i + total) % total; // wrap
-      update();
-    };
-
-    prevBtn?.addEventListener('click', () => go(index - 1));
-    nextBtn?.addEventListener('click', () => go(index + 1));
-    dots.forEach((d) => d.addEventListener('click', () => go(Number(d.dataset.index))));
-
-    // Keyboard arrows
-    track.setAttribute('tabindex', '0');
-    track.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') go(index - 1);
-      if (e.key === 'ArrowRight') go(index + 1);
-    });
-
-    // Drag/swipe support (basic)
-    let startX = 0, currentX = 0, dragging = false;
-    const onDown = (x: number) => { dragging = true; startX = x; track.style.transitionDuration = '0ms'; };
-
-    const onMove = (x: number) => {
-      if (!dragging) return;
-      currentX = x;
-      const delta = currentX - startX;
-      track.style.transform = `translateX(calc(-${index * 100}% + ${delta}px))`;
-    };
-
-    const onUp = () => {
-      if (!dragging) return;
-      track.style.transitionDuration = ''; // restore
-      const delta = currentX - startX;
-      if (Math.abs(delta) > 60) {
-        go(index + (delta < 0 ? 1 : -1));
-      } else {
-        update();
-      }
-      dragging = false;
-      startX = currentX = 0;
-    };
-
-    track.addEventListener('pointerdown', (e) => { track.setPointerCapture(e.pointerId); onDown(e.clientX); });
-    track.addEventListener('pointermove', (e) => onMove(e.clientX));
-    track.addEventListener('pointerup', onUp);
-    track.addEventListener('pointercancel', onUp);
-    track.addEventListener('pointerleave', onUp);
-
-    // Init
-    update();
-  }
-
-   // Event delegation: open lightbox on any gallery item click
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const closeBtn = document.getElementById('lightbox-close');
-  const backdrop = lightbox?.querySelector<HTMLElement>('[data-backdrop]');
-  const lightboxContent = document.getElementById('lightbox-content');
 
   function openLightbox(src?: string | null) {
     if (!src) return;
@@ -668,7 +595,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
     const scrollBarComp = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
     document.body.style.paddingRight = scrollBarComp ? scrollBarComp + 'px' : '';
-    closeBtn && closeBtn.focus();
+    LightboxCloseBtn && LightboxCloseBtn.focus();
   }
 
   function closeLightbox() {
@@ -679,26 +606,46 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
     document.body.style.paddingRight = '';
   }
 
-  document.addEventListener('click', (e) => {
-  const trigger = (e.target as HTMLElement).closest('[data-preview-src]');
-  if (!trigger) return;
-  const src = trigger.getAttribute('data-preview-src');
-  openLightbox(src);
-});
+  tabs.forEach((btn, i) => {
+    btn.addEventListener('click', () => setActiveTabIndex(i));
+    btn.addEventListener('mouseover', () => { if (i !== activeTabIndex) moveHoverIndicator(i); });
+    btn.addEventListener('mouseout', () => moveHoverIndicator(null));
+  });
 
-document.addEventListener('keydown', (e) => {
-  if ((e.key === 'Enter' || e.key === ' ') && (e.target as HTMLElement)?.closest('[data-preview-src]')) {
-    e.preventDefault();
-    const btn = (e.target as HTMLElement).closest('[data-preview-src]');
-    openLightbox(btn?.getAttribute('data-preview-src'));
-  }
-});
+  select?.addEventListener('change', (e) => {
+    const slug = (e.target as HTMLSelectElement)?.value;
+    const idx = slugs.indexOf(slug);
+    if (idx !== -1) setActiveTabIndex(idx);
+  });
 
-  // Close interactions
-  closeBtn?.addEventListener('click', closeLightbox);
-  backdrop?.addEventListener('click', closeLightbox);
+  buildingCarouselPrevBtn?.addEventListener('click', () => goToBuildingCarouselIndex(activeBuildingTrackIndex - 1));
+  buildingCarouselNextBtn?.addEventListener('click', () => goToBuildingCarouselIndex(activeBuildingTrackIndex + 1));
+  buildingsCarouselDots.forEach((d) => d.addEventListener('click', () => goToBuildingCarouselIndex(Number(d.dataset.index))));
+
+  LightboxCloseBtn?.addEventListener('click', closeLightbox);
+  lightBoxBackdrop?.addEventListener('click', closeLightbox);
   lightboxContent?.addEventListener('click', closeLightbox);
+
+  window.addEventListener('load', () => {
+    if (activeTabIndex === -1) activeTabIndex = 0;
+    setActiveTabIndex(activeTabIndex, {push: false});
+  });
+  window.addEventListener('resize', () => moveIndicator(activeTabIndex));
+
+  window.addEventListener('popstate', () => {
+    const slug = location.pathname.split('/').pop();
+    const idx = slugs.indexOf(slug ?? null);
+    if (idx !== -1) setActiveTabIndex(idx, {push: false});
+  });
+
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !lightbox?.classList.contains('hidden')) closeLightbox();
+  });
+
+  document.addEventListener('click', (e) => {
+    const trigger = (e.target as HTMLElement).closest('[data-preview-src]');
+    if (!trigger) return;
+    const src = trigger.getAttribute('data-preview-src');
+    openLightbox(src);
   });
 </script>
