@@ -142,4 +142,47 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
   #our-value-grid:has(#value-1[open]) #our-value-image-1 { opacity: 1; }
   #our-value-grid:has(#value-2[open]) #our-value-image-2 { opacity: 1; }
   #our-value-grid:has(#value-3[open]) #our-value-image-3 { opacity: 1; }
+
+  details[name="values"] > summary + div {
+    overflow: hidden;            /* so height animation looks clean */
+    will-change: height;         /* smoother frames */
+  }
 </style>
+<script>
+  const accordions = document.querySelectorAll<HTMLDetailsElement>('details[name="values"]');
+
+  accordions.forEach((details) => {
+    const summary = details.querySelector('summary');
+    const panel   = summary?.nextElementSibling;
+
+    if (!summary || !(panel instanceof HTMLElement)) return;
+
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (details.dataset.animating === '1') return;
+
+      // make sure there's always one open
+      if (details.open){
+        return;
+      }
+
+      details.dataset.animating = '1';
+      details.open = true;
+
+      panel.style.height = '0px';
+      panel.getBoundingClientRect();
+      const target = panel.scrollHeight;
+      panel.style.transition = 'height 300ms ease';
+      panel.style.height = target + 'px';
+
+      const finish = () => {
+        panel.style.height = '';
+        panel.style.transition = '';
+        details.dataset.animating = '0';
+        panel.removeEventListener('transitionend', finish);
+      };
+
+      panel.addEventListener('transitionend', finish);
+    });
+  });
+</script>
