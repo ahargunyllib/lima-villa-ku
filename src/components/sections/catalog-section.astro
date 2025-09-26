@@ -35,7 +35,7 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
       </div>
       <div class="flex flex-col lg:flex-row justify-between gap-4">
         <div class="space-y-1">
-          <h4 class="text-lg lg:text-4xl font-semibold text-black">
+          <h4 class="text-lg lg:text-3xl font-semibold text-black">
             {villa.name}
           </h4>
           <div class="flex flex-row items-center gap-4">
@@ -61,9 +61,9 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
             </div>
           </div>
         </div>
-        <button id="detail-villa-button" data-slug={villa.slug} disabled={!villa.isAvailable} class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-xs lg:text-sm font-bold h-fit">
+        <a href={`/villa/${villa.slug}`} id="detail-villa-button" data-slug={villa.slug} class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-xs lg:text-sm font-bold h-fit text-center">
           Lihat Detail Villa
-        </button>
+        </a>
       </div>
     </div>
   ))}
