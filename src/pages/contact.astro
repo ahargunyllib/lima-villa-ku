@@ -14,15 +14,15 @@ import Navbar from "../components/navbar.astro";
 import RootLayout from "../layouts/root-layout.astro";
 
 const slides = [
-	Hero1Image,
-	Hero2Image,
-	Hero3Image,
-	Hero4Image,
-	Hero5Image,
-	Hero6Image,
-	Hero7Image,
-	Hero8Image,
-	Hero9Image,
+  Hero1Image,
+  Hero2Image,
+  Hero3Image,
+  Hero4Image,
+  Hero5Image,
+  Hero6Image,
+  Hero7Image,
+  Hero8Image,
+  Hero9Image,
 ];
 ---
 
@@ -30,64 +30,94 @@ const slides = [
   title="Kontak Kami - Lima Villa Ku"
   description="Hubungi kami untuk informasi villa, fasilitas, dan reservasi. Kami siap membantu Anda merencanakan liburan terbaik di Puncak Bogor."
 >
-  <Navbar/>
-  <section class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] space-y-10 lg:grid lg:grid-cols-2 lg:gap-20 min-h-dvh">
+  <Navbar />
+  <section
+    class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] space-y-10 lg:grid lg:grid-cols-2 lg:gap-20 min-h-dvh"
+  >
     <div class="flex flex-col items-start justify-between gap-4">
       <div class="space-y-5">
         <h2 class="font-bold text-3xl lg:text-4xl">
           Kami siap membantu Anda merencanakan liburan terbaik di Puncak
         </h2>
         <p class="text-sm lg:text-base text-[#434343]">
-          Hubungi kami untuk detail villa, fasilitas, dan reservasi. Semua informasi resmi tersedia agar perjalanan Anda semakin mudah dan nyaman
+          Hubungi kami untuk detail villa, fasilitas, dan reservasi. Semua
+          informasi resmi tersedia agar perjalanan Anda semakin mudah dan nyaman
         </p>
       </div>
       <table>
         <tbody>
           <tr>
-            <td class='text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top'>Instagram:</td>
-            <td class="text-sm lg:text-base text-[#434343]">@villapondokgaruda</td>
+            <td
+              class="text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top"
+              >Instagram:</td
+            >
+            <td class="text-sm lg:text-base text-[#434343]"
+              >@villapondokgaruda</td
+            >
           </tr>
           <tr>
-            <td class='opacity-0 pr-2 align-top'>Instagram:</td>
-            <td class="text-sm lg:text-base text-[#434343]">@villapondokkaluska</td>
+            <td class="opacity-0 pr-2 align-top">Instagram:</td>
+            <td class="text-sm lg:text-base text-[#434343]"
+              >@villapondokkaluska</td
+            >
           </tr>
           <tr>
-            <td class='opacity-0 pr-2 align-top'>Instagram:</td>
-            <td class="text-sm lg:text-base text-[#434343]">@villa.pondoksari</td>
+            <td class="opacity-0 pr-2 align-top">Instagram:</td>
+            <td class="text-sm lg:text-base text-[#434343]"
+              >@villa.pondoksari</td
+            >
           </tr>
           <tr>
-            <td class='text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top'>Pengelola Villa:</td>
-            <td class="text-sm lg:text-base text-[#434343]">081310502766 (TEGUH)</td>
+            <td
+              class="text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top"
+              >Pengelola Villa:</td
+            >
+            <td class="text-sm lg:text-base text-[#434343]"
+              >081310502766 (TEGUH)</td
+            >
           </tr>
           <tr>
-            <td class='opacity-0 pr-2 align-top'>Pengelola Villa: </td>
-            <td class="text-sm lg:text-base text-[#434343]">08111866989 (MARTINUS)</td>
+            <td class="opacity-0 pr-2 align-top">Pengelola Villa: </td>
+            <td class="text-sm lg:text-base text-[#434343]"
+              >08111866989 (MARTINUS)</td
+            >
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="relative w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200 overflow-hidden">
-      {slides.map((src, i) => (
-        <Image
-          src={src}
-          alt={`Image ${i + 1}`}
-          loading={i === 0 ? "eager" : "lazy"}
-          class={`slide absolute w-full h-full object-cover ${i === 0 ? "active" : ""}`}
-          data-idx={i}
-        />
-      ))}
+    <div
+      class="relative w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200 overflow-hidden"
+    >
+      {
+        slides.map((src, i) => (
+          <Image
+            src={src}
+            alt={`Image ${i + 1}`}
+            loading={i === 0 ? "eager" : "lazy"}
+            class={`slide absolute w-full h-full object-cover ${i === 0 ? "active" : ""}`}
+            data-idx={i}
+          />
+        ))
+      }
       <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
     </div>
   </section>
-  <Footer/>
+  <Footer />
 </RootLayout>
 <style>
-  .slide { opacity: 0; transition: opacity 700ms ease; }
-  .slide.active { opacity: 1; }
+  .slide {
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+  .slide.active {
+    opacity: 1;
+  }
 </style>
 
 <script>
-  const slides = Array.from(document.querySelectorAll<HTMLImageElement>('.slide'));
+  const slides = Array.from(
+    document.querySelectorAll<HTMLImageElement>(".slide")
+  );
 
   let idx = 0;
   const N = slides.length;
@@ -95,15 +125,19 @@ const slides = [
   let timer: number | null = null;
 
   function show(i: number) {
-    slides[idx].classList.remove('active');
+    slides[idx].classList.remove("active");
 
     idx = (i + N) % N;
 
-    slides[idx].classList.add('active');
+    slides[idx].classList.add("active");
   }
 
-  function next() { show(idx + 1); }
-  function prev() { show(idx - 1); }
+  function next() {
+    show(idx + 1);
+  }
+  function prev() {
+    show(idx - 1);
+  }
 
   function start() {
     stop();

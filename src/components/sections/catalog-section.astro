@@ -3,145 +3,213 @@ import { Image } from "astro:assets";
 import { ListVilla, VillaMap } from "../../shared/data/villas";
 ---
 
-<section id="catalog" class="p-6 lg:p-25 flex flex-col items-center justify-center gap-y-20">
-  <h3 class="text-2xl lg:text-4xl font-bold text-black w-full lg:w-1/2 text-center">
+<section
+  id="catalog"
+  class="p-6 lg:p-25 flex flex-col items-center justify-center gap-y-20"
+>
+  <h3
+    class="text-2xl lg:text-4xl font-bold text-black w-full lg:w-1/2 text-center"
+  >
     Pilih Villa yang Sesuai dengan Gaya Liburan Anda
   </h3>
 
   <div class="tab-nav">
-    {ListVilla.map((v) => (
-      <button class="tab-btn" data-tab={v.slug} disabled={!v.isAvailable}>
-        {v.shortName} {!v.isAvailable && (
-          <span class="text-[#CE9664] font-semibold text-xs">
-            (BOOKED)
-          </span>
-        )}
-      </button>
-    ))}
+    {
+      ListVilla.map((v) => (
+        <button class="tab-btn" data-tab={v.slug} disabled={!v.isAvailable}>
+          {v.shortName}{" "}
+          {!v.isAvailable && (
+            <span class="text-[#CE9664] font-semibold text-xs">(BOOKED)</span>
+          )}
+        </button>
+      ))
+    }
 
-    <div class="tab-indicator"/>
-    <div class="hover-tab-indicator"/>
+    <div class="tab-indicator"></div>
+    <div class="hover-tab-indicator"></div>
   </div>
 
-  {ListVilla.map((villa) => villa.isAvailable && (
-    <div id="detail-villa-card" class="w-full space-y-10">
-      <div class="w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200" >
-        <Image
-          src={villa.imageUrl}
-          alt={`${villa.name} Cover Image`}
-          loading="eager"
-          class="w-full h-full object-cover rounded-3xl"
-        />
-      </div>
-      <div class="flex flex-col lg:flex-row justify-between gap-4">
-        <div class="space-y-1">
-          <h4 class="text-lg lg:text-3xl font-semibold text-black">
-            {villa.name}
-          </h4>
-          <div class="flex flex-row items-center gap-4">
-            <div class="flex flex-row items-center gap-4">
-              <svg class="shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.02 2.84004L3.63 7.04004C2.73 7.74004 2 9.23004 2 10.36V17.77C2 20.09 3.89 21.99 6.21 21.99H17.79C20.11 21.99 22 20.09 22 17.78V10.5C22 9.29004 21.19 7.74004 20.2 7.05004L14.02 2.72004C12.62 1.74004 10.37 1.79004 9.02 2.84004Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 17.99V14.99" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span class="text-sm lg:text-xl text-[#434343]">
-                {villa.buildingCount} Bangunan
-              </span>
+  {
+    ListVilla.map(
+      (villa) =>
+        villa.isAvailable && (
+          <div id="detail-villa-card" class="w-full space-y-10">
+            <div class="w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200">
+              <Image
+                src={villa.imageUrl}
+                alt={`${villa.name} Cover Image`}
+                loading="eager"
+                class="w-full h-full object-cover rounded-3xl"
+              />
             </div>
-            <div class="flex flex-row items-center gap-4">
-              <svg class="shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.15957 10.87C9.05957 10.86 8.93957 10.86 8.82957 10.87C6.44957 10.79 4.55957 8.84 4.55957 6.44C4.55957 3.99 6.53957 2 8.99957 2C11.4496 2 13.4396 3.99 13.4396 6.44C13.4296 8.84 11.5396 10.79 9.15957 10.87Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M16.4103 4C18.3503 4 19.9103 5.57 19.9103 7.5C19.9103 9.39 18.4103 10.93 16.5403 11C16.4603 10.99 16.3703 10.99 16.2803 11" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4.15973 14.56C1.73973 16.18 1.73973 18.82 4.15973 20.43C6.90973 22.27 11.4197 22.27 14.1697 20.43C16.5897 18.81 16.5897 16.17 14.1697 14.56C11.4297 12.73 6.91973 12.73 4.15973 14.56Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M18.3398 20C19.0598 19.85 19.7398 19.56 20.2998 19.13C21.8598 17.96 21.8598 16.03 20.2998 14.86C19.7498 14.44 19.0798 14.16 18.3698 14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span class="text-sm lg:text-xl text-[#434343]">
-                {villa.roomCount} Kamar ({villa.personCapacity} Orang)
-              </span>
+            <div class="flex flex-col lg:flex-row justify-between gap-4">
+              <div class="space-y-1">
+                <h4 class="text-lg lg:text-3xl font-semibold text-black">
+                  {villa.name}
+                </h4>
+                <div class="flex flex-row items-center gap-4">
+                  <div class="flex flex-row items-center gap-4">
+                    <svg
+                      class="shrink-0"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.02 2.84004L3.63 7.04004C2.73 7.74004 2 9.23004 2 10.36V17.77C2 20.09 3.89 21.99 6.21 21.99H17.79C20.11 21.99 22 20.09 22 17.78V10.5C22 9.29004 21.19 7.74004 20.2 7.05004L14.02 2.72004C12.62 1.74004 10.37 1.79004 9.02 2.84004Z"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 17.99V14.99"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="text-sm lg:text-xl text-[#434343]">
+                      {villa.buildingCount} Bangunan
+                    </span>
+                  </div>
+                  <div class="flex flex-row items-center gap-4">
+                    <svg
+                      class="shrink-0"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.15957 10.87C9.05957 10.86 8.93957 10.86 8.82957 10.87C6.44957 10.79 4.55957 8.84 4.55957 6.44C4.55957 3.99 6.53957 2 8.99957 2C11.4496 2 13.4396 3.99 13.4396 6.44C13.4296 8.84 11.5396 10.79 9.15957 10.87Z"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M16.4103 4C18.3503 4 19.9103 5.57 19.9103 7.5C19.9103 9.39 18.4103 10.93 16.5403 11C16.4603 10.99 16.3703 10.99 16.2803 11"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M4.15973 14.56C1.73973 16.18 1.73973 18.82 4.15973 20.43C6.90973 22.27 11.4197 22.27 14.1697 20.43C16.5897 18.81 16.5897 16.17 14.1697 14.56C11.4297 12.73 6.91973 12.73 4.15973 14.56Z"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M18.3398 20C19.0598 19.85 19.7398 19.56 20.2998 19.13C21.8598 17.96 21.8598 16.03 20.2998 14.86C19.7498 14.44 19.0798 14.16 18.3698 14"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="text-sm lg:text-xl text-[#434343]">
+                      {villa.roomCount} Kamar ({villa.personCapacity} Orang)
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <a
+                href={`/villa/${villa.slug}`}
+                id="detail-villa-button"
+                data-slug={villa.slug}
+                class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-xs lg:text-sm font-bold h-fit text-center"
+              >
+                Lihat Detail Villa
+              </a>
             </div>
           </div>
-        </div>
-        <a href={`/villa/${villa.slug}`} id="detail-villa-button" data-slug={villa.slug} class="bg-[#CE9664] px-6 py-3 rounded-lg text-[#F5F5F5] text-xs lg:text-sm font-bold h-fit text-center">
-          Lihat Detail Villa
-        </a>
-      </div>
-    </div>
-  ))}
+        )
+    )
+  }
 </section>
 <style>
-
-.tab-nav {
+  .tab-nav {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    background-color: #F3F2F0;
+    background-color: #f3f2f0;
     padding: 8px;
     border-radius: 8px;
     position: relative;
   }
 
-@media (max-width: 768px) {
-  .tab-nav {
-    display: none;
+  @media (max-width: 768px) {
+    .tab-nav {
+      display: none;
+    }
   }
-}
 
+  .tab-btn {
+    font-weight: 600;
+    font-size: 16px;
+    color: #111222;
+    border-radius: 8px;
+    padding: 14px 24px;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 2;
+    text-align: center;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+  }
 
-.tab-btn {
-  font-weight: 600;
-  font-size: 16px;
-  color: #111222;
-  border-radius: 8px;
-  padding: 14px 24px;
-  cursor: pointer;
-  background-color: transparent;
-  z-index: 2;
-  text-align: center;
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: center;
-}
+  .tab-indicator {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #111222;
+    border-radius: 8px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
 
-.tab-indicator {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: #111222;
-  border-radius: 8px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
+    height: calc(100% - 16px);
+    transform: translateX(0%);
+  }
 
-  height: calc(100% - 16px);
-  transform: translateX(0%);
-}
+  .hover-tab-indicator {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(17, 18, 34, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
 
-.hover-tab-indicator {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: rgba(17, 18, 34, 0.1);
-  border-radius: 8px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
+    height: calc(100% - 16px);
+    transform: translateX(0%);
 
-  height: calc(100% - 16px);
-  transform: translateX(0%);
-
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+    opacity: 0;
+    transition:
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 </style>
 <script>
-  const tabs = document.querySelectorAll<HTMLElement>('.tab-btn');
-  const indicator = document.querySelector<HTMLElement>('.tab-indicator');
-  const hoverIndicator = document.querySelector<HTMLElement>('.hover-tab-indicator');
+  const tabs = document.querySelectorAll<HTMLElement>(".tab-btn");
+  const indicator = document.querySelector<HTMLElement>(".tab-indicator");
+  const hoverIndicator = document.querySelector<HTMLElement>(
+    ".hover-tab-indicator"
+  );
 
   let selectedTabIndex = 0; // Default to the first tab
   let hoveredTabIndex = null;
 
   // update active tab button color to white
-  tabs[selectedTabIndex].style.color = 'white';
+  tabs[selectedTabIndex].style.color = "white";
 
   // set inidicator width to match tab button width
   if (indicator && tabs[0]) {
@@ -156,41 +224,41 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
     indicator!.style.width = `${tabs[idx].offsetWidth}px`;
 
     // Reset all tab button colors
-    tabs.forEach(tab => (tab.style.color = '#111222'));
+    tabs.forEach((tab) => (tab.style.color = "#111222"));
 
     // Highlight the selected tab button
-    tabs[idx].style.color = 'white';
+    tabs[idx].style.color = "white";
   };
 
   const moveHoverIndicator = (idx: number | null) => {
     if (!hoverIndicator) return;
 
     if (idx === null) {
-      hoverIndicator.style.opacity = '0';
+      hoverIndicator.style.opacity = "0";
       return;
     }
 
-    hoverIndicator.style.opacity = '1';
+    hoverIndicator.style.opacity = "1";
     hoverIndicator.style.transform = `translateX(${idx * 100}%)`;
     hoverIndicator.style.width = `${tabs[idx].offsetWidth}px`;
   };
 
   for (let i = 0; i < tabs.length; i++) {
-    tabs[i].addEventListener('click', () => {
+    tabs[i].addEventListener("click", () => {
       moveIndicator(i);
       selectedTabIndex = i;
 
       filterVillaCards();
     });
 
-    tabs[i].addEventListener('mouseover', () => {
+    tabs[i].addEventListener("mouseover", () => {
       if (i === selectedTabIndex) return;
 
       hoveredTabIndex = i;
       moveHoverIndicator(hoveredTabIndex);
     });
 
-    tabs[i].addEventListener('mouseout', () => {
+    tabs[i].addEventListener("mouseout", () => {
       if (i === selectedTabIndex) return;
 
       hoveredTabIndex = null;
@@ -198,10 +266,12 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
     });
   }
 
-  const detailButtons = document.querySelectorAll<HTMLButtonElement>('#detail-villa-button');
+  const detailButtons = document.querySelectorAll<HTMLButtonElement>(
+    "#detail-villa-button"
+  );
   detailButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const slug = button.getAttribute('data-slug');
+    button.addEventListener("click", () => {
+      const slug = button.getAttribute("data-slug");
       if (slug) {
         window.location.href = `/villa/${slug}`;
       }
@@ -209,19 +279,20 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
   });
 
   // show only one villa card based on selected tab if on desktop
-  const villaCards = document.querySelectorAll<HTMLElement>('#detail-villa-card');
+  const villaCards =
+    document.querySelectorAll<HTMLElement>("#detail-villa-card");
   const filterVillaCards = () => {
     if (window.innerWidth > 768) {
       villaCards.forEach((card, index) => {
         if (index === selectedTabIndex) {
-          card.style.display = 'block';
+          card.style.display = "block";
         } else {
-          card.style.display = 'none';
+          card.style.display = "none";
         }
       });
     } else {
       villaCards.forEach((card) => {
-        card.style.display = 'block';
+        card.style.display = "block";
       });
     }
   };

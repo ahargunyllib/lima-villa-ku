@@ -2,21 +2,21 @@
 import "../shared/styles/globals.css";
 
 export type Props = {
-	title?: string;
-	description?: string;
-	image?: string;
-	type?: "website" | "article";
-	noIndex?: boolean;
-	canonicalURL?: URL | string;
-}
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  noIndex?: boolean;
+  canonicalURL?: URL | string;
+};
 
 const {
-	title = "Lima Villa Ku - Villa Nyaman di Puncak Bogor untuk Liburan & Acara",
-	description = "Sewa villa di Puncak Bogor dengan fasilitas lengkap untuk 20-60 orang. Lokasi strategis di Megamendung, bebas macet, kolam renang, karaoke, WiFi gratis. Mulai dari 3 juta.",
-	image = "/og-default.png",
-	type = "website",
-	noIndex = false,
-	canonicalURL = new URL(Astro.request.url),
+  title = "Lima Villa Ku - Villa Nyaman di Puncak Bogor untuk Liburan & Acara",
+  description = "Sewa villa di Puncak Bogor dengan fasilitas lengkap untuk 20-60 orang. Lokasi strategis di Megamendung, bebas macet, kolam renang, karaoke, WiFi gratis. Mulai dari 3 juta.",
+  image = "/og-default.png",
+  type = "website",
+  noIndex = false,
+  canonicalURL = new URL(Astro.request.url),
 } = Astro.props;
 
 const siteName = "Lima Villa Ku";
@@ -25,7 +25,7 @@ const siteURL = "https://limavillaku.com";
 
 <!doctype html>
 <html lang="id">
-	<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
@@ -36,13 +36,23 @@ const siteURL = "https://limavillaku.com";
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="villa puncak, sewa villa bogor, villa megamendung, villa murah puncak, villa keluarga, villa gathering, villa karaoke, villa kolam renang" />
+    <meta
+      name="keywords"
+      content="villa puncak, sewa villa bogor, villa megamendung, villa murah puncak, villa keluarga, villa gathering, villa karaoke, villa kolam renang"
+    />
     <meta name="author" content="Lima Villa Ku" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Robots -->
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
-    {!noIndex && <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
+    {
+      !noIndex && (
+        <meta
+          name="robots"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+      )
+    }
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
@@ -69,13 +79,19 @@ const siteURL = "https://limavillaku.com";
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="/fonts/PlusJakartaSans.ttf" as="font" type="font/ttf" crossorigin="anonymous" />
+    <link
+      rel="preload"
+      href="/fonts/PlusJakartaSans.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
 
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//wa.me" />
     <link rel="dns-prefetch" href="//instagram.com" />
-	</head>
-	<body class="bg-white">
-		<slot />
-	</body>
+  </head>
+  <body class="bg-white">
+    <slot />
+  </body>
 </html>

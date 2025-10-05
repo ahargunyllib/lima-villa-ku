@@ -11,54 +11,70 @@ import Hero8Image from "../../assets/images/hero/8.png";
 import Hero9Image from "../../assets/images/hero/9.png";
 
 const slides = [
-	Hero1Image,
-	Hero2Image,
-	Hero3Image,
-	Hero4Image,
-	Hero5Image,
-	Hero6Image,
-	Hero7Image,
-	Hero8Image,
-	Hero9Image,
+  Hero1Image,
+  Hero2Image,
+  Hero3Image,
+  Hero4Image,
+  Hero5Image,
+  Hero6Image,
+  Hero7Image,
+  Hero8Image,
+  Hero9Image,
 ];
 ---
 
-<section id="hero" class="px-6 pt-6 pb-10 lg:p-25 relative overflow-hidden flex flex-col items-start justify-end h-dvh">
+<section
+  id="hero"
+  class="px-6 pt-6 pb-10 lg:p-25 relative overflow-hidden flex flex-col items-start justify-end h-dvh"
+>
   <div class="absolute inset-0 z-0">
-    {slides.map((src, i) => (
-      <Image
-        src={src}
-        alt={`Hero Image ${i + 1}`}
-        loading={i === 0 ? "eager" : "lazy"}
-        class={`slide absolute inset-0 w-full h-dvh object-cover ${i === 0 ? "active" : ""}`}
-        data-idx={i}
-      />
-    ))}
+    {
+      slides.map((src, i) => (
+        <Image
+          src={src}
+          alt={`Hero Image ${i + 1}`}
+          loading={i === 0 ? "eager" : "lazy"}
+          class={`slide absolute inset-0 w-full h-dvh object-cover ${i === 0 ? "active" : ""}`}
+          data-idx={i}
+        />
+      ))
+    }
     <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
   </div>
 
   <div class="space-y-10 w-full lg:w-3/8 flex flex-col items-start z-20">
     <div class="space-y-10">
       <h1 class="font-semibold text-white text-3xl lg:text-6xl">
-        Villa Nyaman untuk Setiap Momen
+        5 Villa Terbaik di Kawasan Megamendung, Puncak
       </h1>
       <p class="text-sm lg:text-lg text-[#EEEEEE]">
-        Nikmati liburan santai di villa dengan suasana sejuk, privasi penuh, dan pemandangan indah Megamendung
+        Nikmati liburan santai di villa dengan suasana sejuk, privasi penuh, dan
+        pemandangan indah Megamendung
       </p>
     </div>
 
-    <a href="/villa/garuda" class="bg-[#CE9664] text-white text-xs lg:text-sm px-8 py-3.5 rounded-lg w-fit">
+    <a
+      href="/villa/garuda"
+      class="bg-[#CE9664] text-white text-xs lg:text-sm px-8 py-3.5 rounded-lg w-fit"
+    >
       Pesan Sekarang
     </a>
   </div>
 </section>
 <style>
-  .slide { opacity: 0; transition: opacity 700ms ease; }
-  .slide.active { opacity: 1; }
+  .slide {
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+  .slide.active {
+    opacity: 1;
+  }
 </style>
 
 <script>
-  const slides = Array.from(document.querySelectorAll<HTMLImageElement>('#hero .slide'));
+  const slides = Array.from(
+    document.querySelectorAll<HTMLImageElement>("#hero .slide")
+  );
 
   let idx = 0;
   const N = slides.length;
@@ -66,15 +82,19 @@ const slides = [
   let timer: number | null = null;
 
   function show(i: number) {
-    slides[idx].classList.remove('active');
+    slides[idx].classList.remove("active");
 
     idx = (i + N) % N;
 
-    slides[idx].classList.add('active');
+    slides[idx].classList.add("active");
   }
 
-  function next() { show(idx + 1); }
-  function prev() { show(idx - 1); }
+  function next() {
+    show(idx + 1);
+  }
+  function prev() {
+    show(idx - 1);
+  }
 
   function start() {
     stop();
