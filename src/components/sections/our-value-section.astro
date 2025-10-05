@@ -22,7 +22,7 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
       <p class="text-sm lg:text-lg text-[#434343] text-center">
         Dari keramahan layanan, kebersihan menyeluruh, hingga desain ruang yang
         menenangkan setiap detail kami pastikan untuk menghadirkan pengalaman
-        liburan terbaik bagi Anda
+        liburan terbaik bagi Anda.
       </p>
     </div>
   </div>
@@ -34,6 +34,13 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
     <div
       class="relative hidden w-full lg:block rounded-3xl overflow-hidden bg-gray-200"
     >
+      <Image
+        id="our-value-image-3"
+        src={OurValue3Image}
+        alt="Our Value Image 3"
+        loading="eager"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
       <Image
         id="our-value-image-1"
         src={OurValue1Image}
@@ -48,16 +55,81 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
         loading="eager"
         class="absolute inset-0 w-full h-full object-cover"
       />
-      <Image
-        id="our-value-image-3"
-        src={OurValue3Image}
-        alt="Our Value Image 3"
-        loading="eager"
-        class="absolute inset-0 w-full h-full object-cover"
-      />
     </div>
 
     <div class="w-full space-y-4">
+      <details id="value-3" name="values" class="group" open>
+        <summary
+          class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+        >
+          <span class="font-bold text-base lg:text-xl text-black">
+            Fasilitas Lengkap
+          </span>
+          <svg
+            class="shrink-0"
+            style="accordion-icon-minus"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#434343"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-circle-minus-icon lucide-circle-minus"
+            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+            ></path></svg
+          >
+          <svg
+            class="shrink-0"
+            style="accordion-icon-plus"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#434343"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-circle-plus-icon lucide-circle-plus"
+            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+            ></path><path d="M12 8v8"></path></svg
+          >
+        </summary>
+        <div
+          class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+        >
+          <p>
+            Semuanya ada, dari <span
+              class="text-white font-bold bg-[#CE9664] px-1"
+              >Wi-fi sampai Karaoke, Billiard sampai Pingpong</span
+            >
+          </p>
+          <ul class="list-disc list-inside">
+            <li>
+              <span class="text-white font-bold bg-[#CE9664] px-1"
+                >Fasilitas Rekreasi & Hiburan</span
+              >: Kolam renang, karaoke, billiard, pingpong, ayunan, perosotan,
+              hingga area bermain anak.
+            </li>
+            <li>
+              <span class="text-white font-bold bg-[#CE9664] px-1"
+                >Kenyamanan & Kebutuhan Sehari-hari</span
+              >: Free Wi-Fi, Android TV, kulkas, water heater, serta pendopo dan
+              aula untuk berkumpul.
+            </li>
+            <li>
+              <span class="text-white font-bold bg-[#CE9664] px-1"
+                >Area & Pendukung Acara</span
+              >: Lapangan olahraga, kolam pancing, taman luas, parkir puluhan
+              mobil, dan alat panggang/bakar.
+            </li>
+          </ul>
+        </div>
+      </details>
+
       <details id="value-1" name="values" class="group" open>
         <summary
           class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
@@ -190,79 +262,8 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
             <li>
               Area seluas ribuan meter persegi dengan ruang indoor, outdoor, dan
               parkir <span class="text-white font-bold bg-[#CE9664] px-1"
-                >puluhan kendaraan</span>
-            </li>
-          </ul>
-        </div>
-      </details>
-
-      <details id="value-3" name="values" class="group" open>
-        <summary
-          class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
-        >
-          <span class="font-bold text-base lg:text-xl text-black">
-            Fasilitas Lengkap
-          </span>
-          <svg
-            class="shrink-0"
-            style="accordion-icon-minus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-minus-icon lucide-circle-minus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path></svg
-          >
-          <svg
-            class="shrink-0"
-            style="accordion-icon-plus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-plus-icon lucide-circle-plus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path><path d="M12 8v8"></path></svg
-          >
-        </summary>
-        <div
-          class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
-        >
-          <p>
-            Semuanya ada, dari <span
-              class="text-white font-bold bg-[#CE9664] px-1"
-              >Wi-fi sampai Karaoke, Billiard sampai Pingpong</span
-            >
-          </p>
-          <ul class="list-disc list-inside">
-            <li>
-              <span class="text-white font-bold bg-[#CE9664] px-1"
-                >Fasilitas Rekreasi & Hiburan</span
-              >: Kolam renang, karaoke, billiard, pingpong, ayunan, perosotan,
-              hingga area bermain anak.
-            </li>
-            <li>
-              <span class="text-white font-bold bg-[#CE9664] px-1"
-                >Kenyamanan & Kebutuhan Sehari-hari</span
-              >: Free Wi-Fi, Android TV, kulkas, water heater, serta pendopo dan
-              aula untuk berkumpul.
-            </li>
-            <li>
-              <span class="text-white font-bold bg-[#CE9664] px-1"
-                >Area & Pendukung Acara</span
-              >: Lapangan olahraga, kolam pancing, taman luas, parkir puluhan
-              mobil, dan alat panggang/bakar.
+                >puluhan kendaraan</span
+              >
             </li>
           </ul>
         </div>
