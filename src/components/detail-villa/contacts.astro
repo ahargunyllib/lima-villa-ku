@@ -31,24 +31,6 @@ const { villa } = Astro.props;
           ))
         }
         {
-          villa.contact.villaManagers.map((manager, index) => (
-            <tr>
-              <td
-                class={
-                  index === 0
-                    ? "text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top"
-                    : "opacity-0 pr-2 align-top"
-                }
-              >
-                Pengelola Villa:
-              </td>
-              <td class="text-sm lg:text-base text-[#434343]">
-                {manager.phoneNumber} ({manager.name})
-              </td>
-            </tr>
-          ))
-        }
-        {
           villa.contact.villaGuardians.map((guardian, index) => (
             <tr>
               <td
@@ -62,6 +44,24 @@ const { villa } = Astro.props;
               </td>
               <td class="text-sm lg:text-base text-[#434343]">
                 {guardian.phoneNumber} ({guardian.name})
+              </td>
+            </tr>
+          ))
+        }
+        {
+          villa.contact.villaManagers.map((manager, index) => (
+            <tr>
+              <td
+                class={
+                  index === 0
+                    ? "text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top"
+                    : "opacity-0 pr-2 align-top"
+                }
+              >
+                Pengelola Villa:
+              </td>
+              <td class="text-sm lg:text-base text-[#434343]">
+                {manager.phoneNumber} ({manager.name})
               </td>
             </tr>
           ))
