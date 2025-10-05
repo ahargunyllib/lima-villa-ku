@@ -1,0 +1,35 @@
+---
+import type { Villa } from "../../shared/types";
+
+export type Props = {
+  villa: Villa;
+};
+
+const { villa } = Astro.props;
+---
+
+<div class="space-y-4">
+  <h2 class="font-bold text-base lg:text-xl text-black">Fasilitas</h2>
+  <div class="grid grid-cols-2 gap-4">
+    {
+      villa.facilities.map((facility) => (
+        <div class="flex flex-row items-center gap-4">
+          <svg
+            class="shrink-0"
+            width="13"
+            height="10"
+            viewBox="0 0 13 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.288615 5.9494L3.83093 9.69483C4.21575 10.1017 4.84725 10.1017 5.2222 9.69483L12.7114 1.77621C13.0962 1.36933 13.0962 0.71205 12.7114 0.305164C12.3266 -0.101721 11.7049 -0.101721 11.3201 0.305164L4.5315 7.48305L1.67989 4.47835C1.29507 4.07147 0.673434 4.07147 0.288615 4.47835C-0.0962049 4.88524 -0.0962049 5.54251 0.288615 5.9494Z"
+              fill="#12B76A"
+            />
+          </svg>
+          <span class="text-sm lg:text-base text-[#434343]">{facility}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>

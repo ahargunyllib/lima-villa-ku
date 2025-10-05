@@ -1,0 +1,91 @@
+---
+export type Props = {
+  activeSlug: string;
+};
+
+import { ListVilla } from "../../shared/data/villas";
+
+const { activeSlug } = Astro.props;
+---
+
+<select
+  class="w-full lg:hidden px-6 py-3 bg-[#111222] rounded-lg text-white font-bold"
+  data-tab-select
+>
+  {
+    ListVilla.map((v) => (
+      <option
+        value={v.slug}
+        selected={v.slug === activeSlug}
+        disabled={!v.isAvailable}
+      >
+        {v.shortName} {!v.isAvailable && "(BOOKED)"}
+      </option>
+    ))
+  }
+</select>
+<style>
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M16.6004 7.45825L11.1671 12.8916C10.5254 13.5333 9.47539 13.5333 8.83372 12.8916L3.40039 7.45825' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 1.125rem;
+    background-position: right 1rem center;
+  }
+</style>
+<script>
+  const currentSlug = location.pathname.split("/").pop();
+  const select = document.querySelector<HTMLSelectElement>("[data-tab-select]");
+  const panels = Array.from(
+    document.querySelectorAll<HTMLElement>(".villa-panel")
+  );
+  const options = Array.from(
+    document.querySelectorAll<HTMLSelectElement>("option")
+  );
+  const slugs = options.map((opt) => opt.value);
+
+  function setActiveTabIndex(idx: number, { push = true } = {}) {
+    if (idx < 0 || idx >= options.length) return;
+    if (!select) return;
+
+    panels.forEach((p) => {
+      const on = p.getAttribute("data-panel") === slugs[idx];
+      p.setAttribute("data-active", on ? "true" : "false");
+      p.setAttribute("aria-hidden", on ? "false" : "true");
+    });
+
+    const filterDetailBuilding = () => {
+      const buildingCarouselVillaCards = document.querySelectorAll<HTMLElement>(
+        `#detail-villa-building-${currentSlug}`
+      );
+      buildingCarouselVillaCards.forEach((card, idx) => {
+        if (idx === 0) {
+          card.style.display = "grid";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    };
+    filterDetailBuilding();
+
+    select.value = slugs[idx] as string;
+
+    const nextUrl = `/villa/${slugs[idx]}`;
+    if (push) {
+      if (document.startViewTransition) {
+        document.startViewTransition(() => history.pushState({}, "", nextUrl));
+      } else {
+        history.pushState({}, "", nextUrl);
+      }
+    }
+  }
+
+  select?.addEventListener("change", (e) => {
+    const slug = (e.target as HTMLSelectElement)?.value;
+    const idx = slugs.indexOf(slug);
+    if (idx !== -1) setActiveTabIndex(idx);
+  });
+</script>

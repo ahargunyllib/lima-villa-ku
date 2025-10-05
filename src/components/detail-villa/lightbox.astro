@@ -1,0 +1,91 @@
+<div id="lightbox" class="fixed inset-0 z-[100] hidden" aria-hidden="true">
+  <div class="absolute inset-0 bg-black/80" data-backdrop></div>
+
+  <div
+    id="lightbox-content"
+    class="relative h-full w-full flex items-center justify-center p-4"
+  >
+    <img
+      id="lightbox-img"
+      src=""
+      alt="Preview"
+      class="w-[95dvw] h-[90dvh] object-contain rounded-lg shadow-2xl"
+      decoding="async"
+      draggable="false"
+    />
+
+    <button
+      id="lightbox-close"
+      type="button"
+      class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-white"
+      aria-label="Close preview"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="#111"
+          stroke-linecap="round"
+          stroke-width="2"
+          d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const LightboxCloseBtn = document.getElementById("lightbox-close");
+  const lightBoxBackdrop =
+    lightbox?.querySelector<HTMLElement>("[data-backdrop]");
+  const lightboxContent = document.getElementById("lightbox-content");
+
+  function openLightbox(src?: string | null) {
+    if (!src) return;
+    const img = lightboxImg as HTMLImageElement;
+    img.style.opacity = "0";
+    img.onload = () => {
+      img.style.opacity = "1";
+    };
+    img.src = src;
+    lightbox?.classList.remove("hidden");
+    lightbox?.setAttribute("aria-hidden", "false");
+
+    // prevent background scroll
+    const scrollBarComp =
+      window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = scrollBarComp
+      ? scrollBarComp + "px"
+      : "";
+    LightboxCloseBtn && LightboxCloseBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox?.classList.add("hidden");
+    lightbox?.setAttribute("aria-hidden", "true");
+    (lightboxImg as HTMLImageElement).src = "";
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+  }
+
+  LightboxCloseBtn?.addEventListener("click", closeLightbox);
+  lightBoxBackdrop?.addEventListener("click", closeLightbox);
+  lightboxContent?.addEventListener("click", closeLightbox);
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !lightbox?.classList.contains("hidden"))
+      closeLightbox();
+  });
+
+  document.addEventListener("click", (e) => {
+    const trigger = (e.target as HTMLElement).closest("[data-preview-src]");
+    if (!trigger) return;
+    const src = trigger.getAttribute("data-preview-src");
+    openLightbox(src);
+  });
+</script>

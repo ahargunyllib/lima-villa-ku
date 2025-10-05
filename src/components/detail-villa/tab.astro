@@ -1,0 +1,187 @@
+---
+import { ListVilla } from "../../shared/data/villas";
+---
+
+<div class="tab-nav" data-tab-nav>
+  {
+    ListVilla.map((v) => (
+      <button class="tab-btn" data-tab={v.slug} disabled={!v.isAvailable}>
+        {v.shortName}{" "}
+        {!v.isAvailable && (
+          <span class="text-[#CE9664] font-semibold text-xs">(BOOKED)</span>
+        )}
+      </button>
+    ))
+  }
+
+  <div class="tab-indicator" data-tab-indicator></div>
+  <div class="hover-tab-indicator" data-hover-indicator></div>
+</div>
+<style>
+  .tab-nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: #f3f2f0;
+    padding: 8px;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .tab-nav {
+      display: none;
+    }
+  }
+
+  .tab-btn {
+    font-weight: 600;
+    font-size: 16px;
+    color: #111222;
+    border-radius: 8px;
+    padding: 14px 24px;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 2;
+    text-align: center;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+  }
+
+  .tab-indicator {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #111222;
+    border-radius: 8px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+
+    height: calc(100% - 16px);
+    transform: translateX(0%);
+  }
+
+  .hover-tab-indicator {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(17, 18, 34, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+
+    height: calc(100% - 16px);
+    transform: translateX(0%);
+
+    opacity: 0;
+    transition:
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
+<script>
+  const currentSlug = location.pathname.split("/").pop();
+
+  const tabs = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-tab-nav] .tab-btn")
+  );
+  const panels = Array.from(
+    document.querySelectorAll<HTMLElement>(".villa-panel")
+  );
+  const indicator = document.querySelector<HTMLElement>("[data-tab-indicator]");
+  const hoverIndicator = document.querySelector<HTMLElement>(
+    "[data-hover-indicator]"
+  );
+  const slugs = tabs.map((btn) => btn.getAttribute("data-tab"));
+
+  let activeTabIndex = Math.max(0, slugs.indexOf(currentSlug ?? null));
+
+  function moveIndicator(idx: number) {
+    if (!indicator) return;
+
+    const btn = tabs[idx];
+    const btn0 = tabs[0];
+    if (!btn || !btn0) return;
+
+    indicator.style.transform = `translateX(${idx * 100}%)`;
+    indicator.style.width = `${btn.offsetWidth}px`;
+
+    tabs.forEach((t) => (t.style.color = "#111222"));
+    tabs[idx].style.color = "white";
+  }
+
+  function moveHoverIndicator(idx: number | null) {
+    if (!hoverIndicator) return;
+
+    if (idx == null) {
+      hoverIndicator.style.opacity = "0";
+      return;
+    }
+
+    const btn0 = tabs[0];
+    const colWidth = btn0?.offsetWidth ?? 0;
+
+    hoverIndicator.style.opacity = "1";
+    hoverIndicator.style.transform = `translateX(${idx * 100}%)`;
+    hoverIndicator.style.width = `${colWidth}px`;
+  }
+
+  function setActiveTabIndex(idx: number, { push = true } = {}) {
+    if (idx < 0 || idx >= tabs.length) return;
+    activeTabIndex = idx;
+
+    panels.forEach((p) => {
+      const on = p.getAttribute("data-panel") === slugs[idx];
+      p.setAttribute("data-active", on ? "true" : "false");
+      p.setAttribute("aria-hidden", on ? "false" : "true");
+    });
+
+    moveIndicator(idx);
+    moveHoverIndicator(null);
+
+    const filterDetailBuilding = () => {
+      const buildingCarouselVillaCards = document.querySelectorAll<HTMLElement>(
+        `#detail-villa-building-${currentSlug}`
+      );
+      buildingCarouselVillaCards.forEach((card, idx) => {
+        if (idx === 0) {
+          card.style.display = "grid";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    };
+    filterDetailBuilding();
+
+    const nextUrl = `/villa/${slugs[idx]}`;
+    if (push) {
+      if (document.startViewTransition) {
+        document.startViewTransition(() => history.pushState({}, "", nextUrl));
+      } else {
+        history.pushState({}, "", nextUrl);
+      }
+    }
+  }
+
+  tabs.forEach((btn, i) => {
+    btn.addEventListener("click", () => setActiveTabIndex(i));
+    btn.addEventListener("mouseover", () => {
+      if (i !== activeTabIndex) moveHoverIndicator(i);
+    });
+    btn.addEventListener("mouseout", () => moveHoverIndicator(null));
+  });
+
+  window.addEventListener("load", () => {
+    if (activeTabIndex === -1) activeTabIndex = 0;
+    setActiveTabIndex(activeTabIndex, { push: false });
+  });
+  window.addEventListener("resize", () => moveIndicator(activeTabIndex));
+
+  window.addEventListener("popstate", () => {
+    const slug = location.pathname.split("/").pop();
+    const idx = slugs.indexOf(slug ?? null);
+    if (idx !== -1) setActiveTabIndex(idx, { push: false });
+  });
+</script>

@@ -1,23 +1,32 @@
 ---
 import { Image } from "astro:assets";
-import type { GetStaticPaths } from "astro";
+import Buildings from "../../../components/detail-villa/buildings.astro";
+import Facilities from "../../../components/detail-villa/facilities.astro";
+import Galleries from "../../../components/detail-villa/galleries.astro";
+import Hero from "../../../components/detail-villa/hero.astro";
+import Lightbox from "../../../components/detail-villa/lightbox.astro";
+import Pricings from "../../../components/detail-villa/pricings.astro";
+import Select from "../../../components/detail-villa/select.astro";
+import Tab from "../../../components/detail-villa/tab.astro";
+import TermsAndCondition from "../../../components/detail-villa/terms-and-condition.astro";
 import Footer from "../../../components/footer.astro";
 import Navbar from "../../../components/navbar.astro";
 import RootLayout from "../../../layouts/root-layout.astro";
 import { ListVilla, VillaMap } from "../../../shared/data/villas";
 import type { Villa } from "../../../shared/types";
+import Contacts from "../../../components/detail-villa/contacts.astro";
 
 // We still keep per-slug routes for canonical URLs (good for SEO & shareability)
 export const prerender = true;
 
 export function getStaticPaths() {
-	return [
-		{ params: { slug: "garuda" } },
-		{ params: { slug: "kaluska" } },
-		// { params: { slug: 'alika' } }, // currently unavailable
-		// { params: { slug: 'lagogo' } }, // currently unavailable
-		{ params: { slug: "sari" } },
-	];
+  return [
+    { params: { slug: "garuda" } },
+    { params: { slug: "kaluska" } },
+    // { params: { slug: 'alika' } }, // currently unavailable
+    // { params: { slug: 'lagogo' } }, // currently unavailable
+    { params: { slug: "sari" } },
+  ];
 }
 
 const urlSlug = Astro.params.slug as Villa["slug"];
@@ -35,346 +44,74 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
 >
   <Navbar />
 
-  <section class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] flex flex-col items-center justify-start gap-y-20">
-    <h3 class="text-2xl lg:text-4xl font-bold text-black w-full lg:w-1/2 text-center">
+  <section
+    class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] flex flex-col items-center justify-start gap-y-20"
+  >
+    <h3
+      class="text-2xl lg:text-4xl font-bold text-black w-full lg:w-1/2 text-center"
+    >
       Pilih Villa yang Sesuai dengan Gaya Liburan Anda
     </h3>
 
     <div class="w-full gap-y-6 flex flex-col items-center justify-center">
-      <select
-        class="w-full lg:hidden px-6 py-3 bg-[#111222] rounded-lg text-white font-bold"
-        data-tab-select
-      >
-        {ListVilla.map((v) => (
-          <option value={v.slug} selected={v.slug === activeSlug} disabled={!v.isAvailable}>
-            {v.shortName} {!v.isAvailable && "(BOOKED)"}
-          </option>
-        ))}
-      </select>
+      <Select activeSlug={activeSlug} />
 
-      <div class="tab-nav" data-tab-nav>
-        {ListVilla.map((v) => (
-          <button class="tab-btn" data-tab={v.slug} disabled={!v.isAvailable}>
-            {v.shortName} {!v.isAvailable && (
-              <span class="text-[#CE9664] font-semibold text-xs">
-                (BOOKED)
-              </span>
-            )}
-          </button>
-        ))}
+      <Tab />
 
-        <div class="tab-indicator" data-tab-indicator />
-        <div class="hover-tab-indicator" data-hover-indicator />
-      </div>
-
-      {ListVilla.map((villa) => (
-        <div
-          class="villa-panel relative w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200"
-          data-panel={villa.slug}
-          data-active={villa.slug === activeSlug ? "true" : "false"}
-          aria-hidden={villa.slug === activeSlug ? "false" : "true"}
-        >
-          <Image
-            id={`villa-${villa.slug}`}
-            src={villa.imageUrl}
-            alt={`${villa.name} Cover Image`}
-            loading="eager"
-            class="w-full h-full object-cover rounded-3xl"
-          />
-          <div class="absolute top-0 left-0 w-full h-full rounded-3xl bg-black/35" />
-        </div>
-      ))}
+      {
+        ListVilla.map((villa) => (
+          <div
+            class="villa-panel relative w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200"
+            data-panel={villa.slug}
+            data-active={villa.slug === activeSlug ? "true" : "false"}
+            aria-hidden={villa.slug === activeSlug ? "false" : "true"}
+          >
+            <Image
+              id={`villa-${villa.slug}`}
+              src={villa.imageUrl}
+              alt={`${villa.name} Cover Image`}
+              loading="eager"
+              class="w-full h-full object-cover rounded-3xl"
+            />
+            <div class="absolute top-0 left-0 w-full h-full rounded-3xl bg-black/35" />
+          </div>
+        ))
+      }
     </div>
   </section>
 
   <section>
-    {ListVilla.map((villa) => (
-      <article
-        id={`villa-${villa.slug}`}
-        class="villa-panel p-6 lg:p-25 lg:flex-row lg:items-start lg:justify-center space-y-8 lg:gap-x-20"
-        data-panel={villa.slug}
-        data-active={villa.slug === activeSlug ? "true" : "false"}
-        aria-hidden={villa.slug === activeSlug ? "false" : "true"}
-      >
-        <div class="space-y-8">
-          <div class="space-y-4">
-            <div class="space-y-1">
-              <h1 class="font-bold text-2xl lg:text-3xl text-black">
-                {villa.name}
-              </h1>
-              <div class="flex flex-row items-center gap-4">
-                <div class="flex flex-row items-center gap-4">
-                  <svg class="shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.02 2.84004L3.63 7.04004C2.73 7.74004 2 9.23004 2 10.36V17.77C2 20.09 3.89 21.99 6.21 21.99H17.79C20.11 21.99 22 20.09 22 17.78V10.5C22 9.29004 21.19 7.74004 20.2 7.05004L14.02 2.72004C12.62 1.74004 10.37 1.79004 9.02 2.84004Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12 17.99V14.99" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <span class="text-sm lg:text-lg text-[#434343]">
-                    {villa.buildingCount} Bangunan
-                  </span>
-                </div>
-                <div class="flex flex-row items-center gap-4">
-                  <svg class="shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.15957 10.87C9.05957 10.86 8.93957 10.86 8.82957 10.87C6.44957 10.79 4.55957 8.84 4.55957 6.44C4.55957 3.99 6.53957 2 8.99957 2C11.4496 2 13.4396 3.99 13.4396 6.44C13.4296 8.84 11.5396 10.79 9.15957 10.87Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M16.4103 4C18.3503 4 19.9103 5.57 19.9103 7.5C19.9103 9.39 18.4103 10.93 16.5403 11C16.4603 10.99 16.3703 10.99 16.2803 11" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M4.15973 14.56C1.73973 16.18 1.73973 18.82 4.15973 20.43C6.90973 22.27 11.4197 22.27 14.1697 20.43C16.5897 18.81 16.5897 16.17 14.1697 14.56C11.4297 12.73 6.91973 12.73 4.15973 14.56Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M18.3398 20C19.0598 19.85 19.7398 19.56 20.2998 19.13C21.8598 17.96 21.8598 16.03 20.2998 14.86C19.7498 14.44 19.0798 14.16 18.3698 14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <span class="text-sm lg:text-lg text-[#434343]">
-                    {villa.roomCount} Kamar ({villa.personCapacity} Orang)
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <p class="text-sm lg:text-lg text-[#434343]">
-              {villa.description}
-            </p>
-          </div>
-
-          <div class="space-y-4">
-            <h2 class="font-bold text-base lg:text-xl text-black">
-              Fasilitas
-            </h2>
-            <div class="grid grid-cols-2 gap-4">
-              {villa.facilities.map((facility) => (
-                <div class="flex flex-row items-center gap-4">
-                  <svg class="shrink-0" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.288615 5.9494L3.83093 9.69483C4.21575 10.1017 4.84725 10.1017 5.2222 9.69483L12.7114 1.77621C13.0962 1.36933 13.0962 0.71205 12.7114 0.305164C12.3266 -0.101721 11.7049 -0.101721 11.3201 0.305164L4.5315 7.48305L1.67989 4.47835C1.29507 4.07147 0.673434 4.07147 0.288615 4.47835C-0.0962049 4.88524 -0.0962049 5.54251 0.288615 5.9494Z" fill="#12B76A"/>
-                  </svg>
-                  <span class="text-sm lg:text-base text-[#434343]">
-                    {facility}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div class="space-y-6">
-            {villa.buildings.length > 1 && (
-              <div class="space-y-4">
-                <h2 class="font-bold text-base lg:text-xl text-black">
-                  Bangunan
-                </h2>
-                <div class="relative">
-                  <div class="overflow-hidden rounded-xl">
-                    <div id="buildings-track" class="flex transition-transform duration-500 ease-out will-change-transform">
-                      {villa.buildings.map((building, index) => (
-                        <div class="min-w-full shrink">
-                          <div class="w-full h-[20rem] lg:h-[40rem] rounded-xl bg-gray-200 overflow-hidden">
-                            {building.buildingImageUrl && (
-                              <Image
-                                src={building.buildingImageUrl}
-                                alt={`${villa.name} – Building ${index + 1}`}
-                                loading={index === 0 ? "eager" : "lazy"}
-                                class="w-full h-full object-cover"
-                              />
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <button
-                    id="buildings-prev"
-                    class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-[#F5F5F5] p-3 rotate-180"
-                    aria-label="Previous slide"
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.28957 6.70999C8.89957 7.09999 8.89957 7.72999 9.28957 8.11999L13.1696 12L9.28957 15.88C8.89957 16.27 8.89957 16.9 9.28957 17.29C9.67957 17.68 10.3096 17.68 10.6996 17.29L15.2896 12.7C15.6796 12.31 15.6796 11.68 15.2896 11.29L10.6996 6.69999C10.3196 6.31999 9.67957 6.31999 9.28957 6.70999Z" fill="#475467"/>
-                    </svg>
-                  </button>
-                  <button
-                    id="buildings-next"
-                    class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-[#F5F5F5] p-3"
-                    aria-label="Next slide"
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.28957 6.70999C8.89957 7.09999 8.89957 7.72999 9.28957 8.11999L13.1696 12L9.28957 15.88C8.89957 16.27 8.89957 16.9 9.28957 17.29C9.67957 17.68 10.3096 17.68 10.6996 17.29L15.2896 12.7C15.6796 12.31 15.6796 11.68 15.2896 11.29L10.6996 6.69999C10.3196 6.31999 9.67957 6.31999 9.28957 6.70999Z" fill="#475467"/>
-                    </svg>
-                  </button>
-
-                  <div class="mt-3 flex items-center justify-center gap-2">
-                    {villa.buildings.map((_, i) => (
-                      <button
-                        class="buildings-dot h-2 w-2 rounded-full bg-black/20 aria-[current=true]:bg-black"
-                        aria-label={`Go to slide ${i + 1}`}
-                        aria-current={i === 0 ? "true" : "false"}
-                        data-index={i}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-            {villa.buildings.map((building) => (
-              <div
-                id={`detail-villa-building-${villa.slug}`}
-                class="grid grid-cols-2 gap-4 lg:gap-6"
-              >
-                <div class="w-full h-full rounded-xl bg-gray-200" >
-                  <Image
-                    src={building.bedroomDetail.imageUrl}
-                    alt={`${villa.name} Cover Image`}
-                    loading="eager"
-                    class="w-full h-full object-cover rounded-xl"
-                  />
-                </div>
-                <div class="space-y-6">
-                  <h2 class="font-bold text-base lg:text-base text-black">
-                    Detail Kamar {building.name && `(${building.name})`}
-                  </h2>
-                  <div class="space-y-4">
-                    {building.bedroomDetail.facilities.map((facility) => (
-                      <div class="flex flex-row items-start gap-4">
-                        <svg class="shrink-0" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M0.288615 5.9494L3.83093 9.69483C4.21575 10.1017 4.84725 10.1017 5.2222 9.69483L12.7114 1.77621C13.0962 1.36933 13.0962 0.71205 12.7114 0.305164C12.3266 -0.101721 11.7049 -0.101721 11.3201 0.305164L4.5315 7.48305L1.67989 4.47835C1.29507 4.07147 0.673434 4.07147 0.288615 4.47835C-0.0962049 4.88524 -0.0962049 5.54251 0.288615 5.9494Z" fill="#12B76A"/>
-                        </svg>
-                        <span class="text-sm lg:text-base text-[#434343]">
-                          {facility}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div class="space-y-4">
-            <h2 class="font-bold text-base lg:text-xl text-black">Galeri Fasilitas</h2>
-
-            <div
-              class="grid grid-cols-2 lg:grid-cols-3 gap-4"
-              data-facility-gallery
-            >
-              {villa.facilityImageUrls.map((imageMetadata) => (
-                <button
-                  id={`facility-image-${villa.slug}`}
-                  class="w-full h-24 lg:h-48 rounded-lg bg-gray-200 overflow-clip focus:outline-none focus:ring-2 focus:ring-black cursor-pointer"
-                  data-preview-src={imageMetadata.src}
-                  type="button"
-                  aria-label="Preview image"
-                >
-                  <Image
-                    src={imageMetadata}
-                    alt={`${villa.name} Facility Image`}
-                    loading="lazy"
-                    class="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div class="space-y-4">
-            <h2 class="font-bold text-base lg:text-xl text-black">
-              Ketentuan Umum
-            </h2>
-            <p class="text-sm lg:text-base text-[#434343] whitespace-pre-line">
-              {villa.termsAndCondition}
-            </p>
-          </div>
-        </div>
-
-        <div class="space-y-8 sticky top-36 shrink-0 lg:w-1/3">
-          <div class="px-6 py-10 space-y-6 rounded-lg bg-[#F2F2F2]">
-            <div class="space-y-2">
-              <h2 class="font-bold text-base lg:text-xl text-black">
-                Harga Sewa (Sewaktu-waktu bisa berubah)
-              </h2>
-
-              <p class="text-sm lg:text-base text-[#434343]">
-                Weekend: <strong>{villa.price.weekend.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</strong>
-              </p>
-              <p class="text-sm lg:text-base text-[#434343]">
-                Weekdays: <strong>{villa.price.weekday.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</strong>
-              </p>
-
-              <p class="text-xs lg:text-sm text-[#434343] whitespace-pre-line">
-                {villa.price.note}
-              </p>
-            </div>
-
-            {villa.price.downPayment && (
-              <div class="space-y-2">
-                <h2 class="font-bold text-base lg:text-xl text-black">
-                  DP/Down Payment
-                </h2>
-                <p class="text-sm lg:text-sm text-[#434343]">
-                  {villa.price.downPayment.note}
-                </p>
-              </div>
-            )}
-          </div>
-          <div class="px-6 py-10 space-y-6 rounded-lg bg-[#F2F2F2]">
-            <div class="space-y-2">
-              <h2 class="font-bold text-base lg:text-xl text-black">
-                Informasi Kontak
-              </h2>
-
-              <table>
-                <tbody>
-                  {villa.contact.instagrams.map((instagram, index) => (
-                    <tr>
-                      <td class={index === 0 ? 'text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Instagram:</td>
-                      <td class="text-sm lg:text-base text-[#434343]">{instagram}</td>
-                    </tr>
-                  ))}
-                  {villa.contact.villaManagers.map((manager, index) => (
-                    <tr>
-                      <td class={index === 0 ? 'text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Pengelola Villa:</td>
-                      <td class="text-sm lg:text-base text-[#434343]">{manager.phoneNumber} ({manager.name})</td>
-                    </tr>
-                  ))}
-                  {villa.contact.villaGuardians.map((guardian, index) => (
-                    <tr>
-                      <td class={index === 0 ? 'text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top' : 'opacity-0 pr-2 align-top'}>Penjaga Villa:</td>
-                      <td class="text-sm lg:text-base text-[#434343]">{guardian.phoneNumber} ({guardian.name})</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </article>
-    ))}
-
-    <!-- Lightbox Modal -->
-    <div
-      id="lightbox"
-      class="fixed inset-0 z-[100] hidden"
-      aria-hidden="true"
-    >
-      <!-- Backdrop -->
-      <div class="absolute inset-0 bg-black/80" data-backdrop></div>
-
-      <!-- Content -->
-      <div id="lightbox-content" class="relative h-full w-full flex items-center justify-center p-4">
-        <img
-          id="lightbox-img"
-          src=""
-          alt="Preview"
-          class="w-[95dvw] h-[90dvh] object-contain rounded-lg shadow-2xl"
-          decoding="async"
-          draggable="false"
-        />
-
-        <!-- Close button -->
-        <button
-          id="lightbox-close"
-          type="button"
-          class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-white"
-          aria-label="Close preview"
+    {
+      ListVilla.map((villa) => (
+        <article
+          id={`villa-${villa.slug}`}
+          class="villa-panel p-6 lg:p-25 lg:flex-row lg:items-start lg:justify-center space-y-8 lg:gap-x-20"
+          data-panel={villa.slug}
+          data-active={villa.slug === activeSlug ? "true" : "false"}
+          aria-hidden={villa.slug === activeSlug ? "false" : "true"}
         >
-          <!-- simple X icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
-            <path stroke="#111" stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
-          </svg>
-        </button>
-      </div>
-    </div>
+          <div class="space-y-8">
+            <Hero villa={villa} />
+
+            <Facilities villa={villa} />
+
+            <Buildings villa={villa} />
+
+            <Galleries villa={villa} />
+
+            <TermsAndCondition villa={villa} />
+          </div>
+
+          <div class="space-y-8 sticky top-36 shrink-0 lg:w-1/3">
+            <Pricings villa={villa} />
+
+            <Contacts villa={villa} />
+          </div>
+        </article>
+      ))
+    }
+
+    <Lightbox />
   </section>
 
   <Footer />
@@ -382,272 +119,20 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
 
 <style>
   /* Hide inactive panels (still in DOM for SEO) */
-  .villa-panel { display: none; }
+  .villa-panel {
+    display: none;
+  }
 
-  .villa-panel[data-active="true"] { display: flex; }
+  .villa-panel[data-active="true"] {
+    display: flex;
+  }
 
   @media (max-width: 768px) {
     .villa-panel {
-        display: none;
-     }
-    .villa-panel[data-active="true"] {
-       display: block;
-    }
-  }
-
-
-  select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M16.6004 7.45825L11.1671 12.8916C10.5254 13.5333 9.47539 13.5333 8.83372 12.8916L3.40039 7.45825' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    background-repeat:no-repeat;
-    background-size:1.125rem;
-    background-position:right 1rem center;
-  }
-
-  .tab-nav {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      background-color: #F3F2F0;
-      padding: 8px;
-      border-radius: 8px;
-      position: relative;
-    }
-
-  @media (max-width: 768px) {
-    .tab-nav {
       display: none;
     }
-  }
-
-
-  .tab-btn {
-    font-weight: 600;
-    font-size: 16px;
-    color: #111222;
-    border-radius: 8px;
-    padding: 14px 24px;
-    cursor: pointer;
-    background-color: transparent;
-    z-index: 2;
-    text-align: center;
-    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: center;
-  }
-
-  .tab-indicator {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: #111222;
-    border-radius: 8px;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
-
-    height: calc(100% - 16px);
-    transform: translateX(0%);
-  }
-
-  .hover-tab-indicator {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: rgba(17, 18, 34, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
-
-    height: calc(100% - 16px);
-    transform: translateX(0%);
-
-    opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    .villa-panel[data-active="true"] {
+      display: block;
+    }
   }
 </style>
-
-<script>
-  const currentSlug = location.pathname.split('/').pop();
-
-  const tabs = Array.from(document.querySelectorAll<HTMLElement>('[data-tab-nav] .tab-btn'));
-  const panels = Array.from(document.querySelectorAll<HTMLElement>('.villa-panel'));
-  const indicator = document.querySelector<HTMLElement>('[data-tab-indicator]');
-  const hoverIndicator = document.querySelector<HTMLElement>('[data-hover-indicator]');
-  const select = document.querySelector<HTMLSelectElement>('[data-tab-select]');
-  const slugs = tabs.map(btn => btn.getAttribute('data-tab'));
-  const buildingCarouselTrack = document.getElementById('buildings-track');
-  const buildingCarouselVillaCards = document.querySelectorAll<HTMLElement>(`#detail-villa-building-${currentSlug}`);
-  const buildingCarouselPrevBtn = document.getElementById('buildings-prev');
-  const buildingCarouselNextBtn = document.getElementById('buildings-next');
-  const buildingsCarouselDots = Array.from(document.querySelectorAll<HTMLElement>('.buildings-dot'));
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const LightboxCloseBtn = document.getElementById('lightbox-close');
-  const lightBoxBackdrop = lightbox?.querySelector<HTMLElement>('[data-backdrop]');
-  const lightboxContent = document.getElementById('lightbox-content');
-
-
-  const buildingTrackSlides = buildingCarouselTrack ? Array.from(buildingCarouselTrack.children) : [];
-  const buildingTracksTotal = buildingTrackSlides.length;
-
-  let activeTabIndex = Math.max(0, slugs.indexOf(currentSlug ?? null));
-  let activeBuildingTrackIndex = 0;
-
-  const filterDetailBuilding = () => {
-    buildingCarouselVillaCards.forEach((card, idx) => {
-      if (idx === activeBuildingTrackIndex) {
-        card.style.display = 'grid';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  };
-
-  const updateBuildingCarousel = () => {
-    if (buildingCarouselTrack) {
-      buildingCarouselTrack.style.transform = `translateX(-${activeBuildingTrackIndex * 100}%)`;
-    }
-
-    // show building panel
-    filterDetailBuilding();
-
-    // dots
-    buildingsCarouselDots.forEach((d, i) => d.setAttribute('aria-current', String(i === activeBuildingTrackIndex)));
-
-    // disable when wanted (optional)
-    buildingCarouselPrevBtn?.toggleAttribute('disabled', false);
-    buildingCarouselNextBtn?.toggleAttribute('disabled', false);
-  };
-
-  const goToBuildingCarouselIndex = (i: number) => {
-    activeBuildingTrackIndex = (i + buildingTracksTotal) % buildingTracksTotal; // wrap
-    updateBuildingCarousel();
-  };
-
-  function moveIndicator(idx: number) {
-    if (!indicator) return;
-
-    const btn = tabs[idx];
-    const btn0 = tabs[0];
-    if (!btn || !btn0) return;
-
-    indicator.style.transform = `translateX(${idx * 100}%)`;
-    indicator.style.width = `${btn.offsetWidth}px`;
-
-    tabs.forEach(t => t.style.color = '#111222');
-    tabs[idx].style.color = 'white';
-  }
-
-  function moveHoverIndicator(idx: number | null) {
-    if (!hoverIndicator) return;
-
-    if (idx == null) {
-      hoverIndicator.style.opacity = '0';
-      return;
-    }
-
-    const btn0 = tabs[0];
-    const colWidth = btn0?.offsetWidth ?? 0;
-
-    hoverIndicator.style.opacity = '1';
-    hoverIndicator.style.transform = `translateX(${idx * 100}%)`;
-    hoverIndicator.style.width = `${colWidth}px`;
-  }
-
-  function setActiveTabIndex(idx: number, { push = true } = {}) {
-    if (idx < 0 || idx >= tabs.length) return;
-    activeTabIndex = idx;
-
-    panels.forEach(p => {
-      const on = p.getAttribute('data-panel') === slugs[idx];
-      p.setAttribute('data-active', on ? 'true' : 'false');
-      p.setAttribute('aria-hidden', on ? 'false' : 'true');
-    });
-
-    moveIndicator(idx);
-    moveHoverIndicator(null);
-    filterDetailBuilding();
-
-    if (select) select.value = slugs[idx] as string;
-
-    const nextUrl = `/villa/${slugs[idx]}`;
-    if (push) {
-      if (document.startViewTransition) {
-        document.startViewTransition(() => history.pushState({}, '', nextUrl));
-      } else {
-        history.pushState({}, '', nextUrl);
-      }
-    }
-  }
-
-  function openLightbox(src?: string | null) {
-    if (!src) return;
-    const img = lightboxImg as HTMLImageElement;
-    img.style.opacity = '0';
-    img.onload = () => { img.style.opacity = '1'; };
-    img.src = src;
-    lightbox?.classList.remove('hidden');
-    lightbox?.setAttribute('aria-hidden', 'false');
-
-    // prevent background scroll
-    const scrollBarComp = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = scrollBarComp ? scrollBarComp + 'px' : '';
-    LightboxCloseBtn && LightboxCloseBtn.focus();
-  }
-
-  function closeLightbox() {
-    lightbox?.classList.add('hidden');
-    lightbox?.setAttribute('aria-hidden', 'true');
-    (lightboxImg as HTMLImageElement).src = '';
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
-  }
-
-  tabs.forEach((btn, i) => {
-    btn.addEventListener('click', () => setActiveTabIndex(i));
-    btn.addEventListener('mouseover', () => { if (i !== activeTabIndex) moveHoverIndicator(i); });
-    btn.addEventListener('mouseout', () => moveHoverIndicator(null));
-  });
-
-  select?.addEventListener('change', (e) => {
-    const slug = (e.target as HTMLSelectElement)?.value;
-    const idx = slugs.indexOf(slug);
-    if (idx !== -1) setActiveTabIndex(idx);
-  });
-
-  buildingCarouselPrevBtn?.addEventListener('click', () => goToBuildingCarouselIndex(activeBuildingTrackIndex - 1));
-  buildingCarouselNextBtn?.addEventListener('click', () => goToBuildingCarouselIndex(activeBuildingTrackIndex + 1));
-  buildingsCarouselDots.forEach((d) => d.addEventListener('click', () => goToBuildingCarouselIndex(Number(d.dataset.index))));
-
-  LightboxCloseBtn?.addEventListener('click', closeLightbox);
-  lightBoxBackdrop?.addEventListener('click', closeLightbox);
-  lightboxContent?.addEventListener('click', closeLightbox);
-
-  window.addEventListener('load', () => {
-    if (activeTabIndex === -1) activeTabIndex = 0;
-    setActiveTabIndex(activeTabIndex, {push: false});
-  });
-  window.addEventListener('resize', () => moveIndicator(activeTabIndex));
-
-  window.addEventListener('popstate', () => {
-    const slug = location.pathname.split('/').pop();
-    const idx = slugs.indexOf(slug ?? null);
-    if (idx !== -1) setActiveTabIndex(idx, {push: false});
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !lightbox?.classList.contains('hidden')) closeLightbox();
-  });
-
-  document.addEventListener('click', (e) => {
-    const trigger = (e.target as HTMLElement).closest('[data-preview-src]');
-    if (!trigger) return;
-    const src = trigger.getAttribute('data-preview-src');
-    openLightbox(src);
-  });
-</script>

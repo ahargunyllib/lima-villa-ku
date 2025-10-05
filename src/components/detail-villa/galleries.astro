@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import type { Villa } from "../../shared/types";
+
+export type Props = {
+  villa: Villa;
+};
+
+const { villa } = Astro.props;
+---
+
+<div class="space-y-4">
+  <h2 class="font-bold text-base lg:text-xl text-black">Galeri Fasilitas</h2>
+
+  <div class="grid grid-cols-2 lg:grid-cols-3 gap-4" data-facility-gallery>
+    {
+      villa.facilityImageUrls.map((imageMetadata) => (
+        <button
+          id={`facility-image-${villa.slug}`}
+          class="w-full h-24 lg:h-48 rounded-lg bg-gray-200 overflow-clip focus:outline-none focus:ring-2 focus:ring-black cursor-pointer"
+          data-preview-src={imageMetadata.src}
+          type="button"
+          aria-label="Preview image"
+        >
+          <Image
+            src={imageMetadata}
+            alt={`${villa.name} Facility Image`}
+            loading="lazy"
+            class="w-full h-full object-cover"
+          />
+        </button>
+      ))
+    }
+  </div>
+</div>

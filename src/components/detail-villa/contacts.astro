@@ -1,0 +1,72 @@
+---
+import type { Villa } from "../../shared/types";
+
+export type Props = {
+  villa: Villa;
+};
+
+const { villa } = Astro.props;
+---
+
+<div class="px-6 py-10 space-y-6 rounded-lg bg-[#F2F2F2]">
+  <div class="space-y-2">
+    <h2 class="font-bold text-base lg:text-xl text-black">Informasi Kontak</h2>
+
+    <table>
+      <tbody>
+        {
+          villa.contact.instagrams.map((instagram, index) => (
+            <tr>
+              <td
+                class={
+                  index === 0
+                    ? "text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top"
+                    : "opacity-0 pr-2 align-top"
+                }
+              >
+                Instagram:
+              </td>
+              <td class="text-sm lg:text-base text-[#434343]">{instagram}</td>
+            </tr>
+          ))
+        }
+        {
+          villa.contact.villaManagers.map((manager, index) => (
+            <tr>
+              <td
+                class={
+                  index === 0
+                    ? "text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top"
+                    : "opacity-0 pr-2 align-top"
+                }
+              >
+                Pengelola Villa:
+              </td>
+              <td class="text-sm lg:text-base text-[#434343]">
+                {manager.phoneNumber} ({manager.name})
+              </td>
+            </tr>
+          ))
+        }
+        {
+          villa.contact.villaGuardians.map((guardian, index) => (
+            <tr>
+              <td
+                class={
+                  index === 0
+                    ? "text-sm lg:text-base text-[#434343] opacity-100 pr-2 align-top"
+                    : "opacity-0 pr-2 align-top"
+                }
+              >
+                Penjaga Villa:
+              </td>
+              <td class="text-sm lg:text-base text-[#434343]">
+                {guardian.phoneNumber} ({guardian.name})
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

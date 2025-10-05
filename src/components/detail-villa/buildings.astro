@@ -1,0 +1,201 @@
+---
+import { Image } from "astro:assets";
+
+import type { Villa } from "../../shared/types";
+
+export type Props = {
+  villa: Villa;
+};
+
+const { villa } = Astro.props;
+---
+
+<div class="space-y-6">
+  {
+    villa.buildings.length > 1 && (
+      <div class="space-y-4">
+        <h2 class="font-bold text-base lg:text-xl text-black">Bangunan</h2>
+        <div class="relative">
+          <div class="overflow-hidden rounded-xl">
+            <div
+              id="buildings-track"
+              class="flex transition-transform duration-500 ease-out will-change-transform"
+            >
+              {villa.buildings.map((building, index) => (
+                <div class="min-w-full shrink">
+                  <div class="w-full h-[20rem] lg:h-[40rem] rounded-xl bg-gray-200 overflow-hidden">
+                    {building.buildingImageUrl && (
+                      <Image
+                        src={building.buildingImageUrl}
+                        alt={`${villa.name} - Building ${index + 1}`}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        class="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            id="buildings-prev"
+            class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-[#F5F5F5] p-3 rotate-180"
+            aria-label="Previous slide"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.28957 6.70999C8.89957 7.09999 8.89957 7.72999 9.28957 8.11999L13.1696 12L9.28957 15.88C8.89957 16.27 8.89957 16.9 9.28957 17.29C9.67957 17.68 10.3096 17.68 10.6996 17.29L15.2896 12.7C15.6796 12.31 15.6796 11.68 15.2896 11.29L10.6996 6.69999C10.3196 6.31999 9.67957 6.31999 9.28957 6.70999Z"
+                fill="#475467"
+              />
+            </svg>
+          </button>
+          <button
+            id="buildings-next"
+            class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-[#F5F5F5] p-3"
+            aria-label="Next slide"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.28957 6.70999C8.89957 7.09999 8.89957 7.72999 9.28957 8.11999L13.1696 12L9.28957 15.88C8.89957 16.27 8.89957 16.9 9.28957 17.29C9.67957 17.68 10.3096 17.68 10.6996 17.29L15.2896 12.7C15.6796 12.31 15.6796 11.68 15.2896 11.29L10.6996 6.69999C10.3196 6.31999 9.67957 6.31999 9.28957 6.70999Z"
+                fill="#475467"
+              />
+            </svg>
+          </button>
+
+          <div class="mt-3 flex items-center justify-center gap-2">
+            {villa.buildings.map((_, i) => (
+              <button
+                class="buildings-dot h-2 w-2 rounded-full bg-black/20 aria-[current=true]:bg-black"
+                aria-label={`Go to slide ${i + 1}`}
+                aria-current={i === 0 ? "true" : "false"}
+                data-index={i}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+  {
+    villa.buildings.map((building) => (
+      <div
+        id={`detail-villa-building-${villa.slug}`}
+        class="grid grid-cols-2 gap-4 lg:gap-6"
+      >
+        <div class="w-full h-full rounded-xl bg-gray-200">
+          <Image
+            src={building.bedroomDetail.imageUrl}
+            alt={`${villa.name} Cover Image`}
+            loading="eager"
+            class="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+        <div class="space-y-6">
+          <h2 class="font-bold text-base lg:text-base text-black">
+            Detail Kamar {building.name && `(${building.name})`}
+          </h2>
+          <div class="space-y-4">
+            {building.bedroomDetail.facilities.map((facility) => (
+              <div class="flex flex-row items-start gap-4">
+                <svg
+                  class="shrink-0"
+                  width="13"
+                  height="10"
+                  viewBox="0 0 13 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.288615 5.9494L3.83093 9.69483C4.21575 10.1017 4.84725 10.1017 5.2222 9.69483L12.7114 1.77621C13.0962 1.36933 13.0962 0.71205 12.7114 0.305164C12.3266 -0.101721 11.7049 -0.101721 11.3201 0.305164L4.5315 7.48305L1.67989 4.47835C1.29507 4.07147 0.673434 4.07147 0.288615 4.47835C-0.0962049 4.88524 -0.0962049 5.54251 0.288615 5.9494Z"
+                    fill="#12B76A"
+                  />
+                </svg>
+                <span class="text-sm lg:text-base text-[#434343]">
+                  {facility}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+<script>
+  const currentSlug = location.pathname.split("/").pop();
+
+  const buildingCarouselTrack = document.getElementById("buildings-track");
+  const buildingCarouselVillaCards = document.querySelectorAll<HTMLElement>(
+    `#detail-villa-building-${currentSlug}`
+  );
+  const buildingCarouselPrevBtn = document.getElementById("buildings-prev");
+  const buildingCarouselNextBtn = document.getElementById("buildings-next");
+  const buildingsCarouselDots = Array.from(
+    document.querySelectorAll<HTMLElement>(".buildings-dot")
+  );
+
+  const buildingTrackSlides = buildingCarouselTrack
+    ? Array.from(buildingCarouselTrack.children)
+    : [];
+  const buildingTracksTotal = buildingTrackSlides.length;
+
+  let activeBuildingTrackIndex = 0;
+
+  const filterDetailBuilding = () => {
+    buildingCarouselVillaCards.forEach((card, idx) => {
+      if (idx === activeBuildingTrackIndex) {
+        card.style.display = "grid";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  };
+
+  const updateBuildingCarousel = () => {
+    if (buildingCarouselTrack) {
+      buildingCarouselTrack.style.transform = `translateX(-${activeBuildingTrackIndex * 100}%)`;
+    }
+
+    // show building panel
+    filterDetailBuilding();
+
+    // dots
+    buildingsCarouselDots.forEach((d, i) =>
+      d.setAttribute("aria-current", String(i === activeBuildingTrackIndex))
+    );
+
+    // disable when wanted (optional)
+    buildingCarouselPrevBtn?.toggleAttribute("disabled", false);
+    buildingCarouselNextBtn?.toggleAttribute("disabled", false);
+  };
+
+  const goToBuildingCarouselIndex = (i: number) => {
+    activeBuildingTrackIndex = (i + buildingTracksTotal) % buildingTracksTotal; // wrap
+    updateBuildingCarousel();
+  };
+
+  buildingCarouselPrevBtn?.addEventListener("click", () =>
+    goToBuildingCarouselIndex(activeBuildingTrackIndex - 1)
+  );
+  buildingCarouselNextBtn?.addEventListener("click", () =>
+    goToBuildingCarouselIndex(activeBuildingTrackIndex + 1)
+  );
+  buildingsCarouselDots.forEach((d) =>
+    d.addEventListener("click", () =>
+      goToBuildingCarouselIndex(Number(d.dataset.index))
+    )
+  );
+</script>
