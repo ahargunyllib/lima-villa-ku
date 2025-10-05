@@ -10,7 +10,7 @@ export const ListVilla: Villa[] = [
 		shortName: "Pondok Kaluska",
 		isAvailable: true,
 		buildingCount: 4,
-		roomCount: 18,
+		roomCount: 19,
 		personCapacity: 68,
 		description:
 			"Villa pondok kaluska terdiri dari 4 bangunan dengan total 19 kamar dengan 16 kamar di antaranya sudah tersedia kamar mandi dalam.",
@@ -230,7 +230,7 @@ export const ListVilla: Villa[] = [
 		isAvailable: true,
 		buildingCount: 1,
 		roomCount: 11,
-		personCapacity: 38,
+		personCapacity: 40,
 		description:
 			"Villa pondok garuda terdiri dari 1 bangunan dengan total 19 kamar dengan 16 kamar di antaranya sudah tersedia kamar mandi dalam.",
 		facilities: [
