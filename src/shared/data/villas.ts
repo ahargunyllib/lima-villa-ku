@@ -211,8 +211,8 @@ export const ListVilla: Villa[] = [
 			],
 			villaGuardians: [
 				{
-					name: "Abas",
-					phoneNumber: "085778321689",
+					name: "Nanda",
+					phoneNumber: "085778831069",
 				},
 				{
 					name: "Iwan",
@@ -303,8 +303,8 @@ export const ListVilla: Villa[] = [
 			],
 			villaGuardians: [
 				{
-					name: "Abas",
-					phoneNumber: "085778321689",
+					name: "Nanda",
+					phoneNumber: "085778831069",
 				},
 				{
 					name: "Amin",
