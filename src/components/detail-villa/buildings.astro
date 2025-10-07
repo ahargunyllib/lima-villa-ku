@@ -198,4 +198,8 @@ const { villa } = Astro.props;
       goToBuildingCarouselIndex(Number(d.dataset.index))
     )
   );
+  document.addEventListener("load", () => {
+    // initial
+    updateBuildingCarousel();
+  });
 </script>
