@@ -242,7 +242,7 @@ export const ListVilla: Villa[] = [
 			"Meja Pingpong",
 			"Meja Billiard",
 			"Free WiFi",
-			"Android TV (Youtube & Karaoke)",
+			"Android TV (Youtube dan Karaoke)",
 			"Speaker",
 			"Water Heater",
 			"Pendopo",
