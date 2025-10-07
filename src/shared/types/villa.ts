@@ -24,7 +24,10 @@ export type Villa = {
 
 	facilityImageUrls: ImageMetadata[];
 
-	termsAndCondition: string;
+	terms: {
+    points: string[];
+    note?: string;
+  };
 
 	price: {
 		weekday: number;
