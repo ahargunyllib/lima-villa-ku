@@ -23,7 +23,7 @@ const { villa } = Astro.props;
             >
               {villa.buildings.map((building, index) => (
                 <div class="min-w-full shrink">
-                  <div class="w-full h-[20rem] lg:h-[40rem] rounded-xl bg-gray-200 overflow-hidden">
+                  <div class="w-full aspect-video rounded-xl bg-gray-200 overflow-hidden">
                     {building.buildingImageUrl && (
                       <Image
                         src={building.buildingImageUrl}
