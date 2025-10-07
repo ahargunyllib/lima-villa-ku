@@ -13,20 +13,20 @@ export const ListVilla: Villa[] = [
 		roomCount: 19,
 		personCapacity: 68,
 		description:
-			"Villa pondok kaluska terdiri dari 4 bangunan dengan total 19 kamar dengan 16 kamar di antaranya sudah tersedia kamar mandi dalam.",
+			"Villa Pondok Kaluska terdiri dari 4 bangunan dengan total 19 kamar (18 kamar di antaranya sudah memiliki kamar dalam) dan mampu menampung hingga 68 orang.",
 		facilities: [
 			"Kolam Renang",
 			"Meja Pingpong",
 			"Meja Billiard",
 			"Free WiFi",
-			"Android TV",
-			"Sound Karaoke",
+			"Android TV (Youtube dan Karaoke)",
+			"Speaker",
 			"Water Heater",
 			"Pendopo",
 			"Ayunan & Perosotan",
 			"Kolam Pancing",
 			"Taman/Area Bermain",
-			"Parkir 15 Mobil",
+			"Parkir sekitar 15 Mobil",
 			"Kulkas",
 			"Alat Panggang/Bakar",
 		],
@@ -38,8 +38,8 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.kaluska.buildings[0].bedroom,
 					facilities: [
-						"Lantai 1  (kamar 1-4) 8 Double bed Kapasitas 16 Orang",
-						"Lantai 2  (mezanin) 8 Single bed Kapasitas 8 Orang",
+						"Lantai 1  (Kamar 1-4) Kapasitas 16 Orang",
+						"Lantai 2  (Mezanin) Kapasitas 8 Orang",
 					],
 				},
 			},
@@ -49,8 +49,8 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.kaluska.buildings[1].bedroom,
 					facilities: [
-						"Lantai 1  (kamar 6-8) 4 Double bed Kapasitas 8 Orang",
-						"Lantai 2  (kamar 9-11) 4 Double bed Kapasitas 8 Orang",
+						"Lantai 1  (Kamar 6-8) Kapasitas 8 Orang",
+						"Lantai 2  (Kamar 9-11) Kapasitas 8 Orang",
 					],
 				},
 			},
@@ -60,8 +60,8 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.kaluska.buildings[2].bedroom,
 					facilities: [
-						"Lantai 1  (kamar 12&13) 4 Double bed Kapasitas 8 Orang",
-						"Lantai 2  (kamar 14&15) 2 Double bed + 2 Single bed Kapasitas 6 Orang",
+						"Lantai 1  (Kamar 12-13) Kapasitas 8 Orang",
+						"Lantai 2  (Kamar 14-15) Kapasitas 6 Orang",
 					],
 				},
 			},
@@ -71,8 +71,8 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.kaluska.buildings[3].bedroom,
 					facilities: [
-						"Lantai 1  (kamar 16&17) 2 Double bed + 2 Kasur bawah Kapasitas 8 Orang",
-						"Lantai 2  (kamar 18&19) 4 Double bed Kapasitas 8 Orang",
+						"Lantai 1  (Kamar 16-17) Kapasitas 6 Orang",
+						"Lantai 2  (Kamar 18-19) Kapasitas 8 Orang",
 					],
 				},
 			},
@@ -80,28 +80,30 @@ export const ListVilla: Villa[] = [
 
 		facilityImageUrls: VillaImages.kaluska.facilities,
 
-		termsAndCondition: `
-    1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
-    2. Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"
-    3. Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.
-    4. Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.
-    5. Jangan mengganggu binatang peliharaan yang ada.
-    6. Dilarang memaku tembok, merusak atau membawa inventaris villa.
-    7. Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.
-    8. Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.
-    9. Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.
-    10. Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.
-    11. Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.
-    12. Tamu wajib menjaga anak kecil di kolam renang.
-
-    *Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.`,
+		terms: {
+			points: [
+				"Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).",
+				'Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"',
+				"Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.",
+				"Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.",
+				"Jangan mengganggu binatang peliharaan yang ada.",
+				"Dilarang memaku tembok, merusak atau membawa inventaris villa.",
+				"Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.",
+				"Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.",
+				"Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.",
+				"Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.",
+				"Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.",
+				"Tamu wajib menjaga anak kecil di kolam renang.",
+			],
+			note: "*Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.",
+		},
 		price: {
 			weekday: 3_000_000,
 			weekend: 5_500_000,
 			note: "*Harga belum termasuk uang kebersihan sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
 
 			downPayment: {
-				note: "Sebesar 50% dan dibayarkan paling lambat H-2 Minggu",
+				note: "DP sebesar 50% dan pelunasan paling lambat seminggu sebelum hari-H.",
 			},
 		},
 
@@ -140,20 +142,20 @@ export const ListVilla: Villa[] = [
 		roomCount: 15,
 		personCapacity: 51,
 		description:
-			"Villa pondok kaluska terdiri dari 4 bangunan dengan total 19 kamar dengan 16 kamar di antaranya sudah tersedia kamar mandi dalam.",
+			"Villa Pondok Sari terdiri dari 1 bangunan 2 lantai dengan total 15 kamar. Seluruhnya memiliki kamar mandi dalam yang dilengkapi dengan air panas. Hanya kamar driver (kamar no.8), yang tidak memiliki kamar mandi dalam.",
 		facilities: [
 			"Kolam Renang",
 			"Meja Pingpong",
 			"Meja Billiard",
 			"Free WiFi",
-			"Android TV",
-			"Sound Karaoke",
+			"Android TV (Youtube dan Karaoke)",
+			"Speaker Portable",
 			"Water Heater",
-			"Pendopo",
+			"Ruang Dapur Lega",
 			"Ayunan & Perosotan",
 			"Lapangan Badminton",
 			"Taman/Area Bermain",
-			"Kulkas",
+			"Kulkas dan Dispenser",
 			"Alat Panggang/Bakar",
 			"Aula/Ruang Meeting",
 		],
@@ -163,8 +165,8 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.sari.buildings[0].bedroom,
 					facilities: [
-						"Lantai 1  (kamar 1-7) 11 Double bed + 2 Single bed Kapasitas 24 Orang",
-						"Lantai 2  (kamar 8-15) 10 Double bed + 7 Single bed Kapasitas 28 Orang",
+						"Lantai 1  (Kamar 1-7) Kapasitas 24 Orang/bed",
+						"Lantai 2  (Kamar 8-15) Kapasitas 27 Orang/bed",
 					],
 				},
 			},
@@ -172,28 +174,30 @@ export const ListVilla: Villa[] = [
 
 		facilityImageUrls: VillaImages.sari.facilities,
 
-		termsAndCondition: `
-    1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
-    2. Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"
-    3. Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.
-    4. Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.
-    5. Jangan mengganggu binatang peliharaan yang ada.
-    6. Dilarang memaku tembok, merusak atau membawa inventaris villa.
-    7. Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.
-    8. Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.
-    9. Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.
-    10. Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.
-    11. Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.
-    12. Tamu wajib menjaga anak kecil di kolam renang.
-
-    *Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.`,
+		terms: {
+			points: [
+				"Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).",
+				'Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"',
+				"Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.",
+				"Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.",
+				"Jangan mengganggu binatang peliharaan yang ada.",
+				"Dilarang memaku tembok, merusak atau membawa inventaris villa.",
+				"Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.",
+				"Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.",
+				"Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.",
+				"Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.",
+				"Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.",
+				"Tamu wajib menjaga anak kecil di kolam renang.",
+			],
+			note: "*Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.",
+		},
 		price: {
 			weekday: 3_000_000,
-			weekend: 4_500_000,
+			weekend: 5_000_000,
 			note: "*Harga belum termasuk uang kebersihan sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
 
 			downPayment: {
-				note: "Sebesar 50% dan dibayarkan paling lambat H-2 Minggu",
+				note: "DP sebesar 50% dan pelunasan paling lambat seminggu sebelum hari-H.",
 			},
 		},
 
@@ -232,20 +236,20 @@ export const ListVilla: Villa[] = [
 		roomCount: 11,
 		personCapacity: 40,
 		description:
-			"Villa pondok garuda terdiri dari 1 bangunan dengan total 19 kamar dengan 16 kamar di antaranya sudah tersedia kamar mandi dalam.",
+			"Villa Garuda terdiri dari 1 bangunan 2 lantai dengan total 11 kamar, dengan 8 kamar di antaranya sudah memiliki kamar mandi dalam.",
 		facilities: [
 			"Kolam Renang",
 			"Meja Pingpong",
 			"Meja Billiard",
 			"Free WiFi",
-			"Android TV",
-			"Sound Karaoke",
+			"Android TV (Youtube & Karaoke)",
+			"Speaker",
 			"Water Heater",
 			"Pendopo",
 			"Ayunan & Perosotan",
 			"Kolam Pancing",
 			"Taman/Area Bermain",
-			"Parkir 15 Mobil",
+			"Parkir 12 Mobil",
 			"Kulkas",
 			"Alat Panggang/Bakar",
 		],
@@ -255,8 +259,8 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.garuda.buildings[0].bedroom,
 					facilities: [
-						"Lantai 1  (kamar 1-5) 8 Double bed + 2 Single bed Kapasitas 18 Orang",
-						"Lantai 2  (kamar 6-11) 10 Double bed + 2 Single bed Kapasitas 20 Orang",
+						"Lantai 1  (Kamar 1-5) Kapasitas 19 Orang/bed",
+						"Lantai 2  (Kamar 6-11) Kapasitas 31 Orang/bed",
 					],
 				},
 			},
@@ -264,28 +268,30 @@ export const ListVilla: Villa[] = [
 
 		facilityImageUrls: VillaImages.garuda.facilities,
 
-		termsAndCondition: `
-    1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
-    2. Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"
-    3. Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.
-    4. Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.
-    5. Jangan mengganggu binatang peliharaan yang ada.
-    6. Dilarang memaku tembok, merusak atau membawa inventaris villa.
-    7. Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.
-    8. Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.
-    9. Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.
-    10. Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.
-    11. Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.
-    12. Tamu wajib menjaga anak kecil di kolam renang.
-
-    *Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.`,
+		terms: {
+			points: [
+				"Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).",
+				'Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"',
+				"Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.",
+				"Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.",
+				"Jangan mengganggu binatang peliharaan yang ada.",
+				"Dilarang memaku tembok, merusak atau membawa inventaris villa.",
+				"Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.",
+				"Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.",
+				"Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.",
+				"Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.",
+				"Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.",
+				"Tamu wajib menjaga anak kecil di kolam renang.",
+			],
+			note: "*Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.",
+		},
 		price: {
 			weekday: 3_000_000,
 			weekend: 4_500_000,
 			note: "*Harga belum termasuk uang kebersihan sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
 
 			downPayment: {
-				note: "Sebesar 50% dan dibayarkan paling lambat H-2 Minggu",
+				note: "DP	sebesar	50%	dan	pelunasan	paling	lambat seminggu	sebelum	hari-H",
 			},
 		},
 
@@ -305,10 +311,6 @@ export const ListVilla: Villa[] = [
 				{
 					name: "Nanda",
 					phoneNumber: "085778831069",
-				},
-				{
-					name: "Amin",
-					phoneNumber: "081280803416",
 				},
 			],
 		},
@@ -337,21 +339,23 @@ export const ListVilla: Villa[] = [
 
 		facilityImageUrls: [],
 
-		termsAndCondition: `
-    1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
-    2. Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"
-    3. Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.
-    4. Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.
-    5. Jangan mengganggu binatang peliharaan yang ada.
-    6. Dilarang memaku tembok, merusak atau membawa inventaris villa.
-    7. Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.
-    8. Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.
-    9. Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.
-    10. Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.
-    11. Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.
-    12. Tamu wajib menjaga anak kecil di kolam renang.
-
-    *Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.`,
+		terms: {
+			points: [
+				"Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).",
+				'Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"',
+				"Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.",
+				"Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.",
+				"Jangan mengganggu binatang peliharaan yang ada.",
+				"Dilarang memaku tembok, merusak atau membawa inventaris villa.",
+				"Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.",
+				"Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.",
+				"Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.",
+				"Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.",
+				"Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.",
+				"Tamu wajib menjaga anak kecil di kolam renang.",
+			],
+			note: "*Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.",
+		},
 		price: {
 			weekday: 0,
 			weekend: 0,
@@ -392,21 +396,23 @@ export const ListVilla: Villa[] = [
 
 		facilityImageUrls: [],
 
-		termsAndCondition: `
-    1. Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).
-    2. Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"
-    3. Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.
-    4. Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.
-    5. Jangan mengganggu binatang peliharaan yang ada.
-    6. Dilarang memaku tembok, merusak atau membawa inventaris villa.
-    7. Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.
-    8. Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.
-    9. Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.
-    10. Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.
-    11. Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.
-    12. Tamu wajib menjaga anak kecil di kolam renang.
-
-    *Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.`,
+		terms: {
+			points: [
+				"Check in time : 14.00 WIB dan Check Out : 12.30 WIB (check in lebih awal atau check out terlambat bisa dibicarakan).",
+				'Dilarang merokok di kamar atau di tempat yang diberi tanda "no smoking"',
+				"Tidak membuang sampah sembarangan, buanglah sampah pada tempatnya.",
+				"Dimohon agar tidak merusak rumput/tanaman dan memetik buah-buahan.",
+				"Jangan mengganggu binatang peliharaan yang ada.",
+				"Dilarang memaku tembok, merusak atau membawa inventaris villa.",
+				"Kerusakan atau kehilangan barang atau inventaris villa akan dikenakan denda.",
+				"Dilarang mabuk-mabukan, membawa narkoba, bermain judi, melakukan perbuatan asusila, membuat keributan dsb.",
+				"Tidak melakukan perbuatan yang melanggar hukum lainnya. Resiko menjadi tanggung jawab tamu.",
+				"Mengurus barang masing-masing, kehilangan bukan tanggung jawab pengelola villa.",
+				"Dilarang memainkan musik dengan suara terlalu keras agar tidak mengganggu tetangga atau lingkungan.",
+				"Tamu wajib menjaga anak kecil di kolam renang.",
+			],
+			note: "*Dengan membayar DP, berarti penyewa telah menyetujui ketentuan-ketentuan di atas.",
+		},
 		price: {
 			weekday: 0,
 			weekend: 0,
