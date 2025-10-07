@@ -43,7 +43,7 @@ const activeSlug = ["garuda", "kaluska", "sari"].includes(urlSlug)
   <Navbar />
 
   <section
-    class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] flex flex-col items-center justify-start gap-y-20"
+    class="p-6 lg:p-25 pt-[6.75rem] lg:pt-[13rem] flex flex-col items-center justify-start gap-y-20 relative overflow-hidden"
   >
     <h3
       class="text-2xl lg:text-4xl font-bold text-black w-full lg:w-1/2 text-center"
@@ -76,6 +76,26 @@ const activeSlug = ["garuda", "kaluska", "sari"].includes(urlSlug)
         ))
       }
     </div>
+
+    {
+      ListVilla.map((villa) => (
+        <div
+          class="villa-panel absolute inset-0 h-1/2 object-cover -z-10 opacity-15 scale-150 pointer-events-none [background:white] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
+          data-panel={villa.slug}
+          data-active={villa.slug === activeSlug ? "true" : "false"}
+          aria-hidden={villa.slug === activeSlug ? "false" : "true"}
+        >
+          <Image
+            id={`villa-${villa.slug}`}
+            src={villa.imageUrl}
+            alt={`${villa.name} Cover Image`}
+            loading="eager"
+            class="w-full h-full object-cover rounded-3xl"
+          />
+          <div class="absolute top-0 left-0 w-full h-full rounded-3xl bg-black/35" />
+        </div>
+      ))
+    }
   </section>
 
   <section>
