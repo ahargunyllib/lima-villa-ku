@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Buildings from "../../../components/detail-villa/buildings.astro";
+import Contacts from "../../../components/detail-villa/contacts.astro";
 import Facilities from "../../../components/detail-villa/facilities.astro";
 import Galleries from "../../../components/detail-villa/galleries.astro";
 import Hero from "../../../components/detail-villa/hero.astro";
@@ -14,7 +15,6 @@ import Navbar from "../../../components/navbar.astro";
 import RootLayout from "../../../layouts/root-layout.astro";
 import { ListVilla, VillaMap } from "../../../shared/data/villas";
 import type { Villa } from "../../../shared/types";
-import Contacts from "../../../components/detail-villa/contacts.astro";
 
 // We still keep per-slug routes for canonical URLs (good for SEO & shareability)
 // export const prerender = true;
@@ -31,18 +31,9 @@ export function getStaticPaths() {
 
 const urlSlug = Astro.params.slug as Villa["slug"];
 
-const slugs = ListVilla.map((v) => v.slug);
-
-const defaultSlug = ListVilla.find((v) => v.isAvailable)?.slug ?? slugs[0];
-
-const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
-
-console.log({
-  urlSlug,
-  activeSlug,
-  defaultSlug,
-  slugs,
-})
+const activeSlug = ["garuda", "kaluska", "sari"].includes(urlSlug)
+  ? urlSlug
+  : "kaluska";
 ---
 
 <RootLayout
