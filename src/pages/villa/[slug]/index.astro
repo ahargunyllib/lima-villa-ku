@@ -85,7 +85,7 @@ const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
       ListVilla.map((villa) => (
         <article
           id={`villa-${villa.slug}`}
-          class="villa-panel p-6 lg:p-25 lg:flex-row lg:items-start lg:justify-center space-y-8 lg:gap-x-20"
+          class="villa-panel p-6 lg:p-25 flex-col lg:flex-row lg:items-start lg:justify-center space-y-8 lg:gap-x-20"
           data-panel={villa.slug}
           data-active={villa.slug === activeSlug ? "true" : "false"}
           aria-hidden={villa.slug === activeSlug ? "false" : "true"}
