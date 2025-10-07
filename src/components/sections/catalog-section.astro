@@ -1,11 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import { ListVilla, VillaMap } from "../../shared/data/villas";
+import CatalogBackground from "../../assets/images/catalog-background.jpg";
 ---
 
 <section
   id="catalog"
-  class="p-6 lg:p-25 flex flex-col items-center justify-center gap-y-20"
+  class="p-6 lg:p-25 flex flex-col items-center justify-center gap-y-20 relative"
 >
   <h3
     class="text-2xl lg:text-4xl font-bold text-black w-full lg:w-1/2 text-center"
@@ -133,6 +134,13 @@ import { ListVilla, VillaMap } from "../../shared/data/villas";
         )
     )
   }
+
+  <Image
+    src={CatalogBackground}
+    alt="Catalog Background"
+    loading="lazy"
+    class="absolute inset-0 aspect-video object-cover -z-10 opacity-15 scale-150 pointer-events-none [background:white] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
+  />
 </section>
 <style>
   .tab-nav {
