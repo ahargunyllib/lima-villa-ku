@@ -135,7 +135,15 @@ const { villa } = Astro.props;
   }
 </div>
 <script>
-  const currentSlug = location.pathname.split("/").pop();
+  function getSlugFromPath(pathname = location.pathname) {
+    // remove one or more trailing slashes
+    const clean = pathname.replace(/\/+$/, "");
+    // expect /villa/<slug>
+    const m = clean.match(/^\/villa\/([^/]+)$/);
+    return m?.[1] ?? null;
+  }
+
+  let currentSlug = getSlugFromPath();
 
   const buildingCarouselTrack = document.getElementById("buildings-track");
   const buildingCarouselVillaCards = document.querySelectorAll<HTMLElement>(
@@ -198,8 +206,8 @@ const { villa } = Astro.props;
       goToBuildingCarouselIndex(Number(d.dataset.index))
     )
   );
-  document.addEventListener("load", () => {
+  window.addEventListener("load", () => {
     // initial
-    updateBuildingCarousel();
+    filterDetailBuilding();
   });
 </script>

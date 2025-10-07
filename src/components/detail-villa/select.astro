@@ -37,7 +37,15 @@ const { activeSlug } = Astro.props;
   }
 </style>
 <script>
-  const currentSlug = location.pathname.split("/").pop();
+  function getSlugFromPath(pathname = location.pathname) {
+    // remove one or more trailing slashes
+    const clean = pathname.replace(/\/+$/, "");
+    // expect /villa/<slug>
+    const m = clean.match(/^\/villa\/([^/]+)$/);
+    return m?.[1] ?? null;
+  }
+
+  let currentSlug = getSlugFromPath();
   const select = document.querySelector<HTMLSelectElement>("[data-tab-select]");
   const panels = Array.from(
     document.querySelectorAll<HTMLElement>(".villa-panel")

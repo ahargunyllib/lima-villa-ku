@@ -82,7 +82,15 @@ import { ListVilla } from "../../shared/data/villas";
   }
 </style>
 <script>
-  const currentSlug = location.pathname.split("/").pop();
+  function getSlugFromPath(pathname = location.pathname) {
+    // remove one or more trailing slashes
+    const clean = pathname.replace(/\/+$/, "");
+    // expect /villa/<slug>
+    const m = clean.match(/^\/villa\/([^/]+)$/);
+    return m?.[1] ?? null;
+  }
+
+  let currentSlug = getSlugFromPath();
 
   const tabs = Array.from(
     document.querySelectorAll<HTMLElement>("[data-tab-nav] .tab-btn")
