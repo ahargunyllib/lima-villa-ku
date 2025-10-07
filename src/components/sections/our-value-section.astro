@@ -346,8 +346,21 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
       e.preventDefault();
       if (details.dataset.animating === "1") return;
 
-      // make sure there's always one open
       if (details.open) {
+        details.dataset.animating = "1";
+        const target = panel.scrollHeight;
+        panel.style.height = target + "px";
+        panel.getBoundingClientRect(); // force reflow
+        panel.style.transition = "height 300ms ease";
+        panel.style.height = "0px";
+        const finish = () => {
+          details.open = false;
+          panel.style.height = "";
+          panel.style.transition = "";
+          details.dataset.animating = "0";
+          panel.removeEventListener("transitionend", finish);
+        };
+        panel.addEventListener("transitionend", finish);
         return;
       }
 
