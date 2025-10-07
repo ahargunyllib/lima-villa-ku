@@ -26,7 +26,15 @@ const { villa } = Astro.props;
               >
                 Instagram:
               </td>
-              <td class="text-sm lg:text-base text-[#434343]">{instagram}</td>
+              <td class="text-sm lg:text-base text-[#434343] hover:underline hover:text-blue-600 transition-colors duration-200">
+                <a
+                  href={`https://instagram.com/${instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {instagram}
+                </a>
+              </td>
             </tr>
           ))
         }
@@ -42,8 +50,14 @@ const { villa } = Astro.props;
               >
                 Penjaga Villa:
               </td>
-              <td class="text-sm lg:text-base text-[#434343]">
-                {guardian.phoneNumber} ({guardian.name})
+              <td class="text-sm lg:text-base text-[#434343] hover:underline hover:text-blue-600 transition-colors duration-200">
+                <a
+                  href={`https://wa.me/+62${guardian.phoneNumber.substring(1)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {guardian.phoneNumber} ({guardian.name})
+                </a>
               </td>
             </tr>
           ))
@@ -60,8 +74,14 @@ const { villa } = Astro.props;
               >
                 Pengelola Villa:
               </td>
-              <td class="text-sm lg:text-base text-[#434343]">
-                {manager.phoneNumber} ({manager.name})
+              <td class="text-sm lg:text-base text-[#434343] hover:underline hover:text-blue-600 transition-colors duration-200">
+                <a
+                  href={`https://wa.me/+62${manager.phoneNumber.substring(1)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {manager.phoneNumber} ({manager.name})
+                </a>
               </td>
             </tr>
           ))
