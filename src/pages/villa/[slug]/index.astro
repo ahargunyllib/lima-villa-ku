@@ -36,6 +36,13 @@ const slugs = ListVilla.map((v) => v.slug);
 const defaultSlug = ListVilla.find((v) => v.isAvailable)?.slug ?? slugs[0];
 
 const activeSlug = slugs.includes(urlSlug) ? urlSlug : defaultSlug;
+
+console.log({
+  urlSlug,
+  activeSlug,
+  defaultSlug,
+  slugs,
+})
 ---
 
 <RootLayout
