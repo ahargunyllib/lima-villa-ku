@@ -1,4 +1,4 @@
-import GarudaBedroom1Image from "../../assets/images/villas/garuda/bedrooms/1.png";
+import GarudaBedroom1Image from "../../assets/images/villas/garuda/bedrooms/1.jpg";
 import GarudaCoverImage from "../../assets/images/villas/garuda/cover.png";
 import GarudaFacility1Image from "../../assets/images/villas/garuda/facilities/1.jpg";
 import GarudaFacility2Image from "../../assets/images/villas/garuda/facilities/2.jpg";
@@ -42,7 +42,7 @@ import KaluskaFacility12Image from "../../assets/images/villas/kaluska/facilitie
 import LagogoCoverImage from "../../assets/images/hero/4.png"; // TODO
 import LagogoBedroomImage from "../../assets/images/hero/5.png"; // TODO
 
-import SariBedroom1Image from "../../assets/images/villas/sari/bedrooms/1.png";
+import SariBedroom1Image from "../../assets/images/villas/sari/bedrooms/1.jpg";
 import SariCoverImage from "../../assets/images/villas/sari/cover.png";
 import SariFacility1Image from "../../assets/images/villas/sari/facilities/1.jpg";
 import SariFacility2Image from "../../assets/images/villas/sari/facilities/2.png";
