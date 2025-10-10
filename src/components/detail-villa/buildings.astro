@@ -90,18 +90,24 @@ const { villa } = Astro.props;
     )
   }
   {
-    villa.buildings.map((building) => (
+    villa.buildings.map((building, buildingIdx) => (
       <div
         id={`detail-villa-building-${villa.slug}`}
-        class="grid grid-cols-2 gap-4 lg:gap-6"
+        class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6"
       >
-        <div class="w-full h-full rounded-xl bg-gray-200">
-          <Image
-            src={building.bedroomDetail.imageUrl}
-            alt={`${villa.name} Cover Image`}
-            loading="eager"
-            class="w-full h-full object-cover rounded-xl"
-          />
+        <div class="relative w-full rounded-xl bg-gray-200">
+          {building.bedroomDetail.imageUrls.map((url, idx) => (
+            <Image
+              id={`villa-${villa.slug}-building-${buildingIdx}-bedroom-image`}
+              src={url}
+              alt={`${villa.name} - Bedroom ${idx + 1}`}
+              loading={idx === 0 ? "eager" : "lazy"}
+              class:list={[
+                "w-full object-contain rounded-xl relative",
+                idx === 0 ? "block" : "hidden",
+              ]}
+            />
+          ))}
         </div>
         <div class="space-y-6">
           <h2 class="font-bold text-base lg:text-base text-black">
@@ -124,7 +130,12 @@ const { villa } = Astro.props;
                   />
                 </svg>
                 <span class="text-sm lg:text-base text-[#434343]">
-                  Lantai {facility.floor} ({facility.name}): <b>Kapasitas {facility.capacity} orang{facility.isPerBed ? "/bed" : ""}</b>.
+                  Lantai {facility.floor} ({facility.name}):{" "}
+                  <b>
+                    Kapasitas {facility.capacity} orang
+                    {facility.isPerBed ? "/bed" : ""}
+                  </b>
+                  .
                 </span>
               </div>
             ))}
@@ -210,4 +221,36 @@ const { villa } = Astro.props;
     // initial
     filterDetailBuilding();
   });
+
+  window.addEventListener("popstate", () => {
+    const newSlug = getSlugFromPath();
+    if (newSlug && newSlug !== currentSlug) {
+      currentSlug = newSlug;
+      activeBuildingTrackIndex = 0; // reset to first
+      updateBuildingCarousel();
+    }
+  });
+
+  const bedroomImages = document.querySelectorAll(
+    `#villa-${currentSlug}-building-${activeBuildingTrackIndex}-bedroom-image`
+  );
+  let activeBedroomImageIndex = 0;
+  const totalBedroomImages = bedroomImages.length;
+  const showBedroomImage = (i: number) => {
+    activeBedroomImageIndex = (i + totalBedroomImages) % totalBedroomImages; // wrap
+    bedroomImages.forEach((img, idx) => {
+      if (idx === activeBedroomImageIndex) {
+        img.classList.remove("hidden");
+        img.classList.add("block");
+      } else {
+        img.classList.remove("block");
+        img.classList.add("hidden");
+      }
+    });
+  };
+
+  // Example: Cycle through bedroom images every 5 seconds
+  setInterval(() => {
+    showBedroomImage(activeBedroomImageIndex + 1);
+  }, 5000);
 </script>

@@ -17,12 +17,12 @@ export type Villa = {
 		name?: string;
 		buildingImageUrl?: ImageMetadata;
 		bedroomDetail: {
-			imageUrl: ImageMetadata;
+			imageUrls: ImageMetadata[];
 			facilities: {
 				floor: number;
 				name: string;
 				capacity: number;
-        isPerBed: boolean;
+				isPerBed: boolean;
 			}[];
 		};
 	}[];

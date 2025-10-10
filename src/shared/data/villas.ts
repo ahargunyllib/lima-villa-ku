@@ -33,10 +33,10 @@ export const ListVilla: Villa[] = [
 
 		buildings: [
 			{
-				name: "hijau",
+				name: "Utama/Hijau",
 				buildingImageUrl: VillaImages.kaluska.buildings[0].building,
 				bedroomDetail: {
-					imageUrl: VillaImages.kaluska.buildings[0].bedroom,
+					imageUrls: VillaImages.kaluska.buildings[0].bedroom,
 					facilities: [
 						{
 							floor: 1,
@@ -54,10 +54,10 @@ export const ListVilla: Villa[] = [
 				},
 			},
 			{
-				name: "kuning",
+				name: "Kuning",
 				buildingImageUrl: VillaImages.kaluska.buildings[1].building,
 				bedroomDetail: {
-					imageUrl: VillaImages.kaluska.buildings[1].bedroom,
+					imageUrls: VillaImages.kaluska.buildings[1].bedroom,
 					facilities: [
 						{
 							floor: 1,
@@ -75,10 +75,10 @@ export const ListVilla: Villa[] = [
 				},
 			},
 			{
-				name: "biru",
+				name: "Biru",
 				buildingImageUrl: VillaImages.kaluska.buildings[2].building,
 				bedroomDetail: {
-					imageUrl: VillaImages.kaluska.buildings[2].bedroom,
+					imageUrls: VillaImages.kaluska.buildings[2].bedroom,
 					facilities: [
 						{
 							floor: 1,
@@ -96,10 +96,10 @@ export const ListVilla: Villa[] = [
 				},
 			},
 			{
-				name: "putih",
+				name: "Putih",
 				buildingImageUrl: VillaImages.kaluska.buildings[3].building,
 				bedroomDetail: {
-					imageUrl: VillaImages.kaluska.buildings[3].bedroom,
+					imageUrls: VillaImages.kaluska.buildings[3].bedroom,
 					facilities: [
 						{
 							floor: 1,
@@ -203,7 +203,7 @@ export const ListVilla: Villa[] = [
 		buildings: [
 			{
 				bedroomDetail: {
-					imageUrl: VillaImages.sari.buildings[0].bedroom,
+					imageUrls: VillaImages.sari.buildings[0].bedroom,
 					facilities: [
 						{
 							floor: 1,
@@ -307,7 +307,7 @@ export const ListVilla: Villa[] = [
 		buildings: [
 			{
 				bedroomDetail: {
-					imageUrl: VillaImages.garuda.buildings[0].bedroom,
+					imageUrls: VillaImages.garuda.buildings[0].bedroom,
 					facilities: [
 						{
 							floor: 1,
@@ -391,7 +391,7 @@ export const ListVilla: Villa[] = [
 		buildings: [
 			{
 				bedroomDetail: {
-					imageUrl: VillaImages.lagogo.bedroom,
+					imageUrls: VillaImages.lagogo.bedroom,
 					facilities: [],
 				},
 			},
@@ -448,7 +448,7 @@ export const ListVilla: Villa[] = [
 		buildings: [
 			{
 				bedroomDetail: {
-					imageUrl: VillaImages.alika.bedroom,
+					imageUrls: VillaImages.alika.bedroom,
 					facilities: [],
 				},
 			},
