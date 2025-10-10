@@ -1,17 +1,17 @@
 import GarudaBedroom1Image from "../../assets/images/villas/garuda/bedrooms/1.png";
 import GarudaCoverImage from "../../assets/images/villas/garuda/cover.png";
-import GarudaFacility1Image from "../../assets/images/villas/garuda/facilities/1.png";
-import GarudaFacility2Image from "../../assets/images/villas/garuda/facilities/2.png";
-import GarudaFacility3Image from "../../assets/images/villas/garuda/facilities/3.png";
-import GarudaFacility4Image from "../../assets/images/villas/garuda/facilities/4.png";
-import GarudaFacility5Image from "../../assets/images/villas/garuda/facilities/5.png";
-import GarudaFacility6Image from "../../assets/images/villas/garuda/facilities/6.png";
+import GarudaFacility1Image from "../../assets/images/villas/garuda/facilities/1.jpg";
+import GarudaFacility2Image from "../../assets/images/villas/garuda/facilities/2.jpg";
+import GarudaFacility3Image from "../../assets/images/villas/garuda/facilities/3.jpg";
+import GarudaFacility4Image from "../../assets/images/villas/garuda/facilities/4.jpg";
+import GarudaFacility5Image from "../../assets/images/villas/garuda/facilities/5.jpg";
+import GarudaFacility6Image from "../../assets/images/villas/garuda/facilities/6.jpg";
 import GarudaFacility7Image from "../../assets/images/villas/garuda/facilities/7.jpg";
-import GarudaFacility8Image from "../../assets/images/villas/garuda/facilities/8.png";
-import GarudaFacility9Image from "../../assets/images/villas/garuda/facilities/9.png";
-import GarudaFacility10Image from "../../assets/images/villas/garuda/facilities/10.png";
+import GarudaFacility8Image from "../../assets/images/villas/garuda/facilities/8.jpg";
+import GarudaFacility9Image from "../../assets/images/villas/garuda/facilities/9.jpg";
+import GarudaFacility10Image from "../../assets/images/villas/garuda/facilities/10.jpg";
 import GarudaFacility11Image from "../../assets/images/villas/garuda/facilities/11.jpeg";
-import GarudaFacility12Image from "../../assets/images/villas/garuda/facilities/12.png";
+import GarudaFacility12Image from "../../assets/images/villas/garuda/facilities/12.jpg";
 
 import AlikaCoverImage from "../../assets/images/hero/2.png"; // TODO
 import AlikaBedroomImage from "../../assets/images/hero/3.png"; // TODO
@@ -27,16 +27,16 @@ import KaluskaBuildings3Image from "../../assets/images/villas/kaluska/buildings
 import KaluskaBuildings4Image from "../../assets/images/villas/kaluska/buildings/4.png";
 import KaluskaCoverImage from "../../assets/images/villas/kaluska/cover.png";
 import KaluskaFacility1Image from "../../assets/images/villas/kaluska/facilities/1.jpg";
-import KaluskaFacility2Image from "../../assets/images/villas/kaluska/facilities/2.png";
-import KaluskaFacility3Image from "../../assets/images/villas/kaluska/facilities/3.png";
-import KaluskaFacility4Image from "../../assets/images/villas/kaluska/facilities/4.png";
-import KaluskaFacility5Image from "../../assets/images/villas/kaluska/facilities/5.png";
-import KaluskaFacility6Image from "../../assets/images/villas/kaluska/facilities/6.png";
+import KaluskaFacility2Image from "../../assets/images/villas/kaluska/facilities/2.jpg";
+import KaluskaFacility3Image from "../../assets/images/villas/kaluska/facilities/3.jpg";
+import KaluskaFacility4Image from "../../assets/images/villas/kaluska/facilities/4.jpg";
+import KaluskaFacility5Image from "../../assets/images/villas/kaluska/facilities/5.jpg";
+import KaluskaFacility6Image from "../../assets/images/villas/kaluska/facilities/6.jpg";
 import KaluskaFacility7Image from "../../assets/images/villas/kaluska/facilities/7.jpg";
 import KaluskaFacility8Image from "../../assets/images/villas/kaluska/facilities/8.jpg";
-import KaluskaFacility9Image from "../../assets/images/villas/kaluska/facilities/9.png";
-import KaluskaFacility10Image from "../../assets/images/villas/kaluska/facilities/10.png";
-import KaluskaFacility11Image from "../../assets/images/villas/kaluska/facilities/11.png";
+import KaluskaFacility9Image from "../../assets/images/villas/kaluska/facilities/9.jpg";
+import KaluskaFacility10Image from "../../assets/images/villas/kaluska/facilities/10.jpg";
+import KaluskaFacility11Image from "../../assets/images/villas/kaluska/facilities/11.jpg";
 import KaluskaFacility12Image from "../../assets/images/villas/kaluska/facilities/12.jpg";
 
 import LagogoCoverImage from "../../assets/images/hero/4.png"; // TODO
@@ -44,18 +44,18 @@ import LagogoBedroomImage from "../../assets/images/hero/5.png"; // TODO
 
 import SariBedroom1Image from "../../assets/images/villas/sari/bedrooms/1.png";
 import SariCoverImage from "../../assets/images/villas/sari/cover.png";
-import SariFacility1Image from "../../assets/images/villas/sari/facilities/1.png";
+import SariFacility1Image from "../../assets/images/villas/sari/facilities/1.jpg";
 import SariFacility2Image from "../../assets/images/villas/sari/facilities/2.png";
-import SariFacility3Image from "../../assets/images/villas/sari/facilities/3.png";
-import SariFacility4Image from "../../assets/images/villas/sari/facilities/4.png";
+import SariFacility3Image from "../../assets/images/villas/sari/facilities/3.jpg";
+import SariFacility4Image from "../../assets/images/villas/sari/facilities/4.jpg";
 import SariFacility5Image from "../../assets/images/villas/sari/facilities/5.png";
-import SariFacility6Image from "../../assets/images/villas/sari/facilities/6.png";
-import SariFacility7Image from "../../assets/images/villas/sari/facilities/7.png";
+import SariFacility6Image from "../../assets/images/villas/sari/facilities/6.jpg";
+import SariFacility7Image from "../../assets/images/villas/sari/facilities/7.jpg";
 import SariFacility8Image from "../../assets/images/villas/sari/facilities/8.jpeg";
-import SariFacility9Image from "../../assets/images/villas/sari/facilities/9.png";
+import SariFacility9Image from "../../assets/images/villas/sari/facilities/9.jpg";
 import SariFacility10Image from "../../assets/images/villas/sari/facilities/10.png";
 import SariFacility11Image from "../../assets/images/villas/sari/facilities/11.png";
-import SariFacility12Image from "../../assets/images/villas/sari/facilities/12.png";
+import SariFacility12Image from "../../assets/images/villas/sari/facilities/12.jpg";
 
 export const VillaImages = {
 	garuda: {
