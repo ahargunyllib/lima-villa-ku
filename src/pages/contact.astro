@@ -126,7 +126,7 @@ const slides = [
       </table>
     </div>
     <div
-      class="relative w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200 overflow-hidden"
+      class="relative w-full rounded-3xl bg-gray-200 overflow-hidden"
     >
       {
         slides.map((src, i) => (
@@ -134,12 +134,11 @@ const slides = [
             src={src}
             alt={`Image ${i + 1}`}
             loading={i === 0 ? "eager" : "lazy"}
-            class={`slide absolute w-full h-full object-cover ${i === 0 ? "active" : ""}`}
+            class={`slide absolute w-full h-full object-contain ${i === 0 ? "active" : ""}`}
             data-idx={i}
           />
         ))
       }
-      <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
     </div>
   </section>
   <Footer />
