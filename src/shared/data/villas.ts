@@ -13,7 +13,7 @@ export const ListVilla: Villa[] = [
 		roomCount: 19,
 		personCapacity: 68,
 		description:
-			"Villa Pondok Kaluska terdiri dari 4 bangunan dengan total 19 kamar (18 kamar di antaranya sudah memiliki kamar dalam) dan mampu menampung hingga 68 orang.",
+			"Villa Pondok Kaluska terdiri dari 4 bangunan dengan total 19 kamar (17 kamar di antaranya sudah memiliki kamar mandi dalam) dan mampu menampung hingga 68 orang.",
 		facilities: [
 			"Kolam Renang",
 			"Meja Pingpong",
