@@ -59,7 +59,7 @@ const activeSlug = ["garuda", "kaluska", "sari"].includes(urlSlug)
       {
         ListVilla.map((villa) => (
           <div
-            class="villa-panel relative w-full h-[20rem] lg:h-[40rem] rounded-3xl bg-gray-200"
+            class="villa-panel relative w-full rounded-3xl bg-gray-200"
             data-panel={villa.slug}
             data-active={villa.slug === activeSlug ? "true" : "false"}
             aria-hidden={villa.slug === activeSlug ? "false" : "true"}
@@ -69,9 +69,8 @@ const activeSlug = ["garuda", "kaluska", "sari"].includes(urlSlug)
               src={villa.imageUrl}
               alt={`${villa.name} Cover Image`}
               loading="eager"
-              class="w-full h-full object-cover rounded-3xl"
+              class="w-full h-full object-contain rounded-3xl"
             />
-            <div class="absolute top-0 left-0 w-full h-full rounded-3xl bg-black/35" />
           </div>
         ))
       }
