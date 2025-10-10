@@ -38,8 +38,18 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.kaluska.buildings[0].bedroom,
 					facilities: [
-						"Lantai 1 (Kamar 1-4): Kapasitas 16 Orang",
-						"Lantai 2 (Mezanin): Kapasitas 8 Orang",
+            {
+              floor: 1,
+              name: "Kamar 1-4",
+              capacity: 16,
+              isPerBed: false,
+            },
+            {
+              floor: 2,
+              name: "Mezanin",
+              capacity: 8,
+              isPerBed: false,
+            },
 					],
 				},
 			},
@@ -49,8 +59,18 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.kaluska.buildings[1].bedroom,
 					facilities: [
-						"Lantai 1 (Kamar 6-8): Kapasitas 8 Orang",
-						"Lantai 2 (Kamar 9-11): Kapasitas 8 Orang",
+            {
+              floor: 1,
+              name: "Kamar 6-8",
+              capacity: 8,
+              isPerBed: false,
+            },
+            {
+              floor: 2,
+              name: "Kamar 9-11",
+              capacity: 8,
+              isPerBed: false,
+            },
 					],
 				},
 			},
@@ -60,8 +80,18 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.kaluska.buildings[2].bedroom,
 					facilities: [
-						"Lantai 1 (Kamar 12-13): Kapasitas 8 Orang",
-						"Lantai 2 (Kamar 14-15): Kapasitas 6 Orang",
+            {
+              floor: 1,
+              name: "Kamar 12-13",
+              capacity: 8,
+              isPerBed: false,
+            },
+            {
+              floor: 2,
+              name: "Kamar 14-15",
+              capacity: 6,
+              isPerBed: false,
+            },
 					],
 				},
 			},
@@ -71,8 +101,18 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.kaluska.buildings[3].bedroom,
 					facilities: [
-						"Lantai 1 (Kamar 16-17): Kapasitas 6 Orang",
-						"Lantai 2 (Kamar 18-19): Kapasitas 8 Orang",
+            {
+              floor: 1,
+              name: "Kamar 16-17",
+              capacity: 6,
+              isPerBed: false,
+            },
+            {
+              floor: 2,
+              name: "Kamar 18-19",
+              capacity: 8,
+              isPerBed: false,
+            },
 					],
 				},
 			},
@@ -165,8 +205,18 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.sari.buildings[0].bedroom,
 					facilities: [
-						"Lantai 1 (Kamar 1-7): Kapasitas 24 Orang/bed",
-						"Lantai 2 (Kamar 8-15): Kapasitas 27 Orang/bed",
+            {
+              floor: 1,
+              name: "Kamar 1-7",
+              capacity: 24,
+              isPerBed: true,
+            },
+            {
+              floor: 2,
+              name: "Kamar 8-15",
+              capacity: 27,
+              isPerBed: true,
+            }
 					],
 				},
 			},
@@ -259,8 +309,18 @@ export const ListVilla: Villa[] = [
 				bedroomDetail: {
 					imageUrl: VillaImages.garuda.buildings[0].bedroom,
 					facilities: [
-						"Lantai 1 (Kamar 1-5): Kapasitas 19 Orang/bed",
-						"Lantai 2 (Kamar 6-11): Kapasitas 31 Orang/bed",
+            {
+              floor: 1,
+              name: "Kamar 1-5",
+              capacity: 19,
+              isPerBed: true,
+            },
+            {
+              floor: 2,
+              name: "Kamar 6-11",
+              capacity: 31,
+              isPerBed: true,
+            },
 					],
 				},
 			},

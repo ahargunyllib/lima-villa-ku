@@ -18,16 +18,21 @@ export type Villa = {
 		buildingImageUrl?: ImageMetadata;
 		bedroomDetail: {
 			imageUrl: ImageMetadata;
-			facilities: string[];
+			facilities: {
+				floor: number;
+				name: string;
+				capacity: number;
+        isPerBed: boolean;
+			}[];
 		};
 	}[];
 
 	facilityImageUrls: ImageMetadata[];
 
 	terms: {
-    points: string[];
-    note?: string;
-  };
+		points: string[];
+		note?: string;
+	};
 
 	price: {
 		weekday: number;
