@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import OurValue1Image from "../../assets/images/our-value/1.png";
-import OurValue2Image from "../../assets/images/our-value/2.png";
+import OurValue2Image from "../../assets/images/our-value/2.jpg";
 import OurValue3Image from "../../assets/images/our-value/3.png";
 ---
 
@@ -15,16 +15,9 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
     >
       Nilai Kami
     </h2>
-    <div class="space-y-6 lg:space-y-8">
-      <h3 class="text-2xl lg:text-4xl font-bold text-black text-center">
-        Kenapa kami berbeda dengan tempat lain?
-      </h3>
-      <p class="text-sm lg:text-lg text-[#434343] text-center">
-        Dari keramahan layanan, kebersihan menyeluruh, hingga desain ruang yang
-        menenangkan setiap detail kami pastikan untuk menghadirkan pengalaman
-        liburan terbaik bagi Anda.
-      </p>
-    </div>
+    <h3 class="text-2xl lg:text-4xl font-bold text-black text-center">
+      Kenapa kami berbeda dengan tempat lain?
+    </h3>
   </div>
 
   <div
@@ -39,21 +32,21 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
         src={OurValue3Image}
         alt="Our Value Image 3"
         loading="eager"
-        class="absolute inset-0 w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-contain"
       />
       <Image
         id="our-value-image-1"
         src={OurValue1Image}
         alt="Our Value Image 1"
         loading="eager"
-        class="absolute inset-0 w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-contain"
       />
       <Image
         id="our-value-image-2"
         src={OurValue2Image}
         alt="Our Value Image 2"
         loading="eager"
-        class="absolute inset-0 w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-contain"
       />
     </div>
 
@@ -202,7 +195,7 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
           class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
         >
           <span class="font-bold text-base lg:text-xl text-black">
-            Rombongan Bervariatif
+            Kapasitas Bervariatif
           </span>
           <svg
             class="shrink-0"
