@@ -23,24 +23,28 @@ const slides = [
 
 <section
   id="hero"
-  class="px-6 pt-6 pb-10 lg:p-25 relative overflow-hidden flex flex-col items-start justify-end h-dvh"
+  class="overflow-hidden flex flex-col items-start relative justify-end h-dvh"
 >
-  <div class="absolute inset-0 z-0">
-    {
-      slides.map((src, i) => (
-        <Image
-          src={src}
-          alt={`Hero Image ${i + 1}`}
-          loading={i === 0 ? "eager" : "lazy"}
-          class={`slide absolute inset-0 w-full h-dvh object-cover ${i === 0 ? "active" : ""}`}
-          data-idx={i}
-        />
-      ))
-    }
-    <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
+  <div class="w-full h-dvh absolute inset-0">
+    <div class="w-full h-full mt-[5.25rem] lg:mt-[6.75rem] z-0 absolute">
+      {
+        slides.map((src, i) => (
+          <Image
+            src={src}
+            alt={`Hero Image ${i + 1}`}
+            loading={i === 0 ? "eager" : "lazy"}
+            class={`slide absolute w-full h-full object-cover ${i === 0 ? "active" : ""}`}
+            data-idx={i}
+          />
+        ))
+      }
+      <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
+    </div>
   </div>
 
-  <div class="space-y-10 w-full sm:w-1/2 lg:w-3/8 flex flex-col items-start z-20">
+  <div
+    class="px-6 pb-10 lg:p-25 space-y-10 w-full sm:w-1/2 lg:w-3/8 flex flex-col items-start z-20"
+  >
     <div class="space-y-10">
       <h1 class="font-semibold text-white text-3xl lg:text-6xl">
         5 Villa Terbaik di Kawasan Megamendung, Puncak
