@@ -270,110 +270,174 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
           </ul>
         </div>
       </details>
+
+      <details id="value-4" name="values" class="group" open>
+        <summary
+          class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+        >
+          <span class="font-bold text-base lg:text-xl text-black">
+            Harga Terjangkau (Start Rp 2,75 juta)
+          </span>
+          <svg
+            class="shrink-0"
+            style="accordion-icon-minus"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#434343"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-circle-minus-icon lucide-circle-minus"
+            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+            ></path></svg
+          >
+          <svg
+            class="shrink-0"
+            style="accordion-icon-plus"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#434343"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-circle-plus-icon lucide-circle-plus"
+            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+            ></path><path d="M12 8v8"></path></svg
+          >
+        </summary>
+        <div
+          class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+        >
+          <p>
+            Dibanding dengan Villa-Villa lain, harga kami tergolong murah.
+            Sebagai contoh, Villa Kaluska yang memiliki jumlah 19 kamar dan
+            kapasitas yang mampu menampung hingga 70 orang, hanya <span
+              class="text-black font-bold bg-[#63FB63] px-1"
+            >
+              seharga Rp 3 juta per malam (Weekdays) dan Rp 5,5 juta per malam
+              (Weekend)
+            </span>. Bayangin, Villa untuk ber-70 orang loh, tapi harganya cuma
+            segitu. Murah bukan?
+          </p>
+          <p>
+            Selain itu, kami juga memberikan diskon besar di hari-hari Weekdays!
+            Cocok untuk Anda yang ingin <span
+              class="text-black font-bold bg-[#63FB63] px-1"
+              >meeting/outing kantor atau short-escape.</span
+            >
+          </p>
+        </div>
+      </details>
     </div>
   </div>
-</section>
-<style>
-  details summary {
-    list-style: none;
-    cursor: pointer;
-  }
+  <style>
+    details summary {
+      list-style: none;
+      cursor: pointer;
+    }
 
-  details summary::-webkit-details-marker {
-    display: none;
-  }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
 
-  [style="accordion-icon-plus"] {
-    display: block;
-  }
+    [style="accordion-icon-plus"] {
+      display: block;
+    }
 
-  [style="accordion-icon-minus"] {
-    display: none;
-  }
+    [style="accordion-icon-minus"] {
+      display: none;
+    }
 
-  details[open] [style="accordion-icon-plus"] {
-    display: none;
-  }
+    details[open] [style="accordion-icon-plus"] {
+      display: none;
+    }
 
-  details[open] [style="accordion-icon-minus"] {
-    display: block;
-  }
+    details[open] [style="accordion-icon-minus"] {
+      display: block;
+    }
 
-  .relative > img,
-  .relative > picture {
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
+    .relative > img,
+    .relative > picture {
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
 
-  #our-value-image-3 {
-    opacity: 1;
-  }
+    #our-value-image-3 {
+      opacity: 1;
+    }
 
-  #our-value-grid:has(#value-1[open]) #our-value-image-1 {
-    opacity: 1;
-  }
-  #our-value-grid:has(#value-2[open]) #our-value-image-2 {
-    opacity: 1;
-  }
-  #our-value-grid:has(#value-3[open]) #our-value-image-3 {
-    opacity: 1;
-  }
+    #our-value-grid:has(#value-1[open]) #our-value-image-1 {
+      opacity: 1;
+    }
+    #our-value-grid:has(#value-2[open]) #our-value-image-2 {
+      opacity: 1;
+    }
+    #our-value-grid:has(#value-3[open]) #our-value-image-3 {
+      opacity: 1;
+    }
 
-  details[name="values"] > summary + div {
-    overflow: hidden; /* so height animation looks clean */
-    will-change: height; /* smoother frames */
-  }
-</style>
-<script>
-  const accordions = document.querySelectorAll<HTMLDetailsElement>(
-    'details[name="values"]'
-  );
+    details[name="values"] > summary + div {
+      overflow: hidden; /* so height animation looks clean */
+      will-change: height; /* smoother frames */
+    }
+  </style>
+  <script>
+    const accordions = document.querySelectorAll<HTMLDetailsElement>(
+      'details[name="values"]'
+    );
 
-  accordions.forEach((details) => {
-    const summary = details.querySelector("summary");
-    const panel = summary?.nextElementSibling;
+    accordions.forEach((details) => {
+      const summary = details.querySelector("summary");
+      const panel = summary?.nextElementSibling;
 
-    if (!summary || !(panel instanceof HTMLElement)) return;
+      if (!summary || !(panel instanceof HTMLElement)) return;
 
-    summary.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (details.dataset.animating === "1") return;
+      summary.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (details.dataset.animating === "1") return;
 
-      if (details.open) {
+        if (details.open) {
+          details.dataset.animating = "1";
+          const target = panel.scrollHeight;
+          panel.style.height = target + "px";
+          panel.getBoundingClientRect(); // force reflow
+          panel.style.transition = "height 300ms ease";
+          panel.style.height = "0px";
+          const finish = () => {
+            details.open = false;
+            panel.style.height = "";
+            panel.style.transition = "";
+            details.dataset.animating = "0";
+            panel.removeEventListener("transitionend", finish);
+          };
+          panel.addEventListener("transitionend", finish);
+          return;
+        }
+
         details.dataset.animating = "1";
-        const target = panel.scrollHeight;
-        panel.style.height = target + "px";
-        panel.getBoundingClientRect(); // force reflow
-        panel.style.transition = "height 300ms ease";
+        details.open = true;
+
         panel.style.height = "0px";
+        panel.getBoundingClientRect();
+        const target = panel.scrollHeight;
+        panel.style.transition = "height 300ms ease";
+        panel.style.height = target + "px";
+
         const finish = () => {
-          details.open = false;
           panel.style.height = "";
           panel.style.transition = "";
           details.dataset.animating = "0";
           panel.removeEventListener("transitionend", finish);
         };
+
         panel.addEventListener("transitionend", finish);
-        return;
-      }
-
-      details.dataset.animating = "1";
-      details.open = true;
-
-      panel.style.height = "0px";
-      panel.getBoundingClientRect();
-      const target = panel.scrollHeight;
-      panel.style.transition = "height 300ms ease";
-      panel.style.height = target + "px";
-
-      const finish = () => {
-        panel.style.height = "";
-        panel.style.transition = "";
-        details.dataset.animating = "0";
-        panel.removeEventListener("transitionend", finish);
-      };
-
-      panel.addEventListener("transitionend", finish);
+      });
     });
-  });
-</script>
+  </script>
+</section>
