@@ -103,7 +103,7 @@ const { villa } = Astro.props;
               alt={`${villa.name} - Bedroom ${idx + 1}`}
               loading={idx === 0 ? "eager" : "lazy"}
               class:list={[
-                "w-full object-contain rounded-xl relative",
+                "w-full object-cover aspect-video rounded-xl relative",
                 idx === 0 ? "block" : "hidden",
               ]}
             />
@@ -130,7 +130,7 @@ const { villa } = Astro.props;
                   />
                 </svg>
                 <span class="text-sm lg:text-base text-[#434343]">
-                  Lantai {facility.floor} ({facility.name}):{" "}
+                  {facility.location} ({facility.name}):{" "}
                   <b>
                     Kapasitas {facility.capacity} orang
                     {facility.isPerBed ? "/bed" : ""}

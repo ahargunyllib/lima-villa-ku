@@ -19,7 +19,7 @@ export type Villa = {
 		bedroomDetail: {
 			imageUrls: ImageMetadata[];
 			facilities: {
-				floor: number;
+				location: string;
 				name: string;
 				capacity: number;
 				isPerBed: boolean;

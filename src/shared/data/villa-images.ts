@@ -13,8 +13,16 @@ import GarudaFacility10Image from "../../assets/images/villas/garuda/facilities/
 import GarudaFacility11Image from "../../assets/images/villas/garuda/facilities/11.jpeg";
 import GarudaFacility12Image from "../../assets/images/villas/garuda/facilities/12.jpg";
 
-import AlikaCoverImage from "../../assets/images/hero/2.png"; // TODO
-import AlikaBedroomImage from "../../assets/images/hero/3.png"; // TODO
+import AlikaBedroom1Image from "../../assets/images/villas/alika/bedrooms/1.jpeg";
+import AlikaCoverImage from "../../assets/images/villas/alika/cover.jpeg";
+import AlikaFacility1Image from "../../assets/images/villas/alika/facilities/1.jpeg";
+import AlikaFacility2Image from "../../assets/images/villas/alika/facilities/2.jpeg";
+import AlikaFacility3Image from "../../assets/images/villas/alika/facilities/3.jpeg";
+import AlikaFacility4Image from "../../assets/images/villas/alika/facilities/4.jpeg";
+import AlikaFacility5Image from "../../assets/images/villas/alika/facilities/5.jpeg";
+import AlikaFacility6Image from "../../assets/images/villas/alika/facilities/6.jpeg";
+import AlikaFacility7Image from "../../assets/images/villas/alika/facilities/7.jpeg";
+import AlikaFacility8Image from "../../assets/images/villas/alika/facilities/8.jpeg";
 
 import KaluskaBedroom1aImage from "../../assets/images/villas/kaluska/bedrooms/1a.png";
 import KaluskaBedroom1bImage from "../../assets/images/villas/kaluska/bedrooms/1b.png";
@@ -117,8 +125,17 @@ export const VillaImages = {
 	},
 	alika: {
 		cover: AlikaCoverImage,
-		bedroom: [AlikaBedroomImage],
-		facilities: [],
+		buildings: [{ bedroom: [AlikaBedroom1Image] }],
+		facilities: [
+			AlikaFacility1Image,
+			AlikaFacility2Image,
+			AlikaFacility3Image,
+			AlikaFacility4Image,
+			AlikaFacility5Image,
+			AlikaFacility6Image,
+			AlikaFacility7Image,
+			AlikaFacility8Image,
+		],
 	},
 	lagogo: {
 		cover: LagogoCoverImage,

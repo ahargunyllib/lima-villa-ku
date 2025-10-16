@@ -13,22 +13,28 @@ export const ListVilla: Villa[] = [
 		roomCount: 19,
 		personCapacity: 68,
 		description:
-			"Villa Pondok Kaluska terdiri dari 4 bangunan dengan total 19 kamar (17 kamar di antaranya sudah memiliki kamar mandi dalam) dan mampu menampung hingga 68 orang.",
+			"Villa Pondok Kaluska terdiri dari 4 bangunan dengan total 19 kamar, lengkap dengan kamar mandi dalam, dan mampu menampung hingga 68 orang++.",
 		facilities: [
 			"Kolam Renang",
 			"Meja Pingpong",
 			"Meja Billiard",
 			"Free WiFi",
 			"Android TV (Youtube dan Karaoke)",
-			"Speaker",
+			"Speaker Indoor dan Outdoor",
 			"Water Heater",
 			"Pendopo",
 			"Ayunan & Perosotan",
 			"Kolam Pancing",
 			"Taman/Area Bermain",
 			"Parkir sekitar 15 Mobil",
-			"Kulkas",
+			"Kulkas dan Dispenser",
 			"Alat Panggang/Bakar",
+			"Aula/Ruang Pertemuan",
+			"Area Dapur Lega",
+			"Peralatan Masak & Makan",
+			"Lapangan Badminton Rumput",
+			"Catering dengan Harga Terjangkau",
+			"Bisa Masuk Bus Besar",
 		],
 
 		buildings: [
@@ -39,13 +45,13 @@ export const ListVilla: Villa[] = [
 					imageUrls: VillaImages.kaluska.buildings[0].bedroom,
 					facilities: [
 						{
-							floor: 1,
+							location: "Lantai 1",
 							name: "Kamar 1-4",
 							capacity: 16,
 							isPerBed: false,
 						},
 						{
-							floor: 2,
+							location: "Lantai 2",
 							name: "Mezanin",
 							capacity: 8,
 							isPerBed: false,
@@ -60,13 +66,13 @@ export const ListVilla: Villa[] = [
 					imageUrls: VillaImages.kaluska.buildings[1].bedroom,
 					facilities: [
 						{
-							floor: 1,
+							location: "Lantai 1",
 							name: "Kamar 6-8",
 							capacity: 8,
 							isPerBed: false,
 						},
 						{
-							floor: 2,
+							location: "Lantai 2",
 							name: "Kamar 9-11",
 							capacity: 8,
 							isPerBed: false,
@@ -81,13 +87,13 @@ export const ListVilla: Villa[] = [
 					imageUrls: VillaImages.kaluska.buildings[2].bedroom,
 					facilities: [
 						{
-							floor: 1,
+							location: "Lantai 1",
 							name: "Kamar 12-13",
 							capacity: 8,
 							isPerBed: false,
 						},
 						{
-							floor: 2,
+							location: "Lantai 2",
 							name: "Kamar 14-15",
 							capacity: 6,
 							isPerBed: false,
@@ -102,13 +108,13 @@ export const ListVilla: Villa[] = [
 					imageUrls: VillaImages.kaluska.buildings[3].bedroom,
 					facilities: [
 						{
-							floor: 1,
+							location: "Lantai 1",
 							name: "Kamar 16-17",
 							capacity: 6,
 							isPerBed: false,
 						},
 						{
-							floor: 2,
+							location: "Lantai 2",
 							name: "Kamar 18-19",
 							capacity: 8,
 							isPerBed: false,
@@ -140,15 +146,15 @@ export const ListVilla: Villa[] = [
 		price: {
 			weekday: 3_000_000,
 			weekend: 5_500_000,
-			note: "*Harga belum termasuk uang kebersihan sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
+			note: "*Harga belum termasuk uang kebersihan/tip sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
 
 			downPayment: {
-				note: "DP sebesar 50% dan pelunasan paling lambat seminggu sebelum hari-H.",
+				note: "DP sebesar 25% dan pelunasan paling lambat seminggu sebelum hari-H.",
 			},
 		},
 
 		contact: {
-			instagrams: ["@villapondokkaluska"],
+			instagrams: ["@villa.pondok.kaluska"],
 			villaManagers: [
 				{
 					name: "Teguh",
@@ -189,15 +195,19 @@ export const ListVilla: Villa[] = [
 			"Meja Billiard",
 			"Free WiFi",
 			"Android TV (Youtube dan Karaoke)",
-			"Speaker Portable",
+			"Speaker Indoor dan Outdoor",
 			"Water Heater",
 			"Ruang Dapur Lega",
+			"Peralatan Masak dan Makan/Minum Lengkap",
 			"Ayunan & Perosotan",
-			"Lapangan Badminton",
+			"Lapangan Badminton Rumput",
 			"Taman/Area Bermain",
 			"Kulkas dan Dispenser",
 			"Alat Panggang/Bakar",
 			"Aula/Ruang Meeting",
+			"Kapasitas Parkir 15 Mobil",
+			"Bisa Masuk Bus Besar",
+			"Catering dengan Harga Terjangkau",
 		],
 
 		buildings: [
@@ -206,13 +216,13 @@ export const ListVilla: Villa[] = [
 					imageUrls: VillaImages.sari.buildings[0].bedroom,
 					facilities: [
 						{
-							floor: 1,
+							location: "Lantai 1",
 							name: "Kamar 1-7",
 							capacity: 24,
 							isPerBed: true,
 						},
 						{
-							floor: 2,
+							location: "Lantai 2",
 							name: "Kamar 8-15",
 							capacity: 27,
 							isPerBed: true,
@@ -244,10 +254,10 @@ export const ListVilla: Villa[] = [
 		price: {
 			weekday: 3_000_000,
 			weekend: 5_000_000,
-			note: "*Harga belum termasuk uang kebersihan sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
+			note: "*Harga belum termasuk uang kebersihan/tip sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
 
 			downPayment: {
-				note: "DP sebesar 50% dan pelunasan paling lambat seminggu sebelum hari-H.",
+				note: "DP sebesar 25% dan pelunasan paling lambat seminggu sebelum hari-H.",
 			},
 		},
 
@@ -300,8 +310,11 @@ export const ListVilla: Villa[] = [
 			"Kolam Pancing",
 			"Taman/Area Bermain",
 			"Parkir 12 Mobil",
-			"Kulkas",
+			"Kulkas & Dispenser",
 			"Alat Panggang/Bakar",
+			"Peralatan Masak/Makan/Minum Lengkap",
+			"View Bagus",
+			"Catering dengan Harga Terjangkau",
 		],
 
 		buildings: [
@@ -310,13 +323,13 @@ export const ListVilla: Villa[] = [
 					imageUrls: VillaImages.garuda.buildings[0].bedroom,
 					facilities: [
 						{
-							floor: 1,
+							location: "Lantai 1",
 							name: "Kamar 1-5",
 							capacity: 19,
 							isPerBed: true,
 						},
 						{
-							floor: 2,
+							location: "Lantai 2",
 							name: "Kamar 6-11",
 							capacity: 31,
 							isPerBed: true,
@@ -348,10 +361,10 @@ export const ListVilla: Villa[] = [
 		price: {
 			weekday: 3_000_000,
 			weekend: 4_500_000,
-			note: "*Harga belum termasuk uang kebersihan sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
+			note: "*Harga belum termasuk uang kebersihan/tip sebesar Rp 250.000 (diberikan langsung ke penjaga villa)",
 
 			downPayment: {
-				note: "DP	sebesar	50%	dan	pelunasan	paling	lambat seminggu	sebelum	hari-H",
+				note: "DP	sebesar	25%	dan	pelunasan	paling	lambat seminggu	sebelum	hari-H",
 			},
 		},
 
@@ -419,10 +432,10 @@ export const ListVilla: Villa[] = [
 		price: {
 			weekday: 0,
 			weekend: 0,
-			note: "*Harga belum termasuk uang kebersihan sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
+			note: "*Harga belum termasuk uang kebersihan/tip sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
 
 			downPayment: {
-				note: "Sebesar 50% dan dibayarkan paling lambat H-2 Minggu",
+				note: "Sebesar 25% dan dibayarkan paling lambat H-2 Minggu",
 			},
 		},
 
@@ -438,23 +451,52 @@ export const ListVilla: Villa[] = [
 		name: "Pondok Alika",
 		imageUrl: VillaImages.alika.cover,
 		shortName: "Villa Alika",
-		isAvailable: false,
-		buildingCount: 0,
-		roomCount: 0,
-		personCapacity: 0,
-		description: "",
-		facilities: [],
+		isAvailable: true,
+		buildingCount: 2,
+		roomCount: 7,
+		personCapacity: 24,
+		description:
+			"Villa Alika terdiri dari 2 bangunan dengan total 7 kamar. Seluruhnya memiliki kamar mandi dalam yang dilengkapi dengan air panas.",
+		facilities: [
+			"Kolam Renang",
+			"Meja Billiard",
+			"Android TV (Youtube dan Karaoke)",
+			"Water Heater (Air Panas)",
+			"Ayunan dan Perosotan",
+			"Taman/Area Bermain",
+			"Alat Panggang/Bakar",
+			"Free Wifi",
+			"Speaker Portable",
+			"Lapangan Badminton Rumput",
+			"Kulkas & Dispenser",
+			"Aula/Ruang Meeting",
+			"Parkir 10 Mobil",
+			"Catering dengan Harga Terjangkau",
+		],
 
 		buildings: [
 			{
 				bedroomDetail: {
-					imageUrls: VillaImages.alika.bedroom,
-					facilities: [],
+					imageUrls: VillaImages.alika.buildings[0].bedroom,
+					facilities: [
+						{
+							location: "Rumah 1",
+							name: "Kamar 1-6",
+							capacity: 16,
+							isPerBed: true,
+						},
+						{
+							location: "Rumah 2",
+							name: "Kamar 7-11",
+							capacity: 9,
+							isPerBed: true,
+						},
+					],
 				},
 			},
 		],
 
-		facilityImageUrls: [],
+		facilityImageUrls: VillaImages.alika.facilities,
 
 		terms: {
 			points: [
@@ -476,17 +518,26 @@ export const ListVilla: Villa[] = [
 		price: {
 			weekday: 0,
 			weekend: 0,
-			note: "*Harga belum termasuk uang kebersihan sebesar Rp 300.000 (diberikan langsung ke penjaga villa)",
+			note: "*Harga belum termasuk uang kebersihan/tip sebesar Rp 250.000 (diberikan langsung ke penjaga villa)",
 
 			downPayment: {
-				note: "Sebesar 50% dan dibayarkan paling lambat H-2 Minggu",
+				note: "Sebesar 25% dan dibayarkan paling lambat H-2 Minggu",
 			},
 		},
 
 		contact: {
 			instagrams: [],
-			villaManagers: [],
-			villaGuardians: [],
+			villaManagers: [{ name: "Nanda", phoneNumber: "085778831069" }],
+			villaGuardians: [
+				{
+					name: "Teguh",
+					phoneNumber: "081310502766",
+				},
+				{
+					name: "Martinus",
+					phoneNumber: "08111866989",
+				},
+			],
 		},
 	},
 ];
