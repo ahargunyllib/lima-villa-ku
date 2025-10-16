@@ -356,7 +356,7 @@ export const ListVilla: Villa[] = [
 		},
 
 		contact: {
-			instagrams: ["@villapondokgaruda"],
+			instagrams: ["@villa.pondok.garuda"],
 			villaManagers: [
 				{
 					name: "Teguh",
