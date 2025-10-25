@@ -23,7 +23,7 @@ const slides = [
 
 <section
   id="hero"
-  class="overflow-hidden flex flex-col items-start relative justify-end h-dvh"
+  class="overflow-hidden flex flex-col items-start relative justify-end"
 >
   <div class="w-full h-full absolute inset-0">
     <div class="w-full h-full mt-[5.25rem] lg:mt-[6.75rem] z-0 absolute">
@@ -64,6 +64,16 @@ const slides = [
   </div>
 </section>
 <style>
+  #hero {
+    height: calc(100dvh + 20rem);
+  }
+
+  @media (min-height: 500px) {
+    #hero {
+      height: 100dvh;
+    }
+  }
+
   .slide {
     opacity: 0;
     transition: opacity 700ms ease;
