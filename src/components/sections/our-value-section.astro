@@ -20,321 +20,314 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
     </h3>
   </div>
 
-  <div
-    id="our-value-grid"
-    class="grid grid-cols-1 xl:grid-cols-2 gap-10 w-full lg:h-full"
-  >
-    <div
-      class="relative hidden w-full lg:block rounded-3xl overflow-hidden bg-gray-200"
-    >
-      <Image
-        id="our-value-image-3"
-        src={OurValue3Image}
-        alt="Our Value Image 3"
-        loading="eager"
-        class="absolute inset-0 w-full h-full object-contain"
-      />
-      <Image
-        id="our-value-image-1"
-        src={OurValue1Image}
-        alt="Our Value Image 1"
-        loading="eager"
-        class="absolute inset-0 w-full h-full object-contain"
-      />
-      <Image
-        id="our-value-image-2"
-        src={OurValue2Image}
-        alt="Our Value Image 2"
-        loading="eager"
-        class="absolute inset-0 w-full h-full object-contain"
-      />
-    </div>
+  <div class="relative aspect-video w-full md:w-1/2 overflow-hidden">
+    <Image
+      id="our-value-image-3"
+      src={OurValue3Image}
+      alt="Our Value Image 3"
+      loading="eager"
+      class="absolute h-full w-fit object-contain rounded-3xl top-0 left-1/2 transform -translate-x-1/2"
+    />
+    <Image
+      id="our-value-image-1"
+      src={OurValue1Image}
+      alt="Our Value Image 1"
+      loading="eager"
+      class="absolute h-full w-fit object-contain rounded-3xl top-0 left-1/2 transform -translate-x-1/2"
+    />
+    <Image
+      id="our-value-image-2"
+      src={OurValue2Image}
+      alt="Our Value Image 2"
+      loading="eager"
+      class="absolute h-full w-fit object-contain rounded-3xl top-0 left-1/2 transform -translate-x-1/2"
+    />
+  </div>
 
-    <div class="w-full space-y-4">
-      <details id="value-3" name="values" class="group" open>
-        <summary
-          class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+  <div id="our-value-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+    <details id="value-3" name="values" class="group" open>
+      <summary
+        class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+      >
+        <span class="font-bold text-base lg:text-xl text-black">
+          Fasilitas Lengkap
+        </span>
+        <svg
+          class="shrink-0"
+          style="accordion-icon-minus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#434343"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-minus-icon lucide-circle-minus"
+          ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+          ></path></svg
         >
-          <span class="font-bold text-base lg:text-xl text-black">
-            Fasilitas Lengkap
-          </span>
-          <svg
-            class="shrink-0"
-            style="accordion-icon-minus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-minus-icon lucide-circle-minus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path></svg
+        <svg
+          class="shrink-0"
+          style="accordion-icon-plus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#434343"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-plus-icon lucide-circle-plus"
+          ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+          ></path><path d="M12 8v8"></path></svg
+        >
+      </summary>
+      <div
+        class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+      >
+        <p>
+          Semuanya ada, dari <span
+            class="text-black font-bold bg-[#63FB63] px-1"
+            >Wi-fi sampai Karaoke, Billiard sampai Pingpong</span
           >
-          <svg
-            class="shrink-0"
-            style="accordion-icon-plus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-plus-icon lucide-circle-plus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path><path d="M12 8v8"></path></svg
-          >
-        </summary>
+        </p>
         <div
-          class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-4"
         >
-          <p>
-            Semuanya ada, dari <span
-              class="text-black font-bold bg-[#63FB63] px-1"
-              >Wi-fi sampai Karaoke, Billiard sampai Pingpong</span
-            >
-          </p>
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-4"
-          >
-            <ul class="list-disc list-outside pl-6">
-              <li>Kolam Renang*</li>
-              <li>Kamar Mandi Dalam*</li>
-              <li>Water Heater*</li>
-              <li>Area Bermain Anak*</li>
-              <li>Meja Billiard</li>
-              <li>Kolam Pancing</li>
-            </ul>
-            <ul class="list-disc list-outside pl-6">
-              <li>Free Wi-Fi*</li>
-              <li>Android TV & Karaoke*</li>
-              <li>Area Parkir Luas*</li>
-              <li>Alat Panggang*</li>
-              <li>Meja Pingpong*</li>
-              <li>Lapangan Olahraga</li>
-            </ul>
-          </div>
-          <p>(Keterangan*: Ada di seluruh Villa kami)</p>
-        </div>
-      </details>
-
-      <details id="value-1" name="values" class="group" open>
-        <summary
-          class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
-        >
-          <span class="font-bold text-base lg:text-xl text-black">
-            Lokasi Strategis
-          </span>
-          <svg
-            class="shrink-0"
-            style="accordion-icon-minus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-minus-icon lucide-circle-minus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path></svg
-          >
-          <svg
-            class="shrink-0"
-            style="accordion-icon-plus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-plus-icon lucide-circle-plus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path><path d="M12 8v8"></path></svg
-          >
-        </summary>
-        <div
-          class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
-        >
-          <p>
-            Berlokasi di kawasan Jalan Cikopo Selatan, Kecamatan Megamendung,
-            seluruh Villa kami
-            <span class="text-black font-bold bg-[#63FB63] px-1"
-              >memiliki akses yang mudah dijangkau</span
-            > dan memungkinkan tamu terhindar dari kemacetan Puncak di setiap pekannya.
-          </p>
           <ul class="list-disc list-outside pl-6">
-            <li>
-              Hanya sekitar <span class="text-black font-bold bg-[#63FB63] px-1"
-                >10 menit</span
-              > dari perempatan/lampu merah Gadog
-            </li>
-            <li>
-              Ada <span class="text-black font-bold bg-[#63FB63] px-1"
-                >jalur alternatif</span
-              > menuju Villa-Villa kami jika Jalan Raya Puncak sedang berlaku sistem
-              Buka-Tutup (naik/turun) 1 arah atau one-way
-            </li>
+            <li>Kolam Renang*</li>
+            <li>Kamar Mandi Dalam*</li>
+            <li>Water Heater*</li>
+            <li>Area Bermain Anak*</li>
+            <li>Meja Billiard</li>
+            <li>Kolam Pancing</li>
+          </ul>
+          <ul class="list-disc list-outside pl-6">
+            <li>Free Wi-Fi*</li>
+            <li>Android TV & Karaoke*</li>
+            <li>Area Parkir Luas*</li>
+            <li>Alat Panggang*</li>
+            <li>Meja Pingpong*</li>
+            <li>Lapangan Olahraga</li>
           </ul>
         </div>
-      </details>
+        <p>(Keterangan*: Ada di seluruh Villa kami)</p>
+      </div>
+    </details>
 
-      <details id="value-2" name="values" class="group" open>
-        <summary
-          class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+    <details id="value-1" name="values" class="group" open>
+      <summary
+        class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+      >
+        <span class="font-bold text-base lg:text-xl text-black">
+          Lokasi Strategis
+        </span>
+        <svg
+          class="shrink-0"
+          style="accordion-icon-minus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#434343"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-minus-icon lucide-circle-minus"
+          ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+          ></path></svg
         >
-          <span class="font-bold text-base lg:text-xl text-black">
-            Kapasitas Bervariatif
-          </span>
-          <svg
-            class="shrink-0"
-            style="accordion-icon-minus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-minus-icon lucide-circle-minus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path></svg
-          >
-          <svg
-            class="shrink-0"
-            style="accordion-icon-plus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-plus-icon lucide-circle-plus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path><path d="M12 8v8"></path></svg
-          >
-        </summary>
-        <div
-          class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+        <svg
+          class="shrink-0"
+          style="accordion-icon-plus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#434343"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-plus-icon lucide-circle-plus"
+          ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+          ></path><path d="M12 8v8"></path></svg
         >
-          <p>
-            Mau rombongan kecil bisa, rombongan besar juga bisa. Yang pasti,
-            <span class="text-black font-bold bg-[#63FB63] px-1"
-              >gak perlu repot-repot antri kamar mandi</span
-            > dan privasi Anda bisa tetap terjaga karena hampir semua kamar di Villa
-            kami sudah <span class="text-black font-bold bg-[#63FB63] px-1"
-              >memiliki kamar mandi dalam, lengkap dengan water-heater!</span
-            >
-          </p>
-          <ul class="list-disc list-outside pl-6">
-            <li>
-              Kapasitas bervariatif. Mulai dari Villa untuk 20 orang, hingga
-              yang <span class="text-black font-bold bg-[#63FB63] px-1"
-                >bisa menampung hingga 70 orang.</span
-              > Kalau masih kurang juga? Ada Extra Bed!
-            </li>
-            <li>
-              Cocok untuk <span class="text-black font-bold bg-[#63FB63] px-1">
-                beragam kegiatan</span
-              > seperti Arisan Keluarga, Gathering Kantor/Komunitas, Seminar, Outbound,
-              Retret, hingga Resepsi.
-            </li>
-            <li>
-              Ada ruangan yang bisa dijadikan <span
-                class="text-black font-bold bg-[#63FB63] px-1"
-                >aula atau ruang meeting</span
-              > juga loh!
-            </li>
-            <li>
-              Masing-masing Villa memiliki <span
-                class="text-black font-bold bg-[#63FB63] px-1"
-                >area bermain outdoor</span
-              > dan mampu menampung belasan mobil.
-            </li>
-          </ul>
-        </div>
-      </details>
+      </summary>
+      <div
+        class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+      >
+        <p>
+          Berlokasi di kawasan Jalan Cikopo Selatan, Kecamatan Megamendung,
+          seluruh Villa kami
+          <span class="text-black font-bold bg-[#63FB63] px-1"
+            >memiliki akses yang mudah dijangkau</span
+          > dan memungkinkan tamu terhindar dari kemacetan Puncak di setiap pekannya.
+        </p>
+        <ul class="list-disc list-outside pl-6">
+          <li>
+            Hanya sekitar <span class="text-black font-bold bg-[#63FB63] px-1"
+              >10 menit</span
+            > dari perempatan/lampu merah Gadog
+          </li>
+          <li>
+            Ada <span class="text-black font-bold bg-[#63FB63] px-1"
+              >jalur alternatif</span
+            > menuju Villa-Villa kami jika Jalan Raya Puncak sedang berlaku sistem
+            Buka-Tutup (naik/turun) 1 arah atau one-way
+          </li>
+        </ul>
+      </div>
+    </details>
 
-      <details id="value-4" name="values" class="group" open>
-        <summary
-          class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+    <details id="value-2" name="values" class="group" open>
+      <summary
+        class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+      >
+        <span class="font-bold text-base lg:text-xl text-black">
+          Kapasitas Bervariatif
+        </span>
+        <svg
+          class="shrink-0"
+          style="accordion-icon-minus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#434343"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-minus-icon lucide-circle-minus"
+          ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+          ></path></svg
         >
-          <span class="font-bold text-base lg:text-xl text-black">
-            Harga Terjangkau (Start Rp 2,75 juta)
-          </span>
-          <svg
-            class="shrink-0"
-            style="accordion-icon-minus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-minus-icon lucide-circle-minus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path></svg
-          >
-          <svg
-            class="shrink-0"
-            style="accordion-icon-plus"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#434343"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-plus-icon lucide-circle-plus"
-            ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
-            ></path><path d="M12 8v8"></path></svg
-          >
-        </summary>
-        <div
-          class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+        <svg
+          class="shrink-0"
+          style="accordion-icon-plus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#434343"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-plus-icon lucide-circle-plus"
+          ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+          ></path><path d="M12 8v8"></path></svg
         >
-          <p>
-            Dibanding dengan Villa-Villa lain, harga kami tergolong murah.
-            Sebagai contoh, Villa Kaluska yang memiliki jumlah 19 kamar dan
-            kapasitas yang mampu menampung hingga 70 orang, hanya <span
+      </summary>
+      <div
+        class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+      >
+        <p>
+          Mau rombongan kecil bisa, rombongan besar juga bisa. Yang pasti,
+          <span class="text-black font-bold bg-[#63FB63] px-1"
+            >gak perlu repot-repot antri kamar mandi</span
+          > dan privasi Anda bisa tetap terjaga karena hampir semua kamar di Villa
+          kami sudah <span class="text-black font-bold bg-[#63FB63] px-1"
+            >memiliki kamar mandi dalam, lengkap dengan water-heater!</span
+          >
+        </p>
+        <ul class="list-disc list-outside pl-6">
+          <li>
+            Kapasitas bervariatif. Mulai dari Villa untuk 20 orang, hingga yang <span
               class="text-black font-bold bg-[#63FB63] px-1"
-            >
-              seharga Rp 3 juta per malam (Weekdays) dan Rp 5,5 juta per malam
-              (Weekend)
-            </span>. Bayangin, Villa untuk ber-70 orang loh, tapi harganya cuma
-            segitu. Murah bukan?
-          </p>
-          <p>
-            Selain itu, kami juga memberikan diskon besar di hari-hari Weekdays!
-            Cocok untuk Anda yang ingin <span
+              >bisa menampung hingga 70 orang.</span
+            > Kalau masih kurang juga? Ada Extra Bed!
+          </li>
+          <li>
+            Cocok untuk <span class="text-black font-bold bg-[#63FB63] px-1">
+              beragam kegiatan</span
+            > seperti Arisan Keluarga, Gathering Kantor/Komunitas, Seminar, Outbound,
+            Retret, hingga Resepsi.
+          </li>
+          <li>
+            Ada ruangan yang bisa dijadikan <span
               class="text-black font-bold bg-[#63FB63] px-1"
-              >meeting/outing kantor atau short-escape.</span
-            >
-          </p>
-        </div>
-      </details>
-    </div>
+              >aula atau ruang meeting</span
+            > juga loh!
+          </li>
+          <li>
+            Masing-masing Villa memiliki <span
+              class="text-black font-bold bg-[#63FB63] px-1"
+              >area bermain outdoor</span
+            > dan mampu menampung belasan mobil.
+          </li>
+        </ul>
+      </div>
+    </details>
+
+    <details id="value-4" name="values" class="group" open>
+      <summary
+        class="bg-[#F9FAFB] flex flex-row items-center justify-between p-6 rounded-xl group-open:rounded-b-none"
+      >
+        <span class="font-bold text-base lg:text-xl text-black">
+          Harga Terjangkau (Start Rp 2,75 juta)
+        </span>
+        <svg
+          class="shrink-0"
+          style="accordion-icon-minus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#434343"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-minus-icon lucide-circle-minus"
+          ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+          ></path></svg
+        >
+        <svg
+          class="shrink-0"
+          style="accordion-icon-plus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#434343"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-plus-icon lucide-circle-plus"
+          ><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"
+          ></path><path d="M12 8v8"></path></svg
+        >
+      </summary>
+      <div
+        class="px-6 pb-6 bg-[#F9FAFB] rounded-b-xl space-y-6 text-sm lg:text-lg"
+      >
+        <p>
+          Dibanding dengan Villa-Villa lain, harga kami tergolong murah. Sebagai
+          contoh, Villa Kaluska yang memiliki jumlah 19 kamar dan kapasitas yang
+          mampu menampung hingga 70 orang, hanya <span
+            class="text-black font-bold bg-[#63FB63] px-1"
+          >
+            seharga Rp 3 juta per malam (Weekdays) dan Rp 5,5 juta per malam
+            (Weekend)
+          </span>. Bayangin, Villa untuk ber-70 orang loh, tapi harganya cuma
+          segitu. Murah bukan?
+        </p>
+        <p>
+          Selain itu, kami juga memberikan diskon besar di hari-hari Weekdays!
+          Cocok untuk Anda yang ingin <span
+            class="text-black font-bold bg-[#63FB63] px-1"
+            >meeting/outing kantor atau short-escape.</span
+          >
+        </p>
+      </div>
+    </details>
   </div>
   <style>
     details summary {
@@ -372,13 +365,19 @@ import OurValue3Image from "../../assets/images/our-value/3.png";
       opacity: 1;
     }
 
-    #our-value-grid:has(#value-1[open]) #our-value-image-1 {
+    *:has(#value-1[open]) #our-value-image-1 {
       opacity: 1;
     }
-    #our-value-grid:has(#value-2[open]) #our-value-image-2 {
+    *:has(#value-1[open]) #our-value-image-3 {
+      opacity: 0;
+    }
+    *:has(#value-2[open]) #our-value-image-2 {
       opacity: 1;
     }
-    #our-value-grid:has(#value-3[open]) #our-value-image-3 {
+    *:has(#value-2[open]) #our-value-image-3 {
+      opacity: 0;
+    }
+    *:has(#value-3[open]) #our-value-image-3 {
       opacity: 1;
     }
 
